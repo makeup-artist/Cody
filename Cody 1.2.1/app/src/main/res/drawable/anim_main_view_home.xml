@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list android:oneshot="true"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:duration="33" android:drawable="@drawable/host_home_page_tab_01" />
+    <item android:duration="33" android:drawable="@drawable/host_home_page_tab_02" />
+    <item android:duration="33" android:drawable="@drawable/host_home_page_tab_03" />
+    <item android:duration="33" android:drawable="@drawable/host_home_page_tab_04" />
+    <item android:duration="33" android:drawable="@drawable/host_home_page_tab_05" />
+    <item android:duration="33" android:drawable="@drawable/host_home_page_tab_06" />
+    <item android:duration="33" android:drawable="@drawable/host_home_page_tab_07" />
+    <item android:duration="33" android:drawable="@drawable/host_home_page_tab_08" />
+    <item android:duration="33" android:drawable="@drawable/host_home_page_tab_09" />
+    <item android:duration="33" android:drawable="@drawable/host_home_page_tab_10" />
+    <item android:duration="33" android:drawable="@drawable/host_home_page_tab_11" />
+    <item android:duration="33" android:drawable="@drawable/host_home_page_tab_12" />
+    <item android:duration="33" android:drawable="@drawable/host_home_page_tab_13" />
+    <item android:duration="33" android:drawable="@drawable/host_home_page_tab_14" />
+    <item android:duration="33" android:drawable="@drawable/host_home_page_tab_15" />
+</animation-list>

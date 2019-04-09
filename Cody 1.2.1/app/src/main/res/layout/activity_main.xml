@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipChildren="false"
+    tools:context=".MainActivity">
+    <com.example.cody.views.NoScrollViewPager
+        android:id="@+id/content_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <RadioGroup android:id="@+id/tab_main"
+        android:layout_width="fill_parent"
+        android:layout_height="140px"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:clipChildren="false"
+        android:background="#fff"
+       >
+
+        <RadioButton
+            android:id="@+id/tab_home"
+            style="@style/Mainviewtab"
+            android:drawableTop="@drawable/selector_anim_view_tab_home"
+            android:textColor="@color/host_theme_bottom_tab_text_selector"
+            android:text="首页"/>
+
+        <RadioButton
+            android:id="@+id/tab_community"
+            style="@style/Mainviewtab"
+            android:drawableTop="@drawable/selector_main_view_tab_community"
+            android:textColor="@color/host_theme_bottom_tab_text_selector"
+            android:text="社区" />
+
+
+        <View
+            android:id="@+id/tab_photo"
+            android:layout_width="160px"
+            android:layout_height="160px"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/host_btn_videoplay" />
+        <RadioButton
+            android:id="@+id/tab_shop"
+            style="@style/Mainviewtab"
+            android:drawableTop="@drawable/selector_main_view_tab_shop"
+            android:textColor="@color/host_theme_bottom_tab_text_selector"
+            android:text="商城"/>
+
+        <RadioButton
+            android:id="@+id/tab_mine"
+            style="@style/Mainviewtab"
+            android:drawableTop="@drawable/selector_main_view_tab_mine"
+            android:textColor="@color/host_theme_bottom_tab_text_selector"
+            android:text="我的"/>
+    </RadioGroup>
+</RelativeLayout>
