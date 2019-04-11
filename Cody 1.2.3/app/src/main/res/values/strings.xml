@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Cody</string>
+    <string-array name="indicatorshop_name">
+        <item>口红</item>
+        <item>底妆</item>
+        <item>眉毛</item>
+        <item>美瞳</item>
+        <item>发色</item>
+    </string-array>
+    <string-array name="indicatorcommunity_name">
+        <item>推荐</item>
+        <item>关注</item>
+        <item>教程</item>
+    </string-array>
+</resources>
