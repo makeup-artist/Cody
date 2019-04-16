@@ -16,6 +16,7 @@ import net.lucode.hackware.magicindicator.buildins.commonnavigator.titles.ClipPa
 
 public class IndicatorCommunityAdapter  extends CommonNavigatorAdapter {
     private final String[] Titles;
+    private OnIndicatorTapClickListener mOnTabClickListener;
 
     public IndicatorCommunityAdapter(Context context) {
         Titles=context.getResources().getStringArray(R.array.indicatorcommunity_name);
@@ -37,8 +38,11 @@ public class IndicatorCommunityAdapter  extends CommonNavigatorAdapter {
         clipPagerTitleView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 //                mViewPager.setCurrentItem(index);
-                //TODO:
+                if (mOnTabClickListener != null) {
+                    mOnTabClickListener.OnTabClick(index);
+                }
             }
         });
         return clipPagerTitleView;
@@ -55,6 +59,17 @@ public class IndicatorCommunityAdapter  extends CommonNavigatorAdapter {
         indicator.setYOffset(borderWidth);
         indicator.setColors(Color.parseColor("#bc2a2a"));
         return indicator;
+    }
+
+    public void setOnIndicatorTapClickListener(OnIndicatorTapClickListener listener) {
+
+        this.mOnTabClickListener = listener;
+    }
+
+
+    public interface OnIndicatorTapClickListener {
+
+        void OnTabClick(int index);
     }
 
 

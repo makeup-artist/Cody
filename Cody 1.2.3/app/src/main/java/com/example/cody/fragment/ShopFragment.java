@@ -1,9 +1,6 @@
 package com.example.cody.fragment;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,11 +23,20 @@ public class ShopFragment extends BaseFragment {
     Unbinder unbinder;
     @BindView(R.id.shop_content_pager)
     ViewPager shopContentPager;
-
+    private int mCurrentPosition = 0;
+    private boolean canScroll =false;
+    private IndicatorShopAdapter madapter;
 
     @Override
     protected void setSubListener() {
-
+        madapter.setOnIndicatorTapClickListener(new IndicatorShopAdapter.OnIndicatorTapClickListener() {
+            @Override
+            public void OnTabClick(int index) {
+                if (shopContentPager != null) {
+                    shopContentPager.setCurrentItem(index);
+                }
+            }
+        });
     }
 
     @Override
@@ -38,29 +44,32 @@ public class ShopFragment extends BaseFragment {
 
         View rootView = inflater.inflate(R.layout.fragment_shop, container, false);
         unbinder = ButterKnife.bind(this, rootView);
-        shopIndicator.setBackgroundColor(this.getResources().getColor(R.color.main_color));
-        //Create the adapter of the shopadapter
-        IndicatorShopAdapter adapter = new IndicatorShopAdapter(getContext());
-        CommonNavigator commonNavigator = new CommonNavigator(getContext());
-        commonNavigator.setAdapter(adapter);
-        //viewpager和indicator绑定
-        shopIndicator.setNavigator(commonNavigator);
-        ViewPagerHelper.bind(shopIndicator,shopContentPager);
-        //shopContentPager的适配器
-//        FragmentManager supportFragmentAdapter= getChildFragmentManager();
-        ShopContentAdapter shopContentAdapter = new ShopContentAdapter(getChildFragmentManager());
-        shopContentPager.setAdapter(shopContentAdapter);
-        //把viewpager和indicator绑在一起
-        ViewPagerHelper.bind(shopIndicator,shopContentPager);
-        shopContentPager.setCurrentItem(0);
+        initView();
         return rootView;
     }
 
+    public void initView() {
+        shopIndicator.setBackgroundColor(this.getResources().getColor(R.color.main_color));
+        //Create the adapter of the shopadapter
+        madapter = new IndicatorShopAdapter(getContext());
+        CommonNavigator commonNavigator = new CommonNavigator(getContext());
+        commonNavigator.setAdapter(madapter);
+        //viewpager和indicator绑定
+        shopIndicator.setNavigator(commonNavigator);
+        //shopContentPager的适配器
+        ShopContentAdapter shopContentAdapter = new ShopContentAdapter(getChildFragmentManager());
+        shopContentPager.setAdapter(shopContentAdapter);
+        //把viewpager和indicator绑在一起
+        ViewPagerHelper.bind(shopIndicator, shopContentPager);
+        shopContentPager.setCurrentItem(0);
+    }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
     }
+
+
 
 }

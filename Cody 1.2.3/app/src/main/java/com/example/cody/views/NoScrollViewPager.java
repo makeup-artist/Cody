@@ -22,4 +22,10 @@ public class NoScrollViewPager extends ViewPager {
         return false;//非滑动的，同时改activity的xml文件，true或者false不重要
 //        return super.onTouchEvent(ev);//滑动的
     }
+
+    @Override
+    public boolean onInterceptTouchEvent(MotionEvent arg0) {
+        return false;
+    }
+
 }

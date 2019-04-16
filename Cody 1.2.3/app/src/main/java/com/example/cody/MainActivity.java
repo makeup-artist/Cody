@@ -17,6 +17,7 @@ import com.example.cody.fragment.CommunityFragment;
 import com.example.cody.fragment.HomeFragment;
 import com.example.cody.fragment.ShopFragment;
 import com.example.cody.utils.Constants;
+import com.example.cody.views.NoScrollViewPager;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -38,7 +39,7 @@ public class MainActivity extends FragmentActivity implements ViewPager.OnPageCh
     @BindView(R.id.tab_mine)
     RadioButton tabMine;
     @BindView(R.id.content_pager)
-    ViewPager contentPager;
+    NoScrollViewPager contentPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

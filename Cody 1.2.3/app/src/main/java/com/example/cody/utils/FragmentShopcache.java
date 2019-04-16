@@ -37,7 +37,6 @@ public class FragmentShopcache {
                 baseshopFragment = new HaircolorFragment();
                 break;
         }
-
         sCaches.put(index,baseshopFragment);
         return  baseshopFragment;
     }
