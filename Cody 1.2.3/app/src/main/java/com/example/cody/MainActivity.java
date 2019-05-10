@@ -1,8 +1,8 @@
 package com.example.cody;
 
+import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.Drawable;
-import android.graphics.drawable.StateListDrawable;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -13,9 +13,6 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.example.cody.adapter.MainContentPagerAdapter;
-import com.example.cody.fragment.CommunityFragment;
-import com.example.cody.fragment.HomeFragment;
-import com.example.cody.fragment.ShopFragment;
 import com.example.cody.utils.Constants;
 import com.example.cody.views.NoScrollViewPager;
 
@@ -132,4 +129,10 @@ public class MainActivity extends FragmentActivity implements ViewPager.OnPageCh
     public void onPageScrollStateChanged(int state) {
 
     }
+
+    @OnClick(R.id.tab_photo)
+    public void onViewClicked() {
+                startActivity(new Intent(this, makeUpActivity.class));
+        }
+
 }

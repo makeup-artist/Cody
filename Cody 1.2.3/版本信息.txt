@@ -3,3 +3,4 @@
 2019/4/9   集成indicator框架的shop页面-cyz
 2019/4/11 集成indicator框架在shop和community页面，但是点击未绑定，存在滑动bug
 2019/4/16 解决滑动bug和shop和community页面的绑定。
+2019/5/10 集成

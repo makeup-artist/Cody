@@ -27,7 +27,5 @@
         <item name="android:layout_weight">1</item>
         <item name="android:button">@null</item>
 
-
-
     </style>
 </resources>
