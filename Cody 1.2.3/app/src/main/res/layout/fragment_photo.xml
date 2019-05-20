@@ -3,29 +3,58 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:background="#fff"
     android:gravity="center"
-    tools:context="com.facepp.api.test.MainActivity">
+    android:orientation="vertical"
+    tools:context="com.example.cody.makeUpActivity">
 
     <TextView
-        android:id="@+id/response"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="模拟上妆"
-        android:textSize="24dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"/>
-
+        android:textColor="@color/colorAccent"
+        android:text="Welcome to Cody's World!"
+        android:textSize="18dp"
+        android:layout_marginBottom="5dp"/>
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="340dp"
-        android:layout_height="340dp"
-        android:layout_marginBottom="60dp" />
+        android:layout_width="400dp"
+        android:layout_height="400dp"
+        android:layout_marginBottom="40dp"
+        android:adjustViewBounds="true"
+         />
+    <android.support.v7.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/button_make_up"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/button_cicle_shape"
+            android:text="选择"
+            android:textColor="#FFFF"
+            android:textSize="15dp"
+            android:topLeftRadius="40dp" />
+        <Button
+            android:id="@+id/button_take_photo"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:background="@drawable/button_cicle_shape"
+            android:text="添加"
+            android:textColor="#FFFF"
+            android:textSize="20dp"
+            android:topLeftRadius="40dp" />
+        <Button
+            android:id="@+id/button_generate_info"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/button_cicle_shape"
+            android:text="生成"
+            android:textColor="#FFFF"
+            android:textSize="15dp"
+            android:topLeftRadius="40dp" />
+    </android.support.v7.widget.LinearLayoutCompat>
 
-    <Button
-        android:id="@+id/button_take_photo"
-        android:layout_width="340dp"
-        android:layout_height="60dp"
-        android:text="添加照片"
-        />
 </LinearLayout>

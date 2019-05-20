@@ -15,34 +15,28 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.megvii.facepp.api.bean.Face;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
 
 import static com.example.cody.BitmapUtil.toByteArray;
 
 
 public class makeUpActivity extends AppCompatActivity {
-
     private Bitmap bitmap;
-    private static final String IMAGE_FILE_LOCATION = "file:///sdcard/temp.jpg";
-    private Uri imageUri = Uri.parse(IMAGE_FILE_LOCATION);//The Uri to store the big bitmap
+    private static final String IMAGE_FILE_LOCATION = "file:///sdcard/take_photo_image.jpg";
+    Uri imageUri = Uri.parse(IMAGE_FILE_LOCATION);//The Uri to store the big bitmap
     private ImageView mImageView;
     private Button takePhoto;
-    //private Uri imageUri;// 拍照时的图片uri
 
     public static final int TAKE_PHOTO =1;
     public static final  int CHOOSE_PHOTO =2;
     public static final int CROP_PHOTO = 3;
 
-    @BindView(R.id.response)
-    TextView txtResponse;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,19 +47,10 @@ public class makeUpActivity extends AppCompatActivity {
         setContentView(R.layout.fragment_photo);
         ButterKnife.bind(this);
 
-        bitmap = BitmapFactory.decodeResource(getResources(),R.drawable.xiaofu);
         mImageView = (ImageView) findViewById(R.id.imageView);
-        mImageView.setImageBitmap(bitmap);
-        FacesUtil facesUtil = new FacesUtil();
-        FaceMakeUpUtils faceMakeUpUtils = new FaceMakeUpUtils();
-        Face face = facesUtil.getFacesInfo("http://image1607.oss-cn-qingdao.aliyuncs.com/xiaofu.jpeg");
-        bitmap = faceMakeUpUtils.mouthRendering(bitmap,face);
-        bitmap = faceMakeUpUtils.drawEyePoint(bitmap,face);
-        bitmap = faceMakeUpUtils.drawEyebrowPoint(bitmap,face);
-        mImageView.setImageBitmap(bitmap);
         takePhoto= (Button)findViewById(R.id.button_take_photo);
         mImageView = (ImageView)findViewById(R.id.imageView);
-
+        startCamera();
         setListeners();// 设置监听
     }
     /**
@@ -90,34 +75,11 @@ public class makeUpActivity extends AppCompatActivity {
                         switch (which){
                             // 选择了拍照
                             case 0:
-                                // 创建文件保存拍照的图片
-                                File takePhotoImage = new File(Environment.getExternalStorageDirectory(), "take_photo_image.jpg");
-                                try {
-                                    // 文件存在，删除文件
-                                    if(takePhotoImage.exists()){
-                                        takePhotoImage.delete();
-                                    }
-                                    // 根据路径名自动的创建一个新的空文件
-                                    takePhotoImage.createNewFile();
-                                }catch (Exception e){
-                                    e.printStackTrace();
-                        }
-                                // 获取图片文件的uri对象
-                                imageUri = Uri.fromFile(takePhotoImage);
-                                // 创建Intent，用于启动手机的照相机拍照
-                                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                                // 指定输出到文件uri中
-                                intent.putExtra(MediaStore.EXTRA_OUTPUT,imageUri);
-                                // 启动intent开始拍照
-                                startActivityForResult(intent, TAKE_PHOTO);
+                                startCamera();
                                 break;
                             // 调用系统图库
                             case 1:
-                                // 创建Intent，用于打开手机本地图库选择图片
-                                Intent intent1 = new Intent(Intent.ACTION_PICK,
-                                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                                // 启动intent打开本地图库
-                                startActivityForResult(intent1,CHOOSE_PHOTO);
+                                startAlbum();
                                 break;
                         }
                     }
@@ -176,17 +138,21 @@ public class makeUpActivity extends AppCompatActivity {
                     try{
                         // 展示拍照后裁剪的图片
                         if(imageUri != null){
-
                             // 根据文件流解析生成Bitmap对象
-                            Bitmap bitmap = decodeUriAsBitmap(imageUri);
+                            bitmap = decodeUriAsBitmap(imageUri);
                             // 展示图片
                             byte []imageByte = toByteArray(bitmap);
                             FacesUtil facesUtil = new FacesUtil();
                             Face face = facesUtil.getFacesInfo(imageByte);
-                            FaceMakeUpUtils faceMakeUpUtils = new FaceMakeUpUtils();
+                            FaceMakeUpUtils faceMakeUpUtils = new FaceMakeUpUtils(getResources());
+                            faceMakeUpUtils.setA(120);
+                            faceMakeUpUtils.setR(180);
+                            faceMakeUpUtils.setG(20);
+                            faceMakeUpUtils.setB(10);
+                            bitmap = faceMakeUpUtils.eyebrowRendering(bitmap,face);
                             bitmap = faceMakeUpUtils.mouthRendering(bitmap,face);
-                            //bitmap = faceMakeUpUtils.drawEyePoint(bitmap,face);
-                            //bitmap = faceMakeUpUtils.drawEyebrowPoint(bitmap,face);
+                            bitmap = faceMakeUpUtils.eyebrowRendering(bitmap,face);
+                            bitmap = faceMakeUpUtils.drawEyebrowPoint(bitmap,face);
                             mImageView.setImageBitmap(bitmap);
                         }
                     }catch (Exception e){
@@ -205,5 +171,34 @@ public class makeUpActivity extends AppCompatActivity {
             return null;
         }
         return bitmap;
+    }
+    private  void startCamera(){
+        // 创建文件保存拍照的图片
+        File takePhotoImage = new File(Environment.getExternalStorageDirectory(), "take_photo_image.jpg");
+        try {
+            // 文件存在，删除文件
+            if(takePhotoImage.exists()){
+                takePhotoImage.delete();
+            }
+            // 根据路径名自动的创建一个新的空文件
+            takePhotoImage.createNewFile();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        // 获取图片文件的uri对象
+        imageUri = Uri.fromFile(takePhotoImage);
+        // 创建Intent，用于启动手机的照相机拍照
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        // 指定输出到文件uri中
+        intent.putExtra(MediaStore.EXTRA_OUTPUT,imageUri);
+        // 启动intent开始拍照
+        startActivityForResult(intent, TAKE_PHOTO);
+    }
+    private void startAlbum(){
+        // 创建Intent，用于打开手机本地图库选择图片
+        Intent intent1 = new Intent(Intent.ACTION_PICK,
+                android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        // 启动intent打开本地图库
+        startActivityForResult(intent1,CHOOSE_PHOTO);
     }
 }
