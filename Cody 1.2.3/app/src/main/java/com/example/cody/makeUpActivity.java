@@ -149,10 +149,9 @@ public class makeUpActivity extends AppCompatActivity {
                             faceMakeUpUtils.setR(180);
                             faceMakeUpUtils.setG(20);
                             faceMakeUpUtils.setB(10);
-                            bitmap = faceMakeUpUtils.eyebrowRendering(bitmap,face);
                             bitmap = faceMakeUpUtils.mouthRendering(bitmap,face);
-                            bitmap = faceMakeUpUtils.eyebrowRendering(bitmap,face);
-                            bitmap = faceMakeUpUtils.drawEyebrowPoint(bitmap,face);
+                            //bitmap = faceMakeUpUtils.eyebrowRendering(bitmap,face);
+                            //bitmap = faceMakeUpUtils.drawEyebrowPoint(bitmap,face);
                             mImageView.setImageBitmap(bitmap);
                         }
                     }catch (Exception e){

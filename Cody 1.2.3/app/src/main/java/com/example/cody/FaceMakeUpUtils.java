@@ -100,12 +100,6 @@ public class FaceMakeUpUtils{
             rpoints[i] = (rpoints[i])*bm.getWidth()/WidthScale;
             rpoints[i+1] = (rpoints[i+1])*bm.getHeight()/HeightScale;
         }
-        canvas.drawBitmap(eyeBmL,rpoints[8],rpoints[9],paint);
-        canvas.drawBitmap(eyeBmR,lpoints[8],lpoints[9],paint);
-        Rect rect = new Rect((int)rpoints[8],rpoints[9],rpoints[0],rpoints[1]);
-        Rect destR = new Rect(0,0,rpoints[9]-rpoints[11],rpoints[8]-rpoints[0]);
-//        Rect destL = new Rect(0,0,rpoints[9]-rpoints[11],rpoints[8]-rpoints[0]);
-        canvas.drawBitmap(eyeBmL,rect,destR,paint);
         return bmp;
     }
     //人脸关键部位勾勒：眉毛
