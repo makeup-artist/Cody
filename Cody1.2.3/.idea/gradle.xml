@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/cameralibrary" />
+            <option value="$PROJECT_DIR$/facedetectlibrary" />
+            <option value="$PROJECT_DIR$/filterlibrary" />
+            <option value="$PROJECT_DIR$/gdxlibrary" />
+            <option value="$PROJECT_DIR$/imagelibrary" />
+            <option value="$PROJECT_DIR$/landmarklibrary" />
+            <option value="$PROJECT_DIR$/medialibrary" />
+            <option value="$PROJECT_DIR$/mylibrary" />
+            <option value="$PROJECT_DIR$/scanlibrary" />
+            <option value="$PROJECT_DIR$/utilslibrary" />
+            <option value="$PROJECT_DIR$/videolibrary" />
+          </set>
+        </option>
+        <option name="resolveModulePerSourceSet" value="false" />
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>
