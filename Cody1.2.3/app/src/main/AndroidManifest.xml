@@ -38,6 +38,19 @@
         <activity
             android:name=".makeUpActivity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"></activity>
+        <activity android:name=".RichEditorActivity"></activity>
+        <activity android:name=".TextViewActivity"></activity>
+        <activity android:name=".LoginActivity"></activity>
+        <activity android:name=".mineactivity.SettingActivity"></activity>
+        <activity android:name=".mineactivity.ProfileActivity"></activity>
+        <activity android:name=".mineactivity.ViewActivity"></activity>
+        <activity android:name=".mineactivity.NotificationActivity"></activity>
+        <activity android:name=".mineactivity.HeartActivity"></activity>
+        <activity android:name=".mineactivity.LikedActivity"></activity>
+        <activity android:name=".mineactivity.FeedbackActivity"></activity>
+        <activity android:name=".mineactivity.CollectionActivity"></activity>
+        <activity android:name=".RegisterActivity"></activity>
+        <activity android:name=".SearchActivity"></activity>
     </application>
 
 </manifest>

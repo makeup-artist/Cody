@@ -22,10 +22,10 @@ public class FragmentCommunitycache {
         }
         switch (index){
             case Constants.COMMUNITY_ATTENTION:
-                basecommunityFragment = new RecommendFragment();
+                basecommunityFragment = new AttentionFragment();
                 break;
             case Constants.COMMUNITY_RECOMMAND:
-                basecommunityFragment = new AttentionFragment();
+                basecommunityFragment = new RecommendFragment();
                 break;
             case Constants.COMMUNITY_COURSE:
                 basecommunityFragment = new CourseFragment();

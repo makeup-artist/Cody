@@ -1,10 +1,146 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:orientation="vertical">
-    <TextView android:layout_width="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="我的"
-        android:layout_height="wrap_content" />
-</RelativeLayout>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+    <data>
+        <import type="com.example.cody.R"/>
+        <variable name="profileVM" type="com.example.cody.viewmodel.ProfileVM"/>
+    </data>
 
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/g_bg">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:background="@color/colorPrimary"
+            android:text="我的"
+            android:textSize="15sp"
+            android:textColor="@android:color/white"/>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/profile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/profile_margin"
+                    android:background="@color/profile_item_bg"
+                    android:gravity="center"
+                    android:onClick="@{profileVM.toGo}"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/profile_padding">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="50.0dip"
+                        android:layout_height="50.0dip"
+                        android:layout_marginLeft="0dip"
+                        android:src="@drawable/g_default_avatar"
+                        android:scaleType="centerCrop"
+                        android:layout_centerVertical="true" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/profile_padding"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@{profileVM.password}"
+                            android:textColor="@color/profile_title"
+                            android:textSize="20sp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:text="@{profileVM.password}"
+                            android:textColor="@color/profile_content"
+                            android:textSize="13sp" />
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="10dp"
+                        android:layout_height="25dp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/profile_move" />
+
+                </LinearLayout>
+
+
+                <include layout="@layout/layout_divide_item" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RelativeLayout android:id="@+id/layout_notification" android:background="@color/profile_item_bg" android:layout_width="fill_parent" android:layout_height="47.0dip"  android:onClick="@{profileVM.toGo}">
+                        <TextView android:textSize="15.0sp" android:textColor="@color/black" android:gravity="center_vertical" android:paddingLeft="20.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="消息中心" android:drawableLeft="@drawable/ic_notification" android:drawablePadding="20.0dip" />
+                        <TextView android:textSize="10.0sp" android:textColor="@color/white" android:gravity="center"  android:background="@drawable/bg_count_view" android:paddingLeft="8.0dip" android:paddingRight="8.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="16.0dip" android:layout_marginRight="20.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+                    </RelativeLayout>
+                    <include layout="@layout/g_line_horizontal"/>
+
+                    <RelativeLayout android:id="@+id/layout_view" android:background="@color/profile_item_bg" android:layout_width="fill_parent" android:layout_height="47.0dip"  android:onClick="@{profileVM.toGo}">
+                        <TextView android:textSize="15.0sp" android:textColor="@color/black" android:gravity="center_vertical" android:paddingLeft="20.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="我关注的" android:drawableLeft="@drawable/view" android:drawablePadding="20.0dip" />
+                        <TextView android:textSize="10.0sp" android:textColor="@color/white" android:gravity="center"  android:background="@drawable/bg_count_view" android:paddingLeft="8.0dip" android:paddingRight="8.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="16.0dip" android:layout_marginRight="20.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+                    </RelativeLayout>
+
+                    <include layout="@layout/g_line_horizontal"/>
+
+                    <RelativeLayout android:id="@+id/layout_liked" android:background="@color/profile_item_bg" android:layout_width="fill_parent" android:layout_height="47.0dip"  android:onClick="@{profileVM.toGo}">
+                        <TextView android:textSize="15.0sp" android:textColor="@color/black" android:gravity="center_vertical" android:paddingLeft="20.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="我赞过的" android:drawableLeft="@drawable/user_liked_pin" android:drawablePadding="20.0dip" />
+                        <TextView android:textSize="10.0sp" android:textColor="@color/white" android:gravity="center"  android:background="@drawable/bg_count_view" android:paddingLeft="8.0dip" android:paddingRight="8.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="16.0dip" android:layout_marginRight="20.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+                    </RelativeLayout>
+
+                    <include layout="@layout/g_line_horizontal"/>
+
+                    <RelativeLayout android:id="@+id/layout_collection_set" android:background="@color/profile_item_bg" android:layout_width="fill_parent" android:layout_height="47.0dip"  android:onClick="@{profileVM.toGo}">
+                        <TextView android:textSize="15.0sp" android:textColor="@color/black" android:gravity="center_vertical" android:paddingLeft="20.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="收藏集" android:drawableLeft="@drawable/user_collectionset" android:drawablePadding="20.0dip" />
+                        <TextView android:textSize="10.0sp" android:textColor="@color/white" android:gravity="center"  android:background="@drawable/bg_count_view" android:paddingLeft="8.0dip" android:paddingRight="8.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="16.0dip" android:layout_marginRight="20.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+                    </RelativeLayout>
+
+                    <include layout="@layout/g_line_horizontal"/>
+
+                    <RelativeLayout android:id="@+id/layout_heart" android:background="@color/profile_item_bg" android:layout_width="fill_parent" android:layout_height="47.0dip"  android:onClick="@{profileVM.toGo}">
+                        <TextView android:textSize="15.0sp" android:textColor="@color/black" android:gravity="center_vertical" android:paddingLeft="20.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="心愿单" android:drawableLeft="@drawable/g_like" android:drawablePadding="20.0dip" />
+                        <TextView android:textSize="10.0sp" android:textColor="@color/white" android:gravity="center"  android:background="@drawable/bg_count_view" android:paddingLeft="8.0dip" android:paddingRight="8.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="16.0dip" android:layout_marginRight="20.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+                    </RelativeLayout>
+
+                    <include layout="@layout/layout_divide_item" />
+
+                    <RelativeLayout android:id="@+id/rl_feedback" android:background="@color/profile_item_bg" android:layout_width="fill_parent" android:layout_height="47.0dip"  android:onClick="@{profileVM.toGo}">
+                        <TextView android:textSize="15.0sp" android:textColor="@color/black" android:gravity="center_vertical" android:paddingLeft="20.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="意见反馈" android:drawableLeft="@drawable/icon_feed_back" android:drawablePadding="20.0dip" />
+                        <TextView android:textSize="10.0sp" android:textColor="@color/white" android:gravity="center"  android:background="@drawable/bg_count_view" android:paddingLeft="8.0dip" android:paddingRight="8.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="16.0dip" android:layout_marginRight="20.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+                    </RelativeLayout>
+                    <include layout="@layout/g_line_horizontal"/>
+
+                    <RelativeLayout android:id="@+id/layout_setting" android:background="@color/profile_item_bg" android:layout_width="fill_parent" android:layout_height="47.0dip"  android:onClick="@{profileVM.toGo}">
+                        <TextView android:textSize="15.0sp" android:textColor="@color/black" android:gravity="center_vertical" android:paddingLeft="20.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="设置" android:drawableLeft="@drawable/settings" android:drawablePadding="20.0dip" />
+                        <TextView android:textSize="10.0sp" android:textColor="@color/white" android:gravity="center"  android:background="@drawable/bg_count_view" android:paddingLeft="8.0dip" android:paddingRight="8.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="16.0dip" android:layout_marginRight="20.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+                    </RelativeLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+</layout>

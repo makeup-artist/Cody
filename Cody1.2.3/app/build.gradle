@@ -14,6 +14,9 @@ android {
             cmake {
                 cppFlags "-std=c++11"
             }
+            dataBinding{
+                enabled = true
+            }
             ndk {
                 abiFilters "armeabi-v7a"
             }
@@ -45,6 +48,10 @@ dependencies {
     implementation 'com.github.hackware1993:MagicIndicator:1.5.0'
     implementation 'com.github.bumptech.glide:glide:4.7.1'
     implementation 'com.android.support:recyclerview-v7:28.0.0'
+    implementation 'com.android.support:design:28.0.0'//flaotingbutton
+    implementation 'com.github.chinalwb:are:0.1.5'//富文本
+    implementation 'com.android.support:recyclerview-v7:28.0.0' //recyclerview
+    implementation 'de.hdodenhof:circleimageview:3.0.0' // 圆图片
     implementation files('src/libs/lib-facepp_api.jar')
     implementation project(':facedetectlibrary')
     implementation project(':filterlibrary')

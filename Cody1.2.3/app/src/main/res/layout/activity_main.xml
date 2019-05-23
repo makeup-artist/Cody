@@ -40,7 +40,7 @@
             android:layout_height="160px"
             android:layout_gravity="bottom"
             android:layout_marginBottom="15dp"
-            android:background="@drawable/host_btn_videoplay" />
+            android:background="@drawable/home_btn_camera" />
         <RadioButton
             android:id="@+id/tab_shop"
             style="@style/Mainviewtab"
