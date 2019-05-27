@@ -63,6 +63,7 @@ dependencies {
     implementation project(':utilslibrary')
     implementation project(':videolibrary')
     implementation project(':cameralibrary')
+    implementation project(':mainlibrary')
 }
 
 repositories {

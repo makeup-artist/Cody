@@ -39,6 +39,7 @@
             android:name=".makeUpActivity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"></activity>
         <activity android:name=".RichEditorActivity"></activity>
+        <activity android:name=".StartActivity"></activity>
         <activity android:name=".TextViewActivity"></activity>
         <activity android:name=".LoginActivity"></activity>
         <activity android:name=".mineactivity.SettingActivity"></activity>
