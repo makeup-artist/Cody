@@ -3,12 +3,16 @@ package com.example.cody.utils;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.example.cody.entity.UserLoginBean.User;
+import com.google.gson.Gson;
+
 
 public class SharedPreferencesUtil {
 
 
     private static final String TAG ="TAG";
     private static final String KEY_LOGIN ="KEY_LOGIN";
+    private static final String KEY_USER="KEY_USER";
 
     private static SharedPreferences mPreferences;
     private static SharedPreferences.Editor mEditor;
@@ -51,6 +55,27 @@ public class SharedPreferencesUtil {
             putBoolean(KEY_LOGIN,value);
         }
 
+        /**
+         * @desc 从SharedPerences里获取User
+         * @author cyz
+         * @time 2019/5/31 21:57
+         */
+        public User getUser(){
+            Gson gson = new Gson();
+            String str= get(KEY_USER);
+            return gson.fromJson(str,User.class);
+        }
+
+        /**
+         * @desc 往sharedPerences里写入User
+         * @author cyz
+         * @time 2019/5/31 22:08
+         */
+        public void putUser(User user){
+            Gson gson = new Gson();
+            String jsonStr = gson.toJson(user);
+            put(KEY_USER,jsonStr);
+        }
 //        -----私有方法
         private void put(String key, String value){
             mEditor.putString(key, value);

@@ -19,6 +19,7 @@ import com.example.cody.net.request.CommonRequest;
 import com.example.cody.net.request.RequestParams;
 import com.example.cody.net.response.CommonJsonCallback;
 import com.example.cody.utils.RegularVerification;
+import com.google.gson.JsonObject;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -190,7 +191,7 @@ break;
                     params.put("code",SMScode);
                     params.put("username",username);
                     CommonOkHttpClient
-                            .sendRequest(CommonRequest.createPostRequest(URL_REGISTER, new RequestParams(params)), new CommonJsonCallback(new DisposeDataHandle(MsgBean.class, new DisposeDataListener() {
+                            .sendRequest(CommonRequest.createPostRequest(URL_REGISTER, new RequestParams(params)), new CommonJsonCallback(new DisposeDataHandle( new DisposeDataListener() {
                                 @Override
                                 public void onSuccess(Object responseObj) {
                                     MsgBean testBean = (MsgBean) responseObj;

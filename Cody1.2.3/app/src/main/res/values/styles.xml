@@ -28,4 +28,19 @@
         <item name="android:button">@null</item>
 
     </style>
+
+    <style name="SettingLayout">
+        <item name="android:background">@color/profile_item_bg</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">50.0dip</item>
+    </style>
+    <style name="SettingText">
+        <item name="android:textSize">16.0sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingLeft">20.0dip</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">fill_parent</item>
+    </style>
+
 </resources>

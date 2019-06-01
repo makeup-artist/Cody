@@ -3,17 +3,19 @@ package com.example.cody.entity.UserLoginBean;
 import com.google.gson.annotations.SerializedName;
 
 import java.math.BigInteger;
+import java.sql.Timestamp;
+
 
 /**
  * Created By cyz on 2019/5/29 21:59
  * e-mail：462065470@qq.com
  */
 public class User {
-    private BigInteger id;
+    private Long id;
     private String username;
-    private short gender;
+    private Integer gender;
     private String mobile;
-    private short age;
+    private Integer age;
     private String nickname;
     private String picture;
     private String description;
@@ -23,118 +25,80 @@ public class User {
     private String updatetime;
     @SerializedName("createTime")
     private String createtime;
-    @SerializedName("isavAilable")
-    private short isavailable;
+    @SerializedName("isAvailable")
+    private Integer isavailable;
     private String role;
 
 
-    public void setId(BigInteger id) {
-        this.id = id;
+    public User() {
+        this.id = null;
+        this.username = null;
+        this.gender = null;
+        this.mobile = null;
+        this.age = null;
+        this.nickname = null;
+        this.picture = null;
+        this.description = null;
+        this.tag = null;
+        this.email = null;
+        this.updatetime = null;
+        this.createtime = null;
+        this.isavailable = null;
+        this.role = null;
     }
-    public BigInteger getId() {
+
+    public Long getId() {
         return id;
     }
 
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
     public String getUsername() {
         return username;
     }
 
-
-    public void setGender(short gender) {
-        this.gender = gender;
-    }
-    public short getGender() {
+    public Integer getGender() {
         return gender;
     }
 
-
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
-    }
     public String getMobile() {
         return mobile;
     }
 
-
-    public void setAge(short age) {
-        this.age = age;
-    }
-    public short getAge() {
+    public Integer getAge() {
         return age;
     }
 
-
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
-    }
-    public Object getNickname() {
+    public String getNickname() {
         return nickname;
     }
 
-
-    public void setPicture(String picture) {
-        this.picture = picture;
-    }
-    public Object getPicture() {
+    public String getPicture() {
         return picture;
     }
 
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-    public Object getDescription() {
+    public String getDescription() {
         return description;
     }
 
-
-    public void setTag(String tag) {
-        this.tag = tag;
-    }
-    public Object getTag() {
+    public String getTag() {
         return tag;
     }
 
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-    public Object getEmail() {
+    public String getEmail() {
         return email;
     }
 
-
-    public void setUpdatetime(String updatetime) {
-        this.updatetime = updatetime;
-    }
     public String getUpdatetime() {
         return updatetime;
     }
 
-
-    public void setCreatetime(String createtime) {
-        this.createtime = createtime;
-    }
     public String getCreatetime() {
         return createtime;
     }
 
-
-    public void setIsavailable(short isavailable) {
-        this.isavailable = isavailable;
-    }
-    public short getIsavailable() {
+    public Integer getIsavailable() {
         return isavailable;
     }
 
-
-    public void setRole(String role) {
-        this.role = role;
-    }
     public String getRole() {
         return role;
     }

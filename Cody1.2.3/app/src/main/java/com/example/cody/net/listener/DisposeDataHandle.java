@@ -5,14 +5,14 @@ package com.example.cody.net.listener;
  */
 public class DisposeDataHandle {
     public DisposeDataListener listener = null;
-    public Class<?> mClass = null;
+    public Class mClass = null;
 
     public DisposeDataHandle(DisposeDataListener listener) {
         this.listener = listener;
     }
 
 
-    public DisposeDataHandle(Class<?> mClass , DisposeDataListener listener ) {
+    public DisposeDataHandle(Class mClass , DisposeDataListener listener ) {
         this.listener = listener;
         this.mClass = mClass;
 

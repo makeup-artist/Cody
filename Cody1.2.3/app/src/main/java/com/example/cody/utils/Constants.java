@@ -22,4 +22,5 @@ public class Constants {
     public static final String URL_CHECKNAME = URL + "/api/user/check/username";
     public static final String URL_CHECKNUMBER =  URL + "/api/user/check/mobile";
     public static final String URL_LOGIN = URL + "/api/user/login";
+    public static final String URL_LOGINBYNUMBER = URL + "/api/user/login/code";
 }

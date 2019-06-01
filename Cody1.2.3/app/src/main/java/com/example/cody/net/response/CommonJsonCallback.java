@@ -85,19 +85,14 @@ public class CommonJsonCallback implements Callback {
         }
         try {
             if (mClass == null) {
-                Log.d("com", "232 ");
                 // 用户不想让我们处理json，直接回传给用户
                 mlistener.onSuccess(responseObj);
             } else {
-                Log.d("com", "handleResponse:1 ");
                 // 我们处理把json转化为实体
                 Gson gson = new Gson();
-                Log.d("com", "handleResponse:2 ");
                 Object obj = gson.fromJson(responseObj, mClass);
-                Log.d("com", "handleResponse:3 ");
                 if (obj != null) {
                     mlistener.onSuccess(obj);
-                    Log.d("com", "handleResponse:4 "+obj.toString());
                 } else {
                     // 不是合法的json
                     mlistener.onFailure(new OkHttpException(JSON_ERROR, "illegal json"));

@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<ScrollView android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true"
+    xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:id="@+id/layout_user_account" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip">
+            <RelativeLayout android:id="@+id/rl_phone" style="@style/SettingLayout">
+                <TextView android:text="手机号" android:layout_toLeftOf="@id/tv_phone" style="@style/SettingText" />
+                <TextView android:id="@+id/tv_phone" android:visibility="visible"  android:layout_width="wrap_content" android:layout_height="16.0dip" android:layout_marginRight="20.0dip"  android:layout_centerVertical="true" android:layout_alignParentRight="true" android:paddingLeft="8.0dip" android:paddingRight="8.0dip" />
+            </RelativeLayout>
+            <include layout="@layout/g_line_horizontal" />
+            <RelativeLayout android:id="@+id/rl_modify" style="@style/SettingLayout">
+                <TextView android:text="修改账户密码" style="@style/SettingText" />
+            </RelativeLayout>
+            <include layout="@layout/g_line_horizontal" />
+            <include layout="@layout/layout_divide_item" />
 
-</android.support.constraint.ConstraintLayout>
+        </LinearLayout>
+        <include layout="@layout/g_line_horizontal" />
+        <include layout="@layout/layout_divide_item" />
+        <include layout="@layout/g_line_horizontal" />
+        <RelativeLayout android:id="@+id/rl_about" style="@style/SettingLayout">
+            <TextView android:text="关于" style="@style/SettingText" />
+        </RelativeLayout>
+        <include layout="@layout/g_line_horizontal" />
+        <View android:layout_width="fill_parent" android:layout_height="10.0dip" />
+        <TextView android:textSize="16.0sp" android:textColor="@color/red" android:gravity="center" android:id="@+id/logout" android:text="退出登录" style="@style/SettingLayout" />
+        <TextView android:textSize="14.0sp" android:textColor="@color/login_gray" android:gravity="center"  android:layout_width="fill_parent" android:layout_height="50.0dip" />
+    </LinearLayout>
+</ScrollView>

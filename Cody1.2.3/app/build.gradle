@@ -52,7 +52,9 @@ dependencies {
     implementation 'com.github.chinalwb:are:0.1.5'//富文本
     implementation 'com.android.support:recyclerview-v7:28.0.0' //recyclerview
     implementation 'de.hdodenhof:circleimageview:3.0.0' // 圆图片
-    implementation 'com.google.code.gson:gson:2.6.2'  //Gson 库
+    implementation 'com.google.code.gson:gson:2.8.2'  //Gson 库
+    implementation 'org.greenrobot:eventbus:3.1.1'//eventbus
+    implementation group: 'com.google.guava', name: 'guava', version: '23.5-android'
     implementation files('src/libs/lib-facepp_api.jar')
     implementation project(':facedetectlibrary')
     implementation project(':filterlibrary')
@@ -69,4 +71,5 @@ dependencies {
 
 repositories {
     flatDir { dirs 'libs' }
+    mavenCentral()
 }

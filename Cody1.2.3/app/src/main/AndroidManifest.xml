@@ -38,7 +38,7 @@
         <activity
             android:name=".makeUpActivity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"></activity>
-        <activity android:name=".RichEditorActivity"></activity>
+        <activity android:name=".RegisterActivity"></activity>
         <activity android:name=".StartActivity"></activity>
         <activity android:name=".TextViewActivity"></activity>
         <activity android:name=".LoginActivity"></activity>
@@ -50,7 +50,9 @@
         <activity android:name=".mineactivity.LikedActivity"></activity>
         <activity android:name=".mineactivity.FeedbackActivity"></activity>
         <activity android:name=".mineactivity.CollectionActivity"></activity>
-        <activity android:name=".RegisterActivity"></activity>
+        <activity android:name=".LoginphoneActivity"></activity>
+        <activity android:name=".UserhomeActivity"></activity>
+        <activity android:name=".ChangedPsdActivity"></activity>
         <activity android:name=".SearchActivity"></activity>
     </application>
 

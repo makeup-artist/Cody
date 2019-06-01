@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:bind="http://schemas.android.com/apk/res-auto">
+    xmlns:android="http://schemas.android.com/apk/res/android">
     <data>
         <import type="com.example.cody.R"/>
         <variable name="profileVM" type="com.example.cody.viewmodel.ProfileVM"/>
@@ -59,17 +58,19 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/username"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="@{profileVM.password}"
+                            android:text="@{profileVM.user.username}"
                             android:textColor="@color/profile_title"
                             android:textSize="20sp" />
 
                         <TextView
+                            android:id="@+id/description"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
-                            android:text="@{profileVM.password}"
+                            android:text="@{profileVM.user.description}"
                             android:textColor="@color/profile_content"
                             android:textSize="13sp" />
 

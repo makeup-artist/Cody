@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:baselineAligned="false">
+
+    <TextView
+        android:text="确定退出吗？"
+        android:textSize="30dp"
+        android:gravity="center"
+        android:textColor="@color/black_overlay"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+        <Button
+            android:id="@+id/btn_cancle"
+            android:text="取消"
+            android:textSize="15dp"
+            android:textColor="@color/main_color"
+            android:background="@android:color/transparent"
+            android:layout_toLeftOf ="@+id/btn_confirm"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/btn_confirm"
+            android:text="确定"
+            android:textSize="15dp"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/main_color"
+            android:background="@android:color/transparent"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+
+</LinearLayout>

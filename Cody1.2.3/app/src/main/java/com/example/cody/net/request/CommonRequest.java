@@ -30,6 +30,43 @@ public class CommonRequest {
         return new Request.Builder().post(formBody).url(url).build();
     }
 
+
+    /**
+     * @function put 请求
+     * @param url    url
+     * @param params 请求参数
+     *
+     */
+    public static Request createPutRequest(String url, RequestParams params) {
+        FormBody.Builder builder = new FormBody.Builder();
+        // 吧请求内容添加到请求体中
+        for (Map.Entry<String, String> entry : params.urlParams.entrySet()) {
+            builder.add(entry.getKey(), entry.getValue());
+        }
+        // 构建请求体
+        FormBody formBody = builder.build();
+        // 返回封装的Request请求
+        return new Request.Builder().put(formBody).url(url).build();
+    }
+
+    /**
+     * @function delete 请求
+     * @param url    url
+     * @param params 请求参数
+     *
+     */
+    public static Request createDeleteRequest(String url, RequestParams params) {
+        FormBody.Builder builder = new FormBody.Builder();
+        // 吧请求内容添加到请求体中
+        for (Map.Entry<String, String> entry : params.urlParams.entrySet()) {
+            builder.add(entry.getKey(), entry.getValue());
+        }
+        // 构建请求体
+        FormBody formBody = builder.build();
+        // 返回封装的Request请求
+        return new Request.Builder().delete(formBody).url(url).build();
+    }
+
     /**
      * @function get 请求
      * @param url    url
@@ -39,6 +76,9 @@ public class CommonRequest {
      *               get url 的方式  域名 ？ key = value & key = value ......
      *   有参数就拼接url再请求， 没有参数就使用给的拼接好的url
      */
+
+
+
     public static Request createGetRequest(String url, RequestParams params){
         StringBuilder sb = new StringBuilder(url).append("?");
         if (params!=null){
