@@ -24,7 +24,7 @@ extern "C" {
 // memset is not needed for production, as the garbage values are processed but
 // not used, although there may be edge cases for subsampling.
 // The size of the buffer is based on the largest read, which can be inferred
-// by the source type (e.g. ARGB) and the mask (last parameter), or by examining
+// by the source type (e.g. ARGB) and the maskTexture (last parameter), or by examining
 // the source code for how much the source pointers are advanced.
 
 // Subsampled source needs to be increase by 1 of not even.

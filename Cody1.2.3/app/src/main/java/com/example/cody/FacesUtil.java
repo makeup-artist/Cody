@@ -297,6 +297,16 @@ public class FacesUtil {
         point17.setY(subJsonLandmark.getJSONObject("mouth_upper_lip_top").getIntValue("y"));
         faceLandmark.setMouth_upper_lip_top(point17);
 
+        FaceLandmark.Point point1a = new FaceLandmark.Point();
+        point1a.setX(subJsonLandmark.getJSONObject("mouth_upper_lip_left_contour4").getIntValue("x"));
+        point1a.setY(subJsonLandmark.getJSONObject("mouth_upper_lip_left_contour4").getIntValue("y"));
+        faceLandmark.setMouth_upper_lip_left_contour4(point1a);
+
+        FaceLandmark.Point point1b = new FaceLandmark.Point();
+        point1a.setX(subJsonLandmark.getJSONObject("mouth_upper_lip_right_contour4").getIntValue("x"));
+        point1a.setY(subJsonLandmark.getJSONObject("mouth_upper_lip_right_contour4").getIntValue("y"));
+        faceLandmark.setMouth_upper_lip_right_contour4(point1b);
+
         //eyePoint
         FaceLandmark.Point point19 = new FaceLandmark.Point();
         point19.setX(subJsonLandmark.getJSONObject("left_eye_bottom").getIntValue("x"));

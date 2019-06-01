@@ -16,7 +16,6 @@ import com.cgfay.cameralibrary.engine.model.AspectRatio;
 import com.cgfay.cameralibrary.engine.model.GalleryType;
 import com.cgfay.cameralibrary.listener.OnGallerySelectedListener;
 import com.cgfay.cameralibrary.listener.OnPreviewCaptureListener;
-
 import com.cgfay.filterlibrary.glfilter.resource.FilterHelper;
 import com.cgfay.filterlibrary.glfilter.resource.MakeupHelper;
 import com.cgfay.filterlibrary.glfilter.resource.ResourceHelper;

@@ -441,7 +441,7 @@ public class CameraPreviewFragment extends Fragment implements View.OnClickListe
     /**
      * 显示滤镜页面
      */
-    private void showEffectView() {
+    public void showEffectView() {
         mBtnCompare.setVisibility(View.VISIBLE);
         isShowingFilters = true;
         FragmentTransaction ft = getChildFragmentManager().beginTransaction();
@@ -455,7 +455,6 @@ public class CameraPreviewFragment extends Fragment implements View.OnClickListe
         mEffectFragment.scrollToCurrentFilter(mFilterIndex);
         hideBottomLayout();
     }
-
     /**
      * 隐藏动态贴纸页面
      */

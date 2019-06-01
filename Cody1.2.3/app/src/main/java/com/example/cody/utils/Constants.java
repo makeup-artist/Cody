@@ -16,10 +16,5 @@ public class Constants {
     public static final int COMMUNITY_RECOMMAND =0;
     public static final int COMMUNITY_ATTENTION= 1;
     public static final int COMMUNITY_COURSE= 2;
-    public static final String URL = "https://cody.apawn.top";
-    public static final String URL_SENDSMS = URL + "/api/user/code";
-    public static final String URL_REGISTER = URL + "/api/user/register/code";
-    public static final String URL_CHECKNAME = URL + "/api/user/check/username";
-    public static final String URL_CHECKNUMBER =  URL + "/api/user/check/mobile";
-    public static final String URL_LOGIN = URL + "/api/user/login";
+
 }
