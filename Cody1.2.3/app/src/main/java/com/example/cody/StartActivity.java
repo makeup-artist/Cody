@@ -62,9 +62,9 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void initView() {
-        findViewById(R.id.btn_camera).setOnClickListener(this);
-        findViewById(R.id.btn_edit_video).setOnClickListener(this);
-        findViewById(R.id.btn_edit_picture).setOnClickListener(this);
+        findViewById(R.id.btn_camera_beauty).setOnClickListener(this);
+        findViewById(R.id.btn_camera_makeup).setOnClickListener(this);
+        findViewById(R.id.btn_face_info).setOnClickListener(this);
         findViewById(R.id.btn_edit_music_merge).setOnClickListener(this);
         findViewById(R.id.btn_edit_gif_make).setOnClickListener(this);
     }
@@ -82,12 +82,12 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
         }
         mOnClick = true;
         int i = v.getId();
-        if (i == R.id.btn_camera) {
+        if (i == R.id.btn_camera_beauty) {
             previewCamera();
-        } else if (i == R.id.btn_edit_video) {
+        } else if (i == R.id.btn_camera_makeup) {
             startActivity(new Intent(this, makeUpActivity.class));
-        } else if (i == R.id.btn_edit_picture) {
-            startActivity(new Intent(this, makeUpActivity.class));
+        } else if (i == R.id.btn_face_info) {
+            startActivity(new Intent(this, FaceInfoActivity.class));
         } else if (i == R.id.btn_edit_music_merge) {
             musicMerge();
         } else if (i == R.id.btn_edit_gif_make) {

@@ -3,15 +3,14 @@ package com.example.cody;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
-import android.os.Bundle;
 import android.os.Environment;
 import android.os.StrictMode;
 import android.provider.MediaStore;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -27,17 +26,14 @@ import com.example.cody.utils.FacesUtils;
 import com.megvii.facepp.api.bean.Face;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.ButterKnife;
 
-import static com.example.cody.BitmapUtils.decodeUriAsBitmap;
 import static com.example.cody.BitmapUtils.toByteArray;
 
-
-public class makeUpActivity extends AppCompatActivity {
+public class FaceInfoActivity extends AppCompatActivity {
     private Bitmap mbitmap;
     private Face mFace;
     private static final String IMAGE_FILE_LOCATION = "file:///sdcard/take_photo_image.jpg";
@@ -82,213 +78,59 @@ public class makeUpActivity extends AppCompatActivity {
     private void initData(){
         mEntityList = new ArrayList<BaseEntity>();
         BaseEntity baseEntity1 = new BaseEntity();
-        baseEntity1.setText("口红");
+        baseEntity1.setText("嘴唇");
         baseEntity1.setImage(R.drawable.mouth);
         mEntityList.add(baseEntity1);
         BaseEntity baseEntity2 = new BaseEntity();
-        baseEntity2.setText("美瞳");
-        baseEntity2.setImage(R.drawable.eyebeauty);
+        baseEntity2.setText("眼睛");
+        baseEntity2.setImage(R.drawable.eye);
         mEntityList.add(baseEntity2);
         BaseEntity baseEntity3 = new BaseEntity();
-        baseEntity3.setText("眉毛");
+        baseEntity3.setText("eyebrow");
         baseEntity3.setImage(R.drawable.eyebrow);
         mEntityList.add(baseEntity3);
-        BaseEntity baseEntity4 = new BaseEntity();
-        baseEntity4.setText("眼影");
-        baseEntity4.setImage(R.drawable.eyeshadow);
-        mEntityList.add(baseEntity4);
-        BaseEntity baseEntity5 = new BaseEntity();
-        baseEntity5.setText("眼线");
-        baseEntity5.setImage(R.drawable.eyeline);
-        mEntityList.add(baseEntity5);
         BaseEntity baseEntity6 = new BaseEntity();
-        baseEntity6.setText("发色");
-        baseEntity6.setImage(R.drawable.haircolor);
-        mEntityList.add(baseEntity6);
-    }
-    //初始化口红数据
-    private void initMouseData(){
-        mEntityList = new ArrayList<BaseEntity>();
-        BaseEntity baseEntity1 = new BaseEntity();
-        baseEntity1.setText("赤红");
-        baseEntity1.setImage(R.drawable.chihong);
-        mEntityList.add(baseEntity1);
-        BaseEntity baseEntity2 = new BaseEntity();
-        baseEntity2.setText("燕脂");
-        baseEntity2.setImage(R.drawable.yanzhi);
-        mEntityList.add(baseEntity2);
-        BaseEntity baseEntity3 = new BaseEntity();
-        baseEntity3.setText("猩猩红");
-        baseEntity3.setImage(R.drawable.xingxinghong);
-        mEntityList.add(baseEntity3);
-        BaseEntity baseEntity4 = new BaseEntity();
-        baseEntity4.setText("红");
-        baseEntity4.setImage(R.drawable.hong);
-        mEntityList.add(baseEntity4);
-        BaseEntity baseEntity5 = new BaseEntity();
-        baseEntity5.setText("红曳");
-        baseEntity5.setImage(R.drawable.hongye);
-        mEntityList.add(baseEntity5);
-        BaseEntity baseEntity6 = new BaseEntity();
-        baseEntity6.setText("绯");
-        baseEntity6.setImage(R.drawable.fei);
+        baseEntity6.setText("鼻子");
+        baseEntity6.setImage(R.drawable.nose);
         mEntityList.add(baseEntity6);
         BaseEntity baseEntity7 = new BaseEntity();
-        baseEntity7.setText("苏红");
-        baseEntity7.setImage(R.drawable.suhong);
+        baseEntity7.setText("人脸轮廓");
+        baseEntity7.setImage(R.drawable.facecontour);
         mEntityList.add(baseEntity7);
         BaseEntity baseEntity8 = new BaseEntity();
-        baseEntity8.setText("莓");
-        baseEntity8.setImage(R.drawable.mei);
+        baseEntity8.setText("人脸检测");
+        baseEntity8.setImage(R.drawable.facedetect);
         mEntityList.add(baseEntity8);
-        BaseEntity baseEntity9 = new BaseEntity();
-        baseEntity9.setText("中红");
-        baseEntity9.setImage(R.drawable.zhonghong);
-        mEntityList.add(baseEntity9);
-        BaseEntity baseEntity10 = new BaseEntity();
-        baseEntity10.setText("银朱");
-        baseEntity10.setImage(R.drawable.yinzhu);
-        mEntityList.add(baseEntity10);
-        BaseEntity baseEntity11 = new BaseEntity();
-        baseEntity11.setText("红华");
-        baseEntity11.setImage(R.drawable.honghua);
-        mEntityList.add(baseEntity11);
-        BaseEntity baseEntity12 = new BaseEntity();
-        baseEntity12.setText("桑染");
-        baseEntity12.setImage(R.drawable.sangran);
-        mEntityList.add(baseEntity12);
-        BaseEntity baseEntity13 = new BaseEntity();
-        baseEntity13.setText("蓝色");
-        baseEntity13.setImage(R.drawable.g_like);
-        mEntityList.add(baseEntity13);
-        BaseEntity baseEntity14 = new BaseEntity();
-        baseEntity14.setText("绿色");
-        baseEntity14.setImage(R.drawable.g_like);
-        mEntityList.add(baseEntity14);
-        BaseEntity baseEntity15 = new BaseEntity();
-        baseEntity15.setText("紫色");
-        baseEntity15.setImage(R.drawable.g_like);
-        mEntityList.add(baseEntity15);
-    }
-    //初始化眼影数据
-    private void initEyeShadowData(){
-        mEntityList = new ArrayList<BaseEntity>();
-        BaseEntity baseEntity1 = new BaseEntity();
-        baseEntity1.setText("口红");
-        baseEntity1.setImage(R.drawable.mouth);
-        mEntityList.add(baseEntity1);
-        BaseEntity baseEntity2 = new BaseEntity();
-        baseEntity2.setText("美瞳");
-        baseEntity2.setImage(R.drawable.eyebeauty);
-        mEntityList.add(baseEntity2);
-        BaseEntity baseEntity3 = new BaseEntity();
-        baseEntity3.setText("眉毛");
-        baseEntity3.setImage(R.drawable.eyebrow);
-        mEntityList.add(baseEntity3);
         BaseEntity baseEntity4 = new BaseEntity();
-        baseEntity4.setText("眼影");
-        baseEntity4.setImage(R.drawable.eyeshadow);
+        baseEntity4.setText("106关键点");
+        baseEntity4.setImage(R.drawable.facepoint);
         mEntityList.add(baseEntity4);
-    }
-    //初始化美瞳数据
-    private void initEyeBeautyData(){
-        mEntityList = new ArrayList<BaseEntity>();
-        BaseEntity baseEntity1 = new BaseEntity();
-        baseEntity1.setText("口红");
-        baseEntity1.setImage(R.drawable.mouth);
-        mEntityList.add(baseEntity1);
-        BaseEntity baseEntity2 = new BaseEntity();
-        baseEntity2.setText("美瞳");
-        baseEntity2.setImage(R.drawable.eyebeauty);
-        mEntityList.add(baseEntity2);
-        BaseEntity baseEntity3 = new BaseEntity();
-        baseEntity3.setText("眉毛");
-        baseEntity3.setImage(R.drawable.eyebrow);
-        mEntityList.add(baseEntity3);
-        BaseEntity baseEntity4 = new BaseEntity();
-        baseEntity4.setText("眼影");
-        baseEntity4.setImage(R.drawable.eyeshadow);
-        mEntityList.add(baseEntity4);
-    }
-    //初始化眼线数据
-    private void initEyeLineData(){
-        mEntityList = new ArrayList<BaseEntity>();
-        BaseEntity baseEntity1 = new BaseEntity();
-        baseEntity1.setText("口红");
-        baseEntity1.setImage(R.drawable.mouth);
-        mEntityList.add(baseEntity1);
-        BaseEntity baseEntity2 = new BaseEntity();
-        baseEntity2.setText("美瞳");
-        baseEntity2.setImage(R.drawable.eyebeauty);
-        mEntityList.add(baseEntity2);
-        BaseEntity baseEntity3 = new BaseEntity();
-        baseEntity3.setText("眉毛");
-        baseEntity3.setImage(R.drawable.eyebrow);
-        mEntityList.add(baseEntity3);
-        BaseEntity baseEntity4 = new BaseEntity();
-        baseEntity4.setText("眼影");
-        baseEntity4.setImage(R.drawable.eyeshadow);
-        mEntityList.add(baseEntity4);
-    }
-    //初始化眉型数据
-    private void initEyebrowData(){
-        mEntityList = new ArrayList<BaseEntity>();
-        BaseEntity baseEntity1 = new BaseEntity();
-        baseEntity1.setText("口红");
-        baseEntity1.setImage(R.drawable.mouth);
-        mEntityList.add(baseEntity1);
-        BaseEntity baseEntity2 = new BaseEntity();
-        baseEntity2.setText("美瞳");
-        baseEntity2.setImage(R.drawable.eyebeauty);
-        mEntityList.add(baseEntity2);
-        BaseEntity baseEntity3 = new BaseEntity();
-        baseEntity3.setText("眉毛");
-        baseEntity3.setImage(R.drawable.eyebrow);
-        mEntityList.add(baseEntity3);
-        BaseEntity baseEntity4 = new BaseEntity();
-        baseEntity4.setText("眼影");
-        baseEntity4.setImage(R.drawable.eyeshadow);
-        mEntityList.add(baseEntity4);
-    }
-    //初始化发色数据
-    private void initHairColorData(){
-        mEntityList = new ArrayList<BaseEntity>();
-        BaseEntity baseEntity1 = new BaseEntity();
-        baseEntity1.setText("口红");
-        baseEntity1.setImage(R.drawable.mouth);
-        mEntityList.add(baseEntity1);
-        BaseEntity baseEntity2 = new BaseEntity();
-        baseEntity2.setText("美瞳");
-        baseEntity2.setImage(R.drawable.eyebeauty);
-        mEntityList.add(baseEntity2);
-        BaseEntity baseEntity3 = new BaseEntity();
-        baseEntity3.setText("眉毛");
-        baseEntity3.setImage(R.drawable.eyebrow);
-        mEntityList.add(baseEntity3);
-        BaseEntity baseEntity4 = new BaseEntity();
-        baseEntity4.setText("眼影");
-        baseEntity4.setImage(R.drawable.eyeshadow);
-        mEntityList.add(baseEntity4);
+        BaseEntity baseEntity5 = new BaseEntity();
+        baseEntity5.setText("68关键点");
+        baseEntity5.setImage(R.drawable.facepoint);
+        mEntityList.add(baseEntity5);
+
     }
     /**
      * 初始化RecyclerView
      */
     private void initRecyclerView(){
         // 定义一个线性布局管理器
-        LinearLayoutManager manager = new LinearLayoutManager(makeUpActivity.this);
+        LinearLayoutManager manager = new LinearLayoutManager(FaceInfoActivity.this);
         //水平布局
         manager.setOrientation(LinearLayoutManager.HORIZONTAL);
         // 设置布局管理器
         mRecyclerView.setLayoutManager(manager);
         // 设置adapter
-        DemoAdapter adapter = new DemoAdapter(makeUpActivity.this, mEntityList);
+        DemoAdapter adapter = new DemoAdapter(FaceInfoActivity.this, mEntityList);
         mRecyclerView.setAdapter(adapter);
+//        mRecyclerView.addItemDecoration(new DividerItemDecoration(this,
+//                DividerItemDecoration.VERTICAL_LIST));
         adapter.setOnItemClickLitener(new DemoAdapter.OnItemClickLitener() {
             @Override
             public void onItemClick(View view, int position) {
-                Toast.makeText(makeUpActivity.this, "选择了" + mEntityList.get(position).getText(), Toast.LENGTH_SHORT).show();
-                makeUpchooser(mEntityList.get(position).getText());
-                Bitmap bitmap = drawFace(mFace,mEntityList.get(position).getText());
+                Toast.makeText(FaceInfoActivity.this, "选择了" + mEntityList.get(position).getText(), Toast.LENGTH_SHORT).show();
+                Bitmap bitmap = drawFaceInfo(mFace,mEntityList.get(position).getText());
                 mImageView.setImageBitmap(bitmap);
             }
         });
@@ -308,8 +150,7 @@ public class makeUpActivity extends AppCompatActivity {
         previewMakeup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                initData();
-                initRecyclerView();
+                drawTextureMask();
             }
         });
         generateInfo.setOnClickListener(new View.OnClickListener() {
@@ -322,7 +163,7 @@ public class makeUpActivity extends AppCompatActivity {
     private void takePhotoOrSelectPicture() {
         CharSequence[] items = {"拍照","相册"};// 裁剪items选项
         // 弹出对话框提示用户拍照或者是通过本地图库选择图片
-        new AlertDialog.Builder(makeUpActivity.this)
+        new AlertDialog.Builder(FaceInfoActivity.this)
                 .setItems(items, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -409,32 +250,6 @@ public class makeUpActivity extends AppCompatActivity {
         }
     }
 
-    private void makeUpchooser(String index){
-
-        switch(index){
-            case "口红":
-                initMouseData();
-                break;
-            case "美瞳":
-                initEyeBeautyData();
-                break;
-            case "眼线":
-                initEyeLineData();
-                break;
-            case "眼影":
-                initEyeShadowData();
-                break;
-            case "眉毛":
-                initEyebrowData();
-                break;
-            case "发色":
-                initHairColorData();
-                break;
-            default:
-                break;
-        }
-        initRecyclerView();
-    }
     private  void startCamera(){
         // 创建文件保存拍照的图片
         File takePhotoImage = new File(Environment.getExternalStorageDirectory(), "take_photo_image.jpg");
@@ -464,61 +279,49 @@ public class makeUpActivity extends AppCompatActivity {
         // 启动intent打开本地图库
         startActivityForResult(intent1,CHOOSE_PHOTO);
     }
-    private Bitmap drawFace(Face face,String index){
-        if (face==null)
+    private Bitmap drawFaceInfo(Face face,String index){
+        if(face==null)
             return mbitmap;
-        Bitmap bitmap = null;
-        FaceMakeUpUtils faceMakeUpUtils = new FaceMakeUpUtils(this,face);
+        Bitmap bitmap=null;
+        FaceMakeUpUtils faceMakeUpUtils = new FaceMakeUpUtils(face);
         switch(index){
-            case "赤红":
-                faceMakeUpUtils.setARGB(120,128,29,30);
+            case "嘴唇":
+                bitmap = faceMakeUpUtils.drawMouthPoint(mbitmap);
                 break;
-            case "银朱":
-                faceMakeUpUtils.setARGB(120,175,27,51);
+            case "眼睛":
+                bitmap = faceMakeUpUtils.drawEyePoint(mbitmap);
                 break;
-            case "猩猩红":
-                faceMakeUpUtils.setARGB(120,176,33,25);
+            case "eyebrow":
+                bitmap = faceMakeUpUtils.drawEyebrowPoint(mbitmap);
                 break;
-            case "桑染":
-                faceMakeUpUtils.setARGB(120,99,24,31);
+            case "鼻子":
+                bitmap = faceMakeUpUtils.drawNosePoint(mbitmap);
                 break;
-            case "中红":
-                faceMakeUpUtils.setARGB(120,188,47,55);
+            case "人脸轮廓":
+                bitmap = faceMakeUpUtils.drawFaceCounter(mbitmap);
                 break;
-            case "莓":
-                faceMakeUpUtils.setARGB(120,185,38,44);
+            case "人脸检测":
+                bitmap = faceMakeUpUtils.drawFaceRect(mbitmap);
                 break;
-            case "燕脂":
-                faceMakeUpUtils.setARGB(120,154,34,36);
+            case "106关键点":
+                Bitmap bm1 = faceMakeUpUtils.drawMouthPoint(mbitmap);
+                Bitmap bm2 = faceMakeUpUtils.drawEyePoint(bm1);
+                Bitmap bm3 = faceMakeUpUtils.drawNosePoint(bm2);
+                Bitmap bm4 = faceMakeUpUtils.drawFaceCounter(bm3);
+                bitmap = faceMakeUpUtils.drawEyebrowPoint(bm4);
                 break;
-            case "红华":
-                faceMakeUpUtils.setARGB(120,165,33,28);
-                break;
-            case "苏红":
-                faceMakeUpUtils.setARGB(120,155,56,76);
-                break;
-            case "绯":
-                faceMakeUpUtils.setARGB(120,198,76,64);
-                break;
-            case "红曳":
-                faceMakeUpUtils.setARGB(120,165,41,52);
-                break;
-            case "红":
-                faceMakeUpUtils.setARGB(120,171,34,46);
-                break;
-            case "绿色":
-                faceMakeUpUtils.setARGB(120,14,216,50);
-                break;
-            case "蓝色":
-                faceMakeUpUtils.setARGB(120,12,32,185);
-                break;
-            case "紫色":
-                faceMakeUpUtils.setARGB(120,117,11,169);
+            case "68关键点":
+                Bitmap bm5 = faceMakeUpUtils.drawMouthPoint(mbitmap);
+                Bitmap bm6 = faceMakeUpUtils.drawEyePoint(bm5);
+                bitmap = faceMakeUpUtils.drawEyebrowPoint(bm6);
                 break;
             default:
-                return mbitmap;
+                bitmap = mbitmap;
+                break;
         }
-        bitmap = faceMakeUpUtils.mouthRendering(mbitmap);
         return bitmap;
+    }
+    private void drawTextureMask(){
+        startActivity(new Intent(this, textureActivity.class));
     }
 }

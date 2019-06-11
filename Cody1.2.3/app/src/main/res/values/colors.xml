@@ -10,5 +10,7 @@
     <color name="black">#000000</color>
     <color name="login_gray">#19000000</color>
     <color name="gray">#ffb6b6b6</color>
+
+    <color name="black_overlay">#66000000</color>
 </resources>
 

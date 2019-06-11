@@ -8,13 +8,13 @@ public enum MakeupType {
     NONE("none", -1),           // 无彩妆
     SHADOW("shadow", 0),        // 阴影
     PUPIL("pupil", 1),          // 瞳孔
-    EYESHADOW("eyeshadow", 2),  // 眼影
-    EYELINER("eyeliner", 3),    // 眼线
+    EYESHADOW("eyeshadow", 2),  // eyeshadow
+    EYELINER("eyeliner", 3),    // eye
     EYELASH("eyelash", 4),      // 睫毛
     EYELID("eyelid", 5),        // 眼皮
-    EYEBROW("eyebrow", 6),      // 眉毛
+    EYEBROW("eyebrow", 6),      // eyebrow
     BLUSH("blush", 7),          // 腮红
-    LIPSTICK("lipstick", 8);    // 口红/唇彩
+    LIPSTICK("lipstick", 8);    // mouth/唇彩
 
     private String name;
     private int index;
@@ -122,12 +122,12 @@ public enum MakeupType {
      * 彩妆索引
      */
     public static class MakeupIndex {
-        public static final int LipstickIndex = 0;  // 口红/唇彩
+        public static final int LipstickIndex = 0;  // mouth/唇彩
         public static final int BlushIndex = 1;     // 腮红
         public static final int ShadowIndex = 2;    // 阴影
-        public static final int EyebrowIndex = 3;   // 眉毛
-        public static final int EyeshadowIndex = 4; // 眼影
-        public static final int EyelinerIndex = 5;  // 眼线
+        public static final int EyebrowIndex = 3;   // eyebrow
+        public static final int EyeshadowIndex = 4; // eyeshadow
+        public static final int EyelinerIndex = 5;  // eye
         public static final int EyelashIndex = 6;   // 睫毛
         public static final int EyelidIndex = 7;    // 眼皮
         public static final int PupilIndex = 8;     // 瞳孔

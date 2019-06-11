@@ -297,11 +297,11 @@ public class PreviewEffectFragment extends Fragment implements View.OnClickListe
             mValueSeekBar.setProgress((int)(mCameraParam.beauty.faceShave * 100));
         } else if (position == 4) {     // 小脸
             mValueSeekBar.setProgress((int)(mCameraParam.beauty.faceNarrow * 100));
-        } else if (position == 5) {     // 下巴
+        } else if (position == 5) {     // facecontour
             mValueSeekBar.setProgress((int)((1.0f + mCameraParam.beauty.chinIntensity) * 50));
         } else if (position == 6) {     // 法令纹
             mValueSeekBar.setProgress((int)(mCameraParam.beauty.nasolabialFoldsIntensity * 100));
-        } else if (position == 7) {     // 额头
+        } else if (position == 7) {     // haircolor
             mValueSeekBar.setProgress((int)((1.0f + mCameraParam.beauty.foreheadIntensity) * 50));
         } else if (position == 8) {     // 大眼
             mValueSeekBar.setProgress((int)(mCameraParam.beauty.eyeEnlargeIntensity * 100));
@@ -315,7 +315,7 @@ public class PreviewEffectFragment extends Fragment implements View.OnClickListe
             mValueSeekBar.setProgress((int)(mCameraParam.beauty.eyeBagsIntensity * 100));
         } else if (position == 13) {    // 亮眼
             mValueSeekBar.setProgress((int)(mCameraParam.beauty.eyeBrightIntensity * 100));
-        } else if (position == 14) {    // 瘦鼻
+        } else if (position == 14) {    // nose
             mValueSeekBar.setProgress((int)(mCameraParam.beauty.noseThinIntensity * 100));
         } else if (position == 15) {    // 鼻翼
             mValueSeekBar.setProgress((int)(mCameraParam.beauty.alaeIntensity * 100));
@@ -343,11 +343,11 @@ public class PreviewEffectFragment extends Fragment implements View.OnClickListe
             mCameraParam.beauty.faceShave = progress / 100.0f;
         } else if (position == 4) {     // 小脸
             mCameraParam.beauty.faceNarrow = progress / 100.0f;
-        } else if (position == 5) {     // 下巴
+        } else if (position == 5) {     // facecontour
             mCameraParam.beauty.chinIntensity = (progress - 50.0f) / 50.0f;
         } else if (position == 6) {     // 法令纹
             mCameraParam.beauty.nasolabialFoldsIntensity = progress / 100.0f;
-        } else if (position == 7) {     // 额头
+        } else if (position == 7) {     // haircolor
             mCameraParam.beauty.foreheadIntensity = (progress - 50.0f) / 50.0f;
         } else if (position == 8) {     // 大眼
             mCameraParam.beauty.eyeEnlargeIntensity = progress / 100.0f;
@@ -361,7 +361,7 @@ public class PreviewEffectFragment extends Fragment implements View.OnClickListe
             mCameraParam.beauty.eyeBagsIntensity = progress / 100.0f;
         } else if (position == 13) {    // 亮眼
             mCameraParam.beauty.eyeBrightIntensity = progress / 100.0f;
-        } else if (position == 14) {    // 瘦鼻
+        } else if (position == 14) {    // nose
             mCameraParam.beauty.noseThinIntensity = progress / 100.0f;
         } else if (position == 15) {    // 鼻翼
             mCameraParam.beauty.alaeIntensity = progress / 100.0f;

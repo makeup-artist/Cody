@@ -60,9 +60,9 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     private void initView() {
-        findViewById(R.id.btn_camera).setOnClickListener(this);
-        findViewById(R.id.btn_edit_video).setOnClickListener(this);
-        findViewById(R.id.btn_edit_picture).setOnClickListener(this);
+        findViewById(R.id.btn_camera_beauty).setOnClickListener(this);
+        findViewById(R.id.btn_camera_makeup).setOnClickListener(this);
+        findViewById(R.id.btn_face_info).setOnClickListener(this);
         findViewById(R.id.btn_edit_music_merge).setOnClickListener(this);
         findViewById(R.id.btn_edit_gif_make).setOnClickListener(this);
     }
@@ -80,11 +80,11 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
         }
         mOnClick = true;
         int i = v.getId();
-        if (i == R.id.btn_camera) {
+        if (i == R.id.btn_camera_beauty) {
             previewCamera();
-        } else if (i == R.id.btn_edit_video) {
+        } else if (i == R.id.btn_camera_makeup) {
             scanMedia(false, true, false);
-        } else if (i == R.id.btn_edit_picture) {
+        } else if (i == R.id.btn_face_info) {
             scanMedia(false, true, false);
         } else if (i == R.id.btn_edit_music_merge) {
             musicMerge();

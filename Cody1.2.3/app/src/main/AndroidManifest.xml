@@ -16,7 +16,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" /> <!-- opengles版本控制 -->
     <uses-feature
-        android:glEsVersion="0x00030000"
+        android:glEsVersion="0x00020000"
         android:required="true" />
 
     <application
@@ -27,7 +27,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ImageAlbumShowActivity"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -37,21 +36,24 @@
         </activity>
         <activity
             android:name=".makeUpActivity"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"></activity>
-        <activity android:name=".RichEditorActivity"></activity>
-        <activity android:name=".StartActivity"></activity>
-        <activity android:name=".TextViewActivity"></activity>
-        <activity android:name=".LoginActivity"></activity>
-        <activity android:name=".mineactivity.SettingActivity"></activity>
-        <activity android:name=".mineactivity.ProfileActivity"></activity>
-        <activity android:name=".mineactivity.ViewActivity"></activity>
-        <activity android:name=".mineactivity.NotificationActivity"></activity>
-        <activity android:name=".mineactivity.HeartActivity"></activity>
-        <activity android:name=".mineactivity.LikedActivity"></activity>
-        <activity android:name=".mineactivity.FeedbackActivity"></activity>
-        <activity android:name=".mineactivity.CollectionActivity"></activity>
-        <activity android:name=".RegisterActivity"></activity>
-        <activity android:name=".SearchActivity"></activity>
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+        <activity android:name=".StartActivity" />
+        <activity
+            android:name=".FaceInfoActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+        <activity android:name=".TextViewActivity" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".textureActivity" />
+        <activity android:name=".mineactivity.SettingActivity" />
+        <activity android:name=".mineactivity.ProfileActivity" />
+        <activity android:name=".mineactivity.ViewActivity" />
+        <activity android:name=".mineactivity.NotificationActivity" />
+        <activity android:name=".mineactivity.HeartActivity" />
+        <activity android:name=".mineactivity.LikedActivity" />
+        <activity android:name=".mineactivity.FeedbackActivity" />
+        <activity android:name=".mineactivity.CollectionActivity" />
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".SearchActivity" />
     </application>
 
 </manifest>
