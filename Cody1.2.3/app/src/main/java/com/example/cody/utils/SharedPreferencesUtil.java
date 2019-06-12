@@ -13,6 +13,8 @@ public class SharedPreferencesUtil {
     private static final String TAG ="TAG";
     private static final String KEY_LOGIN ="KEY_LOGIN";
     private static final String KEY_USER="KEY_USER";
+    private static final String KEY_TOKEN="KEY_TOKEN";
+    private static final String KEY_PSD="KEY_PSD";
 
     private static SharedPreferences mPreferences;
     private static SharedPreferences.Editor mEditor;
@@ -76,6 +78,26 @@ public class SharedPreferencesUtil {
             String jsonStr = gson.toJson(user);
             put(KEY_USER,jsonStr);
         }
+
+        /**
+         * @desc Token的读入读出
+         * @author cyz
+         * @time 2019/6/1 11:15
+         */
+    public String getToken(){
+        return  get(KEY_TOKEN);
+    }
+    public void putToken(String token){
+        put(KEY_TOKEN,token);
+    }
+
+    public String getPsd(){
+        return  get(KEY_PSD);
+    }
+    public void putPsd(String psd){
+        put(KEY_PSD,psd);
+    }
+
 //        -----私有方法
         private void put(String key, String value){
             mEditor.putString(key, value);

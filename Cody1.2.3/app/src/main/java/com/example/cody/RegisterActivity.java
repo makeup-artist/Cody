@@ -130,6 +130,7 @@ break;
                                 @Override
                                 public void onSuccess(Object responseObj) {
                                     MsgBean testBean = (MsgBean) responseObj;
+
                                     Log.i("RegitserActivity", "onSuccess: " + testBean.getMsg());
                                     if(!testBean.getMsg().equals("用户名可用")){
                                         musername.setError("用户名不可用或已注册");
@@ -191,7 +192,7 @@ break;
                     params.put("code",SMScode);
                     params.put("username",username);
                     CommonOkHttpClient
-                            .sendRequest(CommonRequest.createPostRequest(URL_REGISTER, new RequestParams(params)), new CommonJsonCallback(new DisposeDataHandle( new DisposeDataListener() {
+                            .sendRequest(CommonRequest.createPostRequest(URL_REGISTER, params), new CommonJsonCallback(new DisposeDataHandle( new DisposeDataListener() {
                                 @Override
                                 public void onSuccess(Object responseObj) {
                                     MsgBean testBean = (MsgBean) responseObj;

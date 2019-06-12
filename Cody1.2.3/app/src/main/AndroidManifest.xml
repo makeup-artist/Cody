@@ -52,8 +52,11 @@
         <activity android:name=".mineactivity.CollectionActivity"></activity>
         <activity android:name=".LoginphoneActivity"></activity>
         <activity android:name=".UserhomeActivity"></activity>
-        <activity android:name=".ChangedPsdActivity"></activity>
+        <activity android:name=".mineactivity.ChangedPsdActivity"></activity>
+        <activity android:name=".mineactivity.AboutActivity"></activity>
+        <activity android:name=".mineactivity.ChangedNumberActivity"></activity>
         <activity android:name=".SearchActivity"></activity>
+        <activity android:name=".RichEditorActivity"></activity>
     </application>
 
 </manifest>

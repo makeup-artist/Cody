@@ -12,4 +12,6 @@
         <item>关注</item>
         <item>教程</item>
     </string-array>
+    <string name="search_history">搜索历史</string>
+    <string name="hot_search">热门搜索</string>
 </resources>

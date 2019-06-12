@@ -21,6 +21,8 @@ import com.example.cody.utils.RegularVerification;
 import com.example.cody.utils.SharedPreferencesUtil;
 import com.google.gson.Gson;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -92,7 +94,7 @@ public class LoginphoneActivity extends AppCompatActivity {
                     params.put("mobile",number);
                     params.put("code",SMScode);
                     CommonOkHttpClient
-                            .sendRequest(CommonRequest.createPostRequest(URL_LOGINBYNUMBER, new RequestParams(params)), new CommonJsonCallback(new DisposeDataHandle(UsermainBean.class, new DisposeDataListener() {
+                            .sendRequest(CommonRequest.createPostRequest(URL_LOGINBYNUMBER, params), new CommonJsonCallback(new DisposeDataHandle(UsermainBean.class, new DisposeDataListener() {
                                 @Override
                                 public void onSuccess(Object responseObj) {
                                     UsermainBean testBean = (UsermainBean) responseObj;
@@ -101,7 +103,8 @@ public class LoginphoneActivity extends AppCompatActivity {
                                         sp.putUser(testBean.getData().getUser());
                                         Toast.makeText(MyApplication.getContext(), "已成功登陆", Toast.LENGTH_SHORT).show();
                                         sp.setLogin(true);
-
+                                        sp.putToken(testBean.getData().getToken());
+                                        EventBus.getDefault().post(testBean.getData().getUser());
                                         finish();
                                     }else{
                                         Toast.makeText(MyApplication.getContext(), "登陆失败", Toast.LENGTH_SHORT).show();

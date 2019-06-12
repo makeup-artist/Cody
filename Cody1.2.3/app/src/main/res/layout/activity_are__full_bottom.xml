@@ -1,9 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:are="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/holo_blue_dark">
+    android:orientation="vertical">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="50.0dip" android:background="?colorPrimary">
+        <TextView android:layout_height="wrap_content"
+            android:layout_width="wrap_content" android:textColor="@color/white" android:text="帖子标题"/>
+        <EditText android:id="@+id/title" android:textColor="@color/white" android:textColorHint="#88ffffff"  android:background="@null" android:layout_width="fill_parent" android:layout_height="?actionBarSize" android:layout_marginRight="8.0dip" android:hint="请输入帖子标题" android:singleLine="true"  android:imeOptions="actionSearch" android:textCursorDrawable="@drawable/search_edit_color" />
+    </RelativeLayout>
+        <LinearLayout android:layout_width="fill_parent" android:layout_height="50.0dip"
+            android:orientation="horizontal">
+            <TextView android:textSize="15.0sp" android:id="@+id/action_show_tv"  android:textColor="@color/black" android:gravity="center_vertical" android:paddingLeft="20.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="预览"  android:drawablePadding="20.0dip" />
+            <TextView android:textSize="15.0sp" android:id="@+id/post" android:textColor="@color/black" android:gravity="center_vertical" android:paddingLeft="20.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="发布" android:drawablePadding="20.0dip" />
+            <TextView android:textSize="15.0sp" android:id="@+id/action_save" android:textColor="@color/black" android:gravity="center_vertical" android:paddingLeft="20.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="保存草稿"  android:drawablePadding="20.0dip" />
+        </LinearLayout>
+
+
 
     <com.chinalwb.are.AREditor
         android:id="@+id/areditor"
@@ -14,4 +27,4 @@
         are:toolbarAlignment="BOTTOM"
         />
 
-</RelativeLayout>
+</LinearLayout>

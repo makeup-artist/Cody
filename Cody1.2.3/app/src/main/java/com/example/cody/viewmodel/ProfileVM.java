@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
+import android.util.Log;
 import android.view.View;
 
 import com.example.cody.BR;
@@ -73,10 +74,14 @@ public  ProfileVM(){
                     break;
                 case R.id.layout_setting:
                     intent = new Intent(view.getContext(), SettingActivity.class);
+                    intent.putExtra("mobile",user.getMobile());
+                    intent.putExtra("username",user.getUsername());
+                    Log.d("QAQ", user.getMobile() );
                     break;
             }
         }else{
             intent = new Intent(view.getContext(), LoginActivity.class);
+
         }
         view.getContext().startActivity(intent);
     }

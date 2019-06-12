@@ -1,10 +1,15 @@
 package com.example.cody.net.request;
+
 import android.util.Log;
+
+import com.google.gson.Gson;
 
 import java.util.Map;
 
 import okhttp3.FormBody;
+import okhttp3.MediaType;
 import okhttp3.Request;
+import okhttp3.RequestBody;
 
 /**
  * Create by SunnyDay on 2019/03/04
@@ -12,24 +17,40 @@ import okhttp3.Request;
  * @function 接收请求参数 为我们生成Request对象
  */
 public class CommonRequest {
+
+    private static Gson gson = new Gson();
+    public static final MediaType JSON = MediaType.parse("application/json;");
     /**
      * @function post 请求
      * @param url    url
      * @param params 请求参数
      *
      */
-    public static Request createPostRequest(String url, RequestParams params) {
-        FormBody.Builder builder = new FormBody.Builder();
+    public static Request createPostRequest(String url, Map params, HeaderParams headerParams ) {
+        String param= gson.toJson(params);
+        //        FormBody.Builder builder = new FormBody.Builder();
         // 吧请求内容添加到请求体中
-        for (Map.Entry<String, String> entry : params.urlParams.entrySet()) {
-            builder.add(entry.getKey(), entry.getValue());
-        }
-        // 构建请求体
-        FormBody formBody = builder.build();
-         // 返回封装的Request请求
-        return new Request.Builder().post(formBody).url(url).build();
-    }
+        RequestBody requestBody = RequestBody.create(JSON, param);
 
+//        for (Map.Entry<String, String> entry : params.urlParams.entrySet()) {
+//            builder.add(entry.getKey(), entry.getValue());
+//        }
+        // 构建请求体
+//        FormBody formBody = builder.build();
+        //构造请求头
+        Request.Builder requestbuilder = new Request.Builder();
+//        if(headerParams != null){
+//            for (Map.Entry<String, String> entry : headerParams.urlParams.entrySet()) {
+//                requestbuilder.addHeader(entry.getKey(), entry.getValue());
+//            }
+//        }
+        Request request = requestbuilder.addHeader("content-type", "application/json;charset:utf-8").post(requestBody).url(url).build();
+        // 返回封装的Request请求
+        return request;
+    }
+    public static Request createPostRequest(String url, Map params ) {
+        return createPostRequest(url,params,null);
+    }
 
     /**
      * @function put 请求
@@ -37,16 +58,30 @@ public class CommonRequest {
      * @param params 请求参数
      *
      */
-    public static Request createPutRequest(String url, RequestParams params) {
-        FormBody.Builder builder = new FormBody.Builder();
+    public static Request createPutRequest(String url, Map params ,HeaderParams headerParams) {
+        String param= gson.toJson(params);
+        //        FormBody.Builder builder = new FormBody.Builder();
         // 吧请求内容添加到请求体中
-        for (Map.Entry<String, String> entry : params.urlParams.entrySet()) {
-            builder.add(entry.getKey(), entry.getValue());
-        }
+        RequestBody requestBody = RequestBody.create(JSON, param);
+
+//        for (Map.Entry<String, String> entry : params.urlParams.entrySet()) {
+//            builder.add(entry.getKey(), entry.getValue());
+//        }
         // 构建请求体
-        FormBody formBody = builder.build();
+//        FormBody formBody = builder.build();
+        //构造请求头
+        Request.Builder requestbuilder = new Request.Builder();
+//        if(headerParams != null){
+//            for (Map.Entry<String, String> entry : headerParams.urlParams.entrySet()) {
+//                requestbuilder.addHeader(entry.getKey(), entry.getValue());
+//            }
+//        }
+        Request request = requestbuilder.addHeader("content-type", "application/json;charset:utf-8").put(requestBody).url(url).build();
         // 返回封装的Request请求
-        return new Request.Builder().put(formBody).url(url).build();
+        return request;
+    }
+    public static Request createPutRequest(String url,  Map  params ) {
+        return createPutRequest(url,  params,null);
     }
 
     /**
@@ -55,7 +90,7 @@ public class CommonRequest {
      * @param params 请求参数
      *
      */
-    public static Request createDeleteRequest(String url, RequestParams params) {
+    public static Request createDeleteRequest(String url, RequestParams params,HeaderParams headerParams) {
         FormBody.Builder builder = new FormBody.Builder();
         // 吧请求内容添加到请求体中
         for (Map.Entry<String, String> entry : params.urlParams.entrySet()) {
@@ -63,8 +98,19 @@ public class CommonRequest {
         }
         // 构建请求体
         FormBody formBody = builder.build();
+        //构造请求头
+        Request.Builder requestbuilder = new Request.Builder();
+        if(headerParams != null){
+            for (Map.Entry<String, String> entry : headerParams.urlParams.entrySet()) {
+                requestbuilder.addHeader(entry.getKey(), entry.getValue());
+            }
+        }
+        Request request = requestbuilder.url(url).delete(formBody).build();
         // 返回封装的Request请求
-        return new Request.Builder().delete(formBody).url(url).build();
+        return request;
+    }
+    public static Request createDeleteRequest(String url, RequestParams params ) {
+        return createDeleteRequest(url,params,null);
     }
 
     /**
@@ -79,7 +125,7 @@ public class CommonRequest {
 
 
 
-    public static Request createGetRequest(String url, RequestParams params){
+    public static Request createGetRequest(String url, RequestParams params, HeaderParams headerParams){
         StringBuilder sb = new StringBuilder(url).append("?");
         if (params!=null){
             for (Map.Entry<String, String> entry : params.urlParams.entrySet()) {
@@ -89,16 +135,28 @@ public class CommonRequest {
                        .append("&");
             }
             String disposedUrl = sb.toString().substring(0,sb.length()-1);// 去掉最后一个多余的&字符串
-            return new Request.Builder()
-                    .url(disposedUrl)
-                    .get()
-                    .build();
+            //构造请求头
+            Request.Builder requestbuilder = new Request.Builder();
+            if(headerParams != null){
+                for (Map.Entry<String, String> entry : headerParams.urlParams.entrySet()) {
+                    requestbuilder.addHeader(entry.getKey(), entry.getValue());
+                }
+            }
+            return requestbuilder.url(disposedUrl).get().build();
         }else{
-            return new Request.Builder()
-                    .url(url)
-                    .get()
-                    .build();
+            //构造请求头
+            Request.Builder requestbuilder = new Request.Builder();
+            if(headerParams != null){
+                for (Map.Entry<String, String> entry : headerParams.urlParams.entrySet()) {
+                    requestbuilder.addHeader(entry.getKey(), entry.getValue());
+                }
+            }
+            return requestbuilder.url(url).get().build();
         }
 
+    }
+
+    public static Request createGetRequest(String url, RequestParams params ) {
+        return createGetRequest(url,params,null);
     }
 }

@@ -9,4 +9,9 @@
         android:text="底妆"
         android:textSize="30sp"/>
 
+    <FrameLayout
+        android:id="@+id/frame_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
 </RelativeLayout>

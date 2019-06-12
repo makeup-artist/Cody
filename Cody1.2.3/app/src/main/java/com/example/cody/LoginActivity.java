@@ -60,7 +60,7 @@ public class LoginActivity extends AppCompatActivity {
     public void onViewClicked(View view) {
         password = mpassword.getText().toString();
         username = musername.getText().toString();
-        Map params = new HashMap();
+        HashMap params = new HashMap();
         switch (view.getId()) {
             case R.id.ignore_psd:
                 startActivity(new Intent(this, LoginphoneActivity.class));
@@ -72,15 +72,17 @@ public class LoginActivity extends AppCompatActivity {
                 params.put("username",username);
                 params.put("password",password);
                 CommonOkHttpClient
-                        .sendRequest(CommonRequest.createPostRequest(URL_LOGIN, new RequestParams(params)), new CommonJsonCallback(new DisposeDataHandle(UsermainBean.class, new DisposeDataListener() {
+                        .sendRequest(CommonRequest.createPostRequest(URL_LOGIN,params), new CommonJsonCallback(new DisposeDataHandle(UsermainBean.class, new DisposeDataListener() {
                             @Override
                             public void onSuccess(Object responseObj) {
                              UsermainBean testBean = (UsermainBean) responseObj;
+                                Log.d("QAQ","123"+testBean.getMsg());
                                if(testBean.getCode()==200){
-                                   Gson gson = new Gson();
                                    sp.putUser(testBean.getData().getUser());
                                     Toast.makeText(MyApplication.getContext(), "已成功登陆", Toast.LENGTH_SHORT).show();
                           sp.setLogin(true);
+                          sp.putToken(testBean.getData().getToken());
+                                   EventBus.getDefault().post(testBean.getData().getUser());
                                     finish();
                            }else{
                                   Toast.makeText(MyApplication.getContext(), "登陆失败", Toast.LENGTH_SHORT).show();

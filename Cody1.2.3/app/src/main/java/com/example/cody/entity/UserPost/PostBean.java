@@ -1,15 +1,13 @@
-package com.example.cody.entity.UserLoginBean;
+package com.example.cody.entity.UserPost;
 
 /**
- * Created By cyz on 2019/5/29 21:58
+ * Created By cyz on 2019/6/5 17:01
  * e-mail：462065470@qq.com
  */
-public class UsermainBean {
+public class PostBean {
     private int code;
     private String msg;
-    private Data data;
-    private String Token;
-
+    private Dataa dataa;
 
     public void setCode(int code) {
         this.code = code;
@@ -27,10 +25,10 @@ public class UsermainBean {
     }
 
 
-    public void setData(Data data) {
-        this.data = data;
+    public void setData(Dataa dataa) {
+        this.dataa = dataa;
     }
-    public Data getData() {
-        return data;
+    public Dataa getData() {
+        return dataa;
     }
 }

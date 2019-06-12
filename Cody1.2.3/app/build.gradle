@@ -54,6 +54,8 @@ dependencies {
     implementation 'de.hdodenhof:circleimageview:3.0.0' // 圆图片
     implementation 'com.google.code.gson:gson:2.8.2'  //Gson 库
     implementation 'org.greenrobot:eventbus:3.1.1'//eventbus
+    implementation 'com.hyman:flowlayout-lib:1.1.2'//流式布局的tag
+    implementation 'com.github.goweii:ActionBarEx:2.2.9'//actionbar
     implementation group: 'com.google.guava', name: 'guava', version: '23.5-android'
     implementation files('src/libs/lib-facepp_api.jar')
     implementation project(':facedetectlibrary')

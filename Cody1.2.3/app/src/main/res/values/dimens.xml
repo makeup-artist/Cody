@@ -6,4 +6,11 @@
     <dimen name="small_navigator_height">5dp</dimen>
     <dimen name="navigator_margin_top_large">45dp</dimen>
     <dimen name="large_navigator_height">65dp</dimen>
+    <dimen name="text_size_normal">15sp</dimen>
+    <dimen name="text_size_bigger">18sp</dimen>
+    <dimen name="text_size_title">22sp</dimen>
+    <dimen name="text_size_small">13sp</dimen>
+    <dimen name="text_size_smaller">11sp</dimen>
+
+    <dimen name="topLayoutHeight">75dp</dimen>
 </resources>

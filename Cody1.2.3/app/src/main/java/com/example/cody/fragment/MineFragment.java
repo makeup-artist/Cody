@@ -24,6 +24,8 @@ import com.example.cody.utils.SharedPreferencesUtil;
 import com.example.cody.viewmodel.ProfileVM;
 
 import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -45,7 +47,7 @@ public class MineFragment extends BaseFragment {
     RelativeLayout rlFeedback;
     @BindView(R.id.layout_setting)
     RelativeLayout layoutSetting;
-    private ProfileVM user;
+    private ProfileVM profileVM;
     private SharedPreferencesUtil sp;
 
     @Override
@@ -55,17 +57,35 @@ public class MineFragment extends BaseFragment {
 
     @Override
     protected View getSubView(LayoutInflater inflater, ViewGroup container) {
+        EventBus.getDefault().register(this);
         sp = SharedPreferencesUtil.getInstance(getContext());
         View rootView = inflater.inflate(R.layout.fragment_mine, container, false);
         FragmentMineBinding fragmentmineBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_mine, container, false);
         if(sp.isLogin()==true){
-            user = new ProfileVM(sp.getUser(),getContext());
+            profileVM = new ProfileVM(sp.getUser(),getContext());
             Log.d("MineFragment", "getSubView: "+sp.getUser().getUsername()+sp.getUser().getDescription()+sp.getUser().toString());
         }else {
-            user = new ProfileVM(new User(),getContext());
+            profileVM = new ProfileVM(new User(),getContext());
         }
-        fragmentmineBinding.setProfileVM(user);
+        fragmentmineBinding.setProfileVM(profileVM);
         return fragmentmineBinding.getRoot();
     }
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEventMainThread(User user){
+        profileVM.setUser(user);
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEventMainThread(String string){
+        if(string.equals("重新加载")){
+            User user= sp.getUser();
+            profileVM.setUser(user);
+        }
+    }
+
+    public void onDestroyView(){
+        super.onDestroyView();
+        EventBus.getDefault().unregister(this);//取消注册
+    }
 }

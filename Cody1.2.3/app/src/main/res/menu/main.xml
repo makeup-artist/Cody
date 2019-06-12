@@ -4,14 +4,20 @@
     tools:context="com.chinalwb.acke.MainActivity">
 
     <item
+        android:id="@+id/post"
+        android:orderInCategory="100"
+        android:title="发帖"
+        app:showAsAction="always" />
+
+    <item
         android:id="@+id/action_save"
         android:orderInCategory="100"
-        android:title="Save"
+        android:title="保存草稿"
         app:showAsAction="always" />
 
     <item
         android:id="@+id/action_show_tv"
-        android:title="Show TextView"
+        android:title="预览"
         app:showAsAction="always" />
 
 </menu>

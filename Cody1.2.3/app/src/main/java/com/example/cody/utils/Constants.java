@@ -23,4 +23,10 @@ public class Constants {
     public static final String URL_CHECKNUMBER =  URL + "/api/user/check/mobile";
     public static final String URL_LOGIN = URL + "/api/user/login";
     public static final String URL_LOGINBYNUMBER = URL + "/api/user/login/code";
+    public static final String URL_ALTERPSD = URL + "/api/user/AterPassword";
+    public static final String URL_ALTERMOBILE = URL + "/api/user/update/mobile";
+    public static final String URL_USERINFO = URL + "/api/user/update";
+    public static final String URL_USERINFOBYID = URL + "/api/user/userInfo/id";
+    public static final String URL_USERINFOBYUSERNAME = URL + "/api/user/userInfo/username";
+    public static final String URL_POST_POST = URL + "/api/post/add";
 }
