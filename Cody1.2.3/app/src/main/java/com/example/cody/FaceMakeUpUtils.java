@@ -1,5 +1,6 @@
 package com.example.cody;
 
+import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -10,7 +11,14 @@ import android.graphics.Path;
 import android.graphics.Rect;
 import android.graphics.RectF;
 
+import com.cgfay.filterlibrary.glfilter.makeup.GLImageMakeupFilter;
+import com.cgfay.filterlibrary.glfilter.makeup.MakeupVertices;
+import com.cgfay.filterlibrary.glfilter.utils.OpenGLUtils;
 import com.megvii.facepp.api.bean.Face;
+
+import java.lang.ref.WeakReference;
+import java.nio.FloatBuffer;
+import java.nio.ShortBuffer;
 
 
 /*
@@ -19,6 +27,26 @@ import com.megvii.facepp.api.bean.Face;
  * notation:人脸妆扮处理集
  */
 public class FaceMakeUpUtils{
+    // 美妆强度
+    protected float mStrength = 1.0f;
+    // 美妆处理类型，跟 fragment_makeup.glsl中的保持一致
+    // 0表示绘制原图，1表示直接绘制美妆素材，2表示利用遮罩裁剪(美瞳)，3表示唇彩
+    protected int mMakeupType = 0;
+    // 遮罩纹理
+    protected int mMaskTexture;
+    // 素材纹理
+    protected int mMaterialTexture = OpenGLUtils.GL_NOT_TEXTURE;
+    // 顶点坐标
+    protected float[] mVertices = null;
+    // 顶点坐标缓冲
+    protected FloatBuffer mVertexBuffer = null;
+    // 素材/遮罩纹理缓冲
+    protected FloatBuffer mTextureBuffer = null;
+    // 索引缓冲
+    protected ShortBuffer mIndexBuffer = null;
+    // 滤镜对象
+    protected final WeakReference<GLImageMakeupFilter> mWeakFilter = null;
+
     private Resources mResources;
     private int WidthScale = 960;
     private int HeightScale = 960;
@@ -70,6 +98,39 @@ public class FaceMakeUpUtils{
     FaceMakeUpUtils(){}
     FaceMakeUpUtils(Resources resources){
         mResources = resources;
+    }
+    public void mouthMaskTexture(Context context, Bitmap bitmap,Face face){
+        //取出人脸关键点的坐标数据
+        float lipPoints[] = {
+                face.getLandmark().getMouth_left_corner().getX(),face.getLandmark().getMouth_left_corner().getY(),
+                face.getLandmark().getMouth_upper_lip_left_contour2().getX(),face.getLandmark().getMouth_upper_lip_left_contour2().getY(),
+                face.getLandmark().getMouth_upper_lip_left_contour1().getX(),face.getLandmark().getMouth_upper_lip_left_contour1().getY(),
+                face.getLandmark().getMouth_upper_lip_top().getX(),face.getLandmark().getMouth_upper_lip_top().getY(),
+                face.getLandmark().getMouth_upper_lip_right_contour1().getX(),face.getLandmark().getMouth_upper_lip_right_contour1().getY(),
+                face.getLandmark().getMouth_upper_lip_right_contour2().getX(),face.getLandmark().getMouth_upper_lip_right_contour2().getY(),
+                face.getLandmark().getMouth_right_corner().getX(),face.getLandmark().getMouth_right_corner().getY(),
+                face.getLandmark().getMouth_lower_lip_right_contour2().getX(),face.getLandmark().getMouth_lower_lip_right_contour2().getY(),
+                face.getLandmark().getMouth_lower_lip_right_contour3().getX(),face.getLandmark().getMouth_lower_lip_right_contour3().getY(),
+                face.getLandmark().getMouth_lower_lip_bottom().getX(),face.getLandmark().getMouth_lower_lip_bottom().getY(),
+                face.getLandmark().getMouth_lower_lip_left_contour3().getX(),face.getLandmark().getMouth_lower_lip_left_contour3().getY(),
+                face.getLandmark().getMouth_lower_lip_left_contour2().getX(),face.getLandmark().getMouth_lower_lip_left_contour2().getY(),
+                face.getLandmark().getMouth_lower_lip_left_contour1().getX(),face.getLandmark().getMouth_lower_lip_left_contour1().getY(),
+                face.getLandmark().getMouth_upper_lip_left_contour3().getX(),face.getLandmark().getMouth_upper_lip_left_contour3().getY(),
+                face.getLandmark().getMouth_lower_lip_top().getX(),face.getLandmark().getMouth_lower_lip_top().getY(),
+                face.getLandmark().getMouth_upper_lip_bottom().getX(),face.getLandmark().getMouth_upper_lip_bottom().getY(),
+                face.getLandmark().getMouth_upper_lip_right_contour3().getX(),face.getLandmark().getMouth_upper_lip_right_contour3().getY(),
+                face.getLandmark().getMouth_lower_lip_right_contour1().getX(),face.getLandmark().getMouth_lower_lip_right_contour1().getY(),
+                face.getLandmark().getMouth_upper_lip_left_contour4().getX(),face.getLandmark().getMouth_upper_lip_left_contour4().getY(),
+                face.getLandmark().getMouth_upper_lip_right_contour4().getX(),face.getLandmark().getMouth_upper_lip_right_contour4().getY()
+        };
+        mVertices = lipPoints;
+        mMaskTexture = OpenGLUtils.createTextureFromAssets(context);
+        mVertexBuffer = OpenGLUtils.createFloatBuffer(mVertices);
+        mTextureBuffer = OpenGLUtils.createFloatBuffer(MakeupVertices.lipsMaskTextureVertices);
+        mIndexBuffer = OpenGLUtils.createShortBuffer(MakeupVertices.lipsIndices);
+        int inputTexture = OpenGLUtils.createTexture(bitmap);
+        mWeakFilter.get().drawMakeup(inputTexture, mMaterialTexture, mMaskTexture, mVertexBuffer,
+                mTextureBuffer, mIndexBuffer, mMakeupType, mStrength);
     }
     //人脸关键部位上色：眉型效果
     public Bitmap eyebrowRendering(Bitmap bm, Face face){
@@ -311,6 +372,8 @@ public class FaceMakeUpUtils{
                 face.getLandmark().getMouth_upper_lip_bottom().getX(),face.getLandmark().getMouth_upper_lip_bottom().getY(),
                 face.getLandmark().getMouth_upper_lip_right_contour3().getX(),face.getLandmark().getMouth_upper_lip_right_contour3().getY(),
                 face.getLandmark().getMouth_lower_lip_right_contour1().getX(),face.getLandmark().getMouth_lower_lip_right_contour1().getY(),
+                face.getLandmark().getMouth_upper_lip_left_contour4().getX(),face.getLandmark().getMouth_upper_lip_left_contour4().getY(),
+                face.getLandmark().getMouth_upper_lip_right_contour4().getX(),face.getLandmark().getMouth_upper_lip_right_contour4().getY()
         };
         //根据像素进行Bitmap的大小适应
         for (int i=0;i<36;i=i+2){

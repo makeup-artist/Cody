@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_bottom"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom"
+    android:layout_alignParentBottom="true"
+    android:background="@android:color/transparent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:ignore="MissingDefaultResource">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view_makeup"
+        android:divider="#ffff0000"
+        android:dividerHeight="10dp"
+        android:layout_marginBottom="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <android.support.v7.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/button_make_up"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/ic_camera_effect_dark"
+            android:topLeftRadius="40dp" />
+        <com.cgfay.cameralibrary.widget.ShutterButton
+            android:id="@+id/button_take_photo"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:topLeftRadius="40dp" />
+        <Button
+            android:id="@+id/button_generate_info"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/ic_camera_record_done_dark"
+            android:topLeftRadius="40dp" />
+    </android.support.v7.widget.LinearLayoutCompat>
+</LinearLayout>

@@ -59,7 +59,7 @@ public final class FaceLandmark {
     public static int mouthLowerLipTop = 102;      // 下嘴唇上中心
     public static int mouthLowerLipBottom = 93;    // 下嘴唇下中心
 
-    // 下巴
+    // facecontour
     public static int chinLeft = 14;        // 下巴左边
     public static int chinRight = 18;       // 下巴右边
     public static int chinCenter = 16;      // 下巴中心

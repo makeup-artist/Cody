@@ -38,10 +38,10 @@
             android:id="@+id/layout_sticker_content"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp160"
-            android:orientation="vertical"
             android:layout_gravity="center_horizontal"
+            android:background="@color/effectEditBackground"
             android:gravity="top"
-            android:background="@color/effectEditBackground">
+            android:orientation="vertical">
 
         </LinearLayout>
     </LinearLayout>

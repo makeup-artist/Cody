@@ -318,7 +318,7 @@ __declspec(naked) void ScaleRowDown4_SSSE3(const uint8_t* src_ptr,
     // src_stride ignored
     mov        edx, [esp + 12]  // dst_ptr
     mov        ecx, [esp + 16]  // dst_width
-    pcmpeqb    xmm5, xmm5       // generate mask 0x00ff0000
+    pcmpeqb    xmm5, xmm5       // generate maskTexture 0x00ff0000
     psrld      xmm5, 24
     pslld      xmm5, 16
 
@@ -409,7 +409,7 @@ __declspec(naked) void ScaleRowDown4_AVX2(const uint8_t* src_ptr,
     // src_stride ignored
     mov         edx, [esp + 12]  // dst_ptr
     mov         ecx, [esp + 16]  // dst_width
-    vpcmpeqb    ymm5, ymm5, ymm5  // generate mask 0x00ff0000
+    vpcmpeqb    ymm5, ymm5, ymm5  // generate maskTexture 0x00ff0000
     vpsrld      ymm5, ymm5, 24
     vpslld      ymm5, ymm5, 16
 

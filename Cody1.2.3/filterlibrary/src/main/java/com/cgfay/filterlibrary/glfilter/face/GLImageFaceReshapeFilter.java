@@ -179,12 +179,12 @@ public class GLImageFaceReshapeFilter extends GLImageDrawElementsFilter implemen
         mReshapeIntensity[0]  = beauty.faceLift;                // 瘦脸
         mReshapeIntensity[1]  = beauty.faceShave;               // 削脸
         mReshapeIntensity[2]  = beauty.faceNarrow;              // 小脸
-        mReshapeIntensity[3]  = beauty.chinIntensity;           // 下巴
-        mReshapeIntensity[4]  = beauty.foreheadIntensity;       // 额头
+        mReshapeIntensity[3]  = beauty.chinIntensity;           // facecontour
+        mReshapeIntensity[4]  = beauty.foreheadIntensity;       // haircolor
         mReshapeIntensity[5]  = beauty.eyeEnlargeIntensity;     // 大眼
         mReshapeIntensity[6]  = beauty.eyeDistanceIntensity;    // 眼距
         mReshapeIntensity[7]  = beauty.eyeCornerIntensity;      // 眼角
-        mReshapeIntensity[8]  = beauty.noseThinIntensity;       // 瘦鼻
+        mReshapeIntensity[8]  = beauty.noseThinIntensity;       // nose
         mReshapeIntensity[9]  = beauty.alaeIntensity;           // 鼻翼
         mReshapeIntensity[10] = beauty.proboscisIntensity;      // 长鼻
         mReshapeIntensity[11] = beauty.mouthEnlargeIntensity;   // 嘴型
@@ -241,7 +241,7 @@ public class GLImageFaceReshapeFilter extends GLImageDrawElementsFilter implemen
             109, 121, 114,
             114, 109, 110,
             // 脸内部索引
-            // 额头
+            // haircolor
             0, 33, 109,
             109, 33, 34,
             34, 109, 35,

@@ -478,6 +478,9 @@ public class OpenGLUtils {
      * @param name
      * @return
      */
+    public static int createTextureFromAssets(Context context) {
+        return createTextureFromAssets(context, "texture/makeup_lips_mask.png");
+    }
     public static int createTextureFromAssets(Context context, String name) {
         int[] textureHandle = new int[1];
         GLES30.glGenTextures(1, textureHandle, 0);

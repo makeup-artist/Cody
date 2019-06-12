@@ -325,7 +325,7 @@ public final class LandmarkEngine {
     }
 
     /**
-     * 取得眼睛(眼影、眼线等)顶点坐标，可参考assets目录下的 眼睛遮罩标注.jpg
+     * 取得眼睛(eyeshadow、眼线等)顶点坐标，可参考assets目录下的 眼睛遮罩标注.jpg
      * @param vertexPoints
      * @param faceIndex
      */

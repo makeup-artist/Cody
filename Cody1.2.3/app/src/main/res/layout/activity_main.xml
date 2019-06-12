@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:clipChildren="false"
     tools:context=".MainActivity">
+
     <com.example.cody.views.NoScrollViewPager
         android:id="@+id/content_pager"
         android:layout_width="match_parent"

@@ -67,4 +67,9 @@ public final class MakeupVertices {
 
     };
 
+    public static float[] eyebrowMaskTextureVertices = new float[]{
+            //左眉毛
+            0.171429f,0.375000f
+            //右眉毛
+    };
 }

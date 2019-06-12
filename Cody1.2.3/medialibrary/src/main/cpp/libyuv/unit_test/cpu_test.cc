@@ -177,7 +177,7 @@ TEST_F(LibYUVBaseTest, TestSetCpuFlags) {
   SetCpuFlags(0);
   EXPECT_EQ(original_cpu_flags, TestCpuFlag(-1));
 
-  // Restore the CPU flag mask.
+  // Restore the CPU flag maskTexture.
   MaskCpuFlags(benchmark_cpu_info_);
 }
 

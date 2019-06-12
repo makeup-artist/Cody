@@ -12,6 +12,13 @@
         <item>关注</item>
         <item>教程</item>
     </string-array>
+<<<<<<< HEAD
     <string name="search_history">搜索历史</string>
     <string name="hot_search">热门搜索</string>
+=======
+
+    <string name="title_activity_texture">TextureActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+>>>>>>> 4125569ac7b82eef2d4a2da0fb29ac8569248a19
 </resources>

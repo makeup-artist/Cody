@@ -1,10 +1,8 @@
 package com.example.cody;
 
-import android.app.Activity;
-import android.app.Application;
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+<<<<<<< HEAD
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -34,31 +32,19 @@ import static com.example.cody.utils.Constants.URL_CHECKNAME;
 import static com.example.cody.utils.Constants.URL_CHECKNUMBER;
 import static com.example.cody.utils.Constants.URL_REGISTER;
 import static com.example.cody.utils.Constants.URL_SENDSMS;
+=======
+>>>>>>> 4125569ac7b82eef2d4a2da0fb29ac8569248a19
 
 /**
  * Created By cyz on 2019/5/22 17:54
  * e-mail：462065470@qq.com
  */
 public class RegisterActivity extends AppCompatActivity {
-    @BindView(R.id.username)
-    EditText musername;
-    @BindView(R.id.password)
-    EditText mpassword;
-    @BindView(R.id.number)
-    EditText mnumber;
-    @BindView(R.id.SMScode)
-    EditText mSMScode;
-    @BindView(R.id.SendSMS)
-    TextView mSendSMS;
-    String username;
-    String password;
-    String number;
-    String SMScode;
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_register);
+<<<<<<< HEAD
         ButterKnife.bind(this);
     }
 
@@ -211,5 +197,7 @@ break;
                 }
                 break;
         }
+=======
+>>>>>>> 4125569ac7b82eef2d4a2da0fb29ac8569248a19
     }
 }

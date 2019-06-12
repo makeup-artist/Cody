@@ -200,7 +200,7 @@
 #define ST_UH2(...) ST_H2(v8u16, __VA_ARGS__)
 
 // TODO(fbarchard): Consider using __msa_vshf_b and __msa_ilvr_b directly.
-/* Description : Shuffle byte vector elements as per mask vector
+/* Description : Shuffle byte vector elements as per maskTexture vector
    Arguments   : Inputs  - in0, in1, in2, in3, mask0, mask1
                  Outputs - out0, out1
                  Return Type - as per RTYPE

@@ -262,7 +262,7 @@ __declspec(naked) void J400ToARGBRow_SSE2(const uint8_t* src_y,
     mov        eax, [esp + 4]  // src_y
     mov        edx, [esp + 8]  // dst_argb
     mov        ecx, [esp + 12]  // width
-    pcmpeqb    xmm5, xmm5  // generate mask 0xff000000
+    pcmpeqb    xmm5, xmm5  // generate maskTexture 0xff000000
     pslld      xmm5, 24
 
   convertloop:
@@ -292,7 +292,7 @@ __declspec(naked) void J400ToARGBRow_AVX2(const uint8_t* src_y,
     mov         eax, [esp + 4]  // src_y
     mov         edx, [esp + 8]  // dst_argb
     mov         ecx, [esp + 12]  // width
-    vpcmpeqb    ymm5, ymm5, ymm5  // generate mask 0xff000000
+    vpcmpeqb    ymm5, ymm5, ymm5  // generate maskTexture 0xff000000
     vpslld      ymm5, ymm5, 24
 
   convertloop:
@@ -323,7 +323,7 @@ __declspec(naked) void RGB24ToARGBRow_SSSE3(const uint8_t* src_rgb24,
     mov       eax, [esp + 4]  // src_rgb24
     mov       edx, [esp + 8]  // dst_argb
     mov       ecx, [esp + 12]  // width
-    pcmpeqb   xmm5, xmm5  // generate mask 0xff000000
+    pcmpeqb   xmm5, xmm5  // generate maskTexture 0xff000000
     pslld     xmm5, 24
     movdqa    xmm4, xmmword ptr kShuffleMaskRGB24ToARGB
 
@@ -362,7 +362,7 @@ __declspec(naked) void RAWToARGBRow_SSSE3(const uint8_t* src_raw,
     mov       eax, [esp + 4]  // src_raw
     mov       edx, [esp + 8]  // dst_argb
     mov       ecx, [esp + 12]  // width
-    pcmpeqb   xmm5, xmm5  // generate mask 0xff000000
+    pcmpeqb   xmm5, xmm5  // generate maskTexture 0xff000000
     pslld     xmm5, 24
     movdqa    xmm4, xmmword ptr kShuffleMaskRAWToARGB
 
@@ -440,12 +440,12 @@ __declspec(naked) void RGB565ToARGBRow_SSE2(const uint8_t* src_rgb565,
     mov       eax, 0x20802080  // multiplier shift by 5 and then repeat 6 bits
     movd      xmm6, eax
     pshufd    xmm6, xmm6, 0
-    pcmpeqb   xmm3, xmm3  // generate mask 0xf800f800 for Red
+    pcmpeqb   xmm3, xmm3  // generate maskTexture 0xf800f800 for Red
     psllw     xmm3, 11
-    pcmpeqb   xmm4, xmm4  // generate mask 0x07e007e0 for Green
+    pcmpeqb   xmm4, xmm4  // generate maskTexture 0x07e007e0 for Green
     psllw     xmm4, 10
     psrlw     xmm4, 5
-    pcmpeqb   xmm7, xmm7  // generate mask 0xff00ff00 for Alpha
+    pcmpeqb   xmm7, xmm7  // generate maskTexture 0xff00ff00 for Alpha
     psllw     xmm7, 8
 
     mov       eax, [esp + 4]  // src_rgb565
@@ -496,12 +496,12 @@ __declspec(naked) void RGB565ToARGBRow_AVX2(const uint8_t* src_rgb565,
     mov        eax, 0x20802080  // multiplier shift by 5 and then repeat 6 bits
     vmovd      xmm6, eax
     vbroadcastss ymm6, xmm6
-    vpcmpeqb   ymm3, ymm3, ymm3  // generate mask 0xf800f800 for Red
+    vpcmpeqb   ymm3, ymm3, ymm3  // generate maskTexture 0xf800f800 for Red
     vpsllw     ymm3, ymm3, 11
-    vpcmpeqb   ymm4, ymm4, ymm4  // generate mask 0x07e007e0 for Green
+    vpcmpeqb   ymm4, ymm4, ymm4  // generate maskTexture 0x07e007e0 for Green
     vpsllw     ymm4, ymm4, 10
     vpsrlw     ymm4, ymm4, 5
-    vpcmpeqb   ymm7, ymm7, ymm7  // generate mask 0xff00ff00 for Alpha
+    vpcmpeqb   ymm7, ymm7, ymm7  // generate maskTexture 0xff00ff00 for Alpha
     vpsllw     ymm7, ymm7, 8
 
     mov        eax, [esp + 4]  // src_rgb565
@@ -547,10 +547,10 @@ __declspec(naked) void ARGB1555ToARGBRow_AVX2(const uint8_t* src_argb1555,
     mov        eax, 0x42004200  // multiplier shift by 6 and then repeat 5 bits
     vmovd      xmm6, eax
     vbroadcastss ymm6, xmm6
-    vpcmpeqb   ymm3, ymm3, ymm3  // generate mask 0xf800f800 for Red
+    vpcmpeqb   ymm3, ymm3, ymm3  // generate maskTexture 0xf800f800 for Red
     vpsllw     ymm3, ymm3, 11
-    vpsrlw     ymm4, ymm3, 6  // generate mask 0x03e003e0 for Green
-    vpcmpeqb   ymm7, ymm7, ymm7  // generate mask 0xff00ff00 for Alpha
+    vpsrlw     ymm4, ymm3, 6  // generate maskTexture 0x03e003e0 for Green
+    vpcmpeqb   ymm7, ymm7, ymm7  // generate maskTexture 0xff00ff00 for Alpha
     vpsllw     ymm7, ymm7, 8
 
     mov        eax,  [esp + 4]  // src_argb1555
@@ -593,7 +593,7 @@ __declspec(naked) void ARGB4444ToARGBRow_AVX2(const uint8_t* src_argb4444,
                                               uint8_t* dst_argb,
                                               int width) {
   __asm {
-    mov       eax,  0x0f0f0f0f  // generate mask 0x0f0f0f0f
+    mov       eax,  0x0f0f0f0f  // generate maskTexture 0x0f0f0f0f
     vmovd     xmm4, eax
     vbroadcastss ymm4, xmm4
     vpslld    ymm5, ymm4, 4  // 0xf0f0f0f0 for high nibbles
@@ -605,8 +605,8 @@ __declspec(naked) void ARGB4444ToARGBRow_AVX2(const uint8_t* src_argb4444,
 
  convertloop:
     vmovdqu    ymm0, [eax]  // fetch 16 pixels of bgra4444
-    vpand      ymm2, ymm0, ymm5  // mask high nibbles
-    vpand      ymm0, ymm0, ymm4  // mask low nibbles
+    vpand      ymm2, ymm0, ymm5  // maskTexture high nibbles
+    vpand      ymm0, ymm0, ymm4  // maskTexture low nibbles
     vpsrlw     ymm3, ymm2, 4
     vpsllw     ymm1, ymm0, 4
     vpor       ymm2, ymm2, ymm3
@@ -637,11 +637,11 @@ __declspec(naked) void ARGB1555ToARGBRow_SSE2(const uint8_t* src_argb1555,
     mov       eax, 0x42004200  // multiplier shift by 6 and then repeat 5 bits
     movd      xmm6, eax
     pshufd    xmm6, xmm6, 0
-    pcmpeqb   xmm3, xmm3  // generate mask 0xf800f800 for Red
+    pcmpeqb   xmm3, xmm3  // generate maskTexture 0xf800f800 for Red
     psllw     xmm3, 11
-    movdqa    xmm4, xmm3  // generate mask 0x03e003e0 for Green
+    movdqa    xmm4, xmm3  // generate maskTexture 0x03e003e0 for Green
     psrlw     xmm4, 6
-    pcmpeqb   xmm7, xmm7  // generate mask 0xff00ff00 for Alpha
+    pcmpeqb   xmm7, xmm7  // generate maskTexture 0xff00ff00 for Alpha
     psllw     xmm7, 8
 
     mov       eax, [esp + 4]  // src_argb1555
@@ -684,7 +684,7 @@ __declspec(naked) void ARGB4444ToARGBRow_SSE2(const uint8_t* src_argb4444,
                                               uint8_t* dst_argb,
                                               int width) {
   __asm {
-    mov       eax, 0x0f0f0f0f  // generate mask 0x0f0f0f0f
+    mov       eax, 0x0f0f0f0f  // generate maskTexture 0x0f0f0f0f
     movd      xmm4, eax
     pshufd    xmm4, xmm4, 0
     movdqa    xmm5, xmm4  // 0xf0f0f0f0 for high nibbles
@@ -698,8 +698,8 @@ __declspec(naked) void ARGB4444ToARGBRow_SSE2(const uint8_t* src_argb4444,
  convertloop:
     movdqu    xmm0, [eax]  // fetch 8 pixels of bgra4444
     movdqa    xmm2, xmm0
-    pand      xmm0, xmm4  // mask low nibbles
-    pand      xmm2, xmm5  // mask high nibbles
+    pand      xmm0, xmm4  // maskTexture low nibbles
+    pand      xmm2, xmm5  // maskTexture high nibbles
     movdqa    xmm1, xmm0
     movdqa    xmm3, xmm2
     psllw     xmm1, 4
@@ -803,12 +803,12 @@ __declspec(naked) void ARGBToRGB565Row_SSE2(const uint8_t* src_argb,
     mov       eax, [esp + 4]  // src_argb
     mov       edx, [esp + 8]  // dst_rgb
     mov       ecx, [esp + 12]  // width
-    pcmpeqb   xmm3, xmm3  // generate mask 0x0000001f
+    pcmpeqb   xmm3, xmm3  // generate maskTexture 0x0000001f
     psrld     xmm3, 27
-    pcmpeqb   xmm4, xmm4  // generate mask 0x000007e0
+    pcmpeqb   xmm4, xmm4  // generate maskTexture 0x000007e0
     psrld     xmm4, 26
     pslld     xmm4, 5
-    pcmpeqb   xmm5, xmm5  // generate mask 0xfffff800
+    pcmpeqb   xmm5, xmm5  // generate maskTexture 0xfffff800
     pslld     xmm5, 11
 
  convertloop:
@@ -848,12 +848,12 @@ __declspec(naked) void ARGBToRGB565DitherRow_SSE2(const uint8_t* src_argb,
     movdqa    xmm7, xmm6
     punpcklwd xmm6, xmm6
     punpckhwd xmm7, xmm7
-    pcmpeqb   xmm3, xmm3  // generate mask 0x0000001f
+    pcmpeqb   xmm3, xmm3  // generate maskTexture 0x0000001f
     psrld     xmm3, 27
-    pcmpeqb   xmm4, xmm4  // generate mask 0x000007e0
+    pcmpeqb   xmm4, xmm4  // generate maskTexture 0x000007e0
     psrld     xmm4, 26
     pslld     xmm4, 5
-    pcmpeqb   xmm5, xmm5  // generate mask 0xfffff800
+    pcmpeqb   xmm5, xmm5  // generate maskTexture 0xfffff800
     pslld     xmm5, 11
 
  convertloop:
@@ -893,12 +893,12 @@ __declspec(naked) void ARGBToRGB565DitherRow_AVX2(const uint8_t* src_argb,
     vpunpcklbw xmm6, xmm6, xmm6  // make dither 32 bytes
     vpermq     ymm6, ymm6, 0xd8
     vpunpcklwd ymm6, ymm6, ymm6
-    vpcmpeqb   ymm3, ymm3, ymm3  // generate mask 0x0000001f
+    vpcmpeqb   ymm3, ymm3, ymm3  // generate maskTexture 0x0000001f
     vpsrld     ymm3, ymm3, 27
-    vpcmpeqb   ymm4, ymm4, ymm4  // generate mask 0x000007e0
+    vpcmpeqb   ymm4, ymm4, ymm4  // generate maskTexture 0x000007e0
     vpsrld     ymm4, ymm4, 26
     vpslld     ymm4, ymm4, 5
-    vpslld     ymm5, ymm3, 11  // generate mask 0x0000f800
+    vpslld     ymm5, ymm3, 11  // generate maskTexture 0x0000f800
 
  convertloop:
     vmovdqu    ymm0, [eax]  // fetch 8 pixels of argb
@@ -932,13 +932,13 @@ __declspec(naked) void ARGBToARGB1555Row_SSE2(const uint8_t* src_argb,
     mov       eax, [esp + 4]  // src_argb
     mov       edx, [esp + 8]  // dst_rgb
     mov       ecx, [esp + 12]  // width
-    pcmpeqb   xmm4, xmm4  // generate mask 0x0000001f
+    pcmpeqb   xmm4, xmm4  // generate maskTexture 0x0000001f
     psrld     xmm4, 27
-    movdqa    xmm5, xmm4  // generate mask 0x000003e0
+    movdqa    xmm5, xmm4  // generate maskTexture 0x000003e0
     pslld     xmm5, 5
-    movdqa    xmm6, xmm4  // generate mask 0x00007c00
+    movdqa    xmm6, xmm4  // generate maskTexture 0x00007c00
     pslld     xmm6, 10
-    pcmpeqb   xmm7, xmm7  // generate mask 0xffff8000
+    pcmpeqb   xmm7, xmm7  // generate maskTexture 0xffff8000
     pslld     xmm7, 15
 
  convertloop:
@@ -974,9 +974,9 @@ __declspec(naked) void ARGBToARGB4444Row_SSE2(const uint8_t* src_argb,
     mov       eax, [esp + 4]  // src_argb
     mov       edx, [esp + 8]  // dst_rgb
     mov       ecx, [esp + 12]  // width
-    pcmpeqb   xmm4, xmm4  // generate mask 0xf000f000
+    pcmpeqb   xmm4, xmm4  // generate maskTexture 0xf000f000
     psllw     xmm4, 12
-    movdqa    xmm3, xmm4  // generate mask 0x00f000f0
+    movdqa    xmm3, xmm4  // generate maskTexture 0x00f000f0
     psrlw     xmm3, 8
 
  convertloop:
@@ -1005,12 +1005,12 @@ __declspec(naked) void ARGBToRGB565Row_AVX2(const uint8_t* src_argb,
     mov        eax, [esp + 4]  // src_argb
     mov        edx, [esp + 8]  // dst_rgb
     mov        ecx, [esp + 12]  // width
-    vpcmpeqb   ymm3, ymm3, ymm3  // generate mask 0x0000001f
+    vpcmpeqb   ymm3, ymm3, ymm3  // generate maskTexture 0x0000001f
     vpsrld     ymm3, ymm3, 27
-    vpcmpeqb   ymm4, ymm4, ymm4  // generate mask 0x000007e0
+    vpcmpeqb   ymm4, ymm4, ymm4  // generate maskTexture 0x000007e0
     vpsrld     ymm4, ymm4, 26
     vpslld     ymm4, ymm4, 5
-    vpslld     ymm5, ymm3, 11  // generate mask 0x0000f800
+    vpslld     ymm5, ymm3, 11  // generate maskTexture 0x0000f800
 
  convertloop:
     vmovdqu    ymm0, [eax]  // fetch 8 pixels of argb
@@ -1044,10 +1044,10 @@ __declspec(naked) void ARGBToARGB1555Row_AVX2(const uint8_t* src_argb,
     mov        edx, [esp + 8]  // dst_rgb
     mov        ecx, [esp + 12]  // width
     vpcmpeqb   ymm4, ymm4, ymm4
-    vpsrld     ymm4, ymm4, 27  // generate mask 0x0000001f
-    vpslld     ymm5, ymm4, 5  // generate mask 0x000003e0
-    vpslld     ymm6, ymm4, 10  // generate mask 0x00007c00
-    vpcmpeqb   ymm7, ymm7, ymm7  // generate mask 0xffff8000
+    vpsrld     ymm4, ymm4, 27  // generate maskTexture 0x0000001f
+    vpslld     ymm5, ymm4, 5  // generate maskTexture 0x000003e0
+    vpslld     ymm6, ymm4, 10  // generate maskTexture 0x00007c00
+    vpcmpeqb   ymm7, ymm7, ymm7  // generate maskTexture 0xffff8000
     vpslld     ymm7, ymm7, 15
 
  convertloop:
@@ -1084,9 +1084,9 @@ __declspec(naked) void ARGBToARGB4444Row_AVX2(const uint8_t* src_argb,
     mov        eax, [esp + 4]  // src_argb
     mov        edx, [esp + 8]  // dst_rgb
     mov        ecx, [esp + 12]  // width
-    vpcmpeqb   ymm4, ymm4, ymm4  // generate mask 0xf000f000
+    vpcmpeqb   ymm4, ymm4, ymm4  // generate maskTexture 0xf000f000
     vpsllw     ymm4, ymm4, 12
-    vpsrlw     ymm3, ymm4, 8  // generate mask 0x00f000f0
+    vpsrlw     ymm3, ymm4, 8  // generate maskTexture 0x00f000f0
 
  convertloop:
     vmovdqu    ymm0, [eax]  // fetch 8 pixels of argb
@@ -2643,12 +2643,12 @@ __declspec(naked) void I422ToRGB565Row_SSSE3(
     mov        ebx, [esp + 12 + 20]  // yuvconstants
     mov        ecx, [esp + 12 + 24]  // width
     sub        edi, esi
-    pcmpeqb    xmm5, xmm5  // generate mask 0x0000001f
+    pcmpeqb    xmm5, xmm5  // generate maskTexture 0x0000001f
     psrld      xmm5, 27
-    pcmpeqb    xmm6, xmm6  // generate mask 0x000007e0
+    pcmpeqb    xmm6, xmm6  // generate maskTexture 0x000007e0
     psrld      xmm6, 26
     pslld      xmm6, 5
-    pcmpeqb    xmm7, xmm7  // generate mask 0xfffff800
+    pcmpeqb    xmm7, xmm7  // generate maskTexture 0xfffff800
     pslld      xmm7, 11
 
  convertloop:
@@ -2910,7 +2910,7 @@ __declspec(naked) void I400ToARGBRow_SSE2(const uint8_t* y_buf,
     mov        eax, 0x04880488  // 0488 = 1160 = round(1.164 * 64 * 16)
     movd       xmm3, eax
     pshufd     xmm3, xmm3, 0
-    pcmpeqb    xmm4, xmm4  // generate mask 0xff000000
+    pcmpeqb    xmm4, xmm4  // generate maskTexture 0xff000000
     pslld      xmm4, 24
 
     mov        eax, [esp + 4]  // Y
@@ -2957,7 +2957,7 @@ __declspec(naked) void I400ToARGBRow_AVX2(const uint8_t* y_buf,
     mov        eax, 0x04880488  // 0488 = 1160 = round(1.164 * 64 * 16)
     vmovd      xmm3, eax
     vbroadcastss ymm3, xmm3
-    vpcmpeqb   ymm4, ymm4, ymm4  // generate mask 0xff000000
+    vpcmpeqb   ymm4, ymm4, ymm4  // generate maskTexture 0xff000000
     vpslld     ymm4, ymm4, 24
 
     mov        eax, [esp + 4]  // Y
@@ -3139,7 +3139,7 @@ __declspec(naked) void SplitUVRow_SSE2(const uint8_t* src_uv,
     mov        edx, [esp + 4 + 8]  // dst_u
     mov        edi, [esp + 4 + 12]  // dst_v
     mov        ecx, [esp + 4 + 16]  // width
-    pcmpeqb    xmm5, xmm5  // generate mask 0x00ff00ff
+    pcmpeqb    xmm5, xmm5  // generate maskTexture 0x00ff00ff
     psrlw      xmm5, 8
     sub        edi, edx
 
@@ -3179,7 +3179,7 @@ __declspec(naked) void SplitUVRow_AVX2(const uint8_t* src_uv,
     mov        edx, [esp + 4 + 8]  // dst_u
     mov        edi, [esp + 4 + 12]  // dst_v
     mov        ecx, [esp + 4 + 16]  // width
-    vpcmpeqb   ymm5, ymm5, ymm5  // generate mask 0x00ff00ff
+    vpcmpeqb   ymm5, ymm5, ymm5  // generate maskTexture 0x00ff00ff
     vpsrlw     ymm5, ymm5, 8
     sub        edi, edx
 
@@ -3365,9 +3365,9 @@ __declspec(naked) void ARGBCopyAlphaRow_SSE2(const uint8_t* src,
     mov        eax, [esp + 4]  // src
     mov        edx, [esp + 8]  // dst
     mov        ecx, [esp + 12]  // width
-    pcmpeqb    xmm0, xmm0  // generate mask 0xff000000
+    pcmpeqb    xmm0, xmm0  // generate maskTexture 0xff000000
     pslld      xmm0, 24
-    pcmpeqb    xmm1, xmm1  // generate mask 0x00ffffff
+    pcmpeqb    xmm1, xmm1  // generate maskTexture 0x00ffffff
     psrld      xmm1, 8
 
   convertloop:
@@ -3403,7 +3403,7 @@ __declspec(naked) void ARGBCopyAlphaRow_AVX2(const uint8_t* src,
     mov        edx, [esp + 8]  // dst
     mov        ecx, [esp + 12]  // width
     vpcmpeqb   ymm0, ymm0, ymm0
-    vpsrld     ymm0, ymm0, 8  // generate mask 0x00ffffff
+    vpsrld     ymm0, ymm0, 8  // generate maskTexture 0x00ffffff
 
   convertloop:
     vmovdqu    ymm1, [eax]
@@ -3496,9 +3496,9 @@ __declspec(naked) void ARGBCopyYToAlphaRow_SSE2(const uint8_t* src,
     mov        eax, [esp + 4]  // src
     mov        edx, [esp + 8]  // dst
     mov        ecx, [esp + 12]  // width
-    pcmpeqb    xmm0, xmm0  // generate mask 0xff000000
+    pcmpeqb    xmm0, xmm0  // generate maskTexture 0xff000000
     pslld      xmm0, 24
-    pcmpeqb    xmm1, xmm1  // generate mask 0x00ffffff
+    pcmpeqb    xmm1, xmm1  // generate maskTexture 0x00ffffff
     psrld      xmm1, 8
 
   convertloop:
@@ -3536,7 +3536,7 @@ __declspec(naked) void ARGBCopyYToAlphaRow_AVX2(const uint8_t* src,
     mov        edx, [esp + 8]  // dst
     mov        ecx, [esp + 12]  // width
     vpcmpeqb   ymm0, ymm0, ymm0
-    vpsrld     ymm0, ymm0, 8  // generate mask 0x00ffffff
+    vpsrld     ymm0, ymm0, 8  // generate maskTexture 0x00ffffff
 
   convertloop:
     vpmovzxbd  ymm1, qword ptr [eax]
@@ -3613,7 +3613,7 @@ __declspec(naked) void YUY2ToYRow_AVX2(const uint8_t* src_yuy2,
     mov        eax, [esp + 4]  // src_yuy2
     mov        edx, [esp + 8]  // dst_y
     mov        ecx, [esp + 12]  // width
-    vpcmpeqb   ymm5, ymm5, ymm5  // generate mask 0x00ff00ff
+    vpcmpeqb   ymm5, ymm5, ymm5  // generate maskTexture 0x00ff00ff
     vpsrlw     ymm5, ymm5, 8
 
   convertloop:
@@ -3646,7 +3646,7 @@ __declspec(naked) void YUY2ToUVRow_AVX2(const uint8_t* src_yuy2,
     mov        edx, [esp + 8 + 12]  // dst_u
     mov        edi, [esp + 8 + 16]  // dst_v
     mov        ecx, [esp + 8 + 20]  // width
-    vpcmpeqb   ymm5, ymm5, ymm5  // generate mask 0x00ff00ff
+    vpcmpeqb   ymm5, ymm5, ymm5  // generate maskTexture 0x00ff00ff
     vpsrlw     ymm5, ymm5, 8
     sub        edi, edx
 
@@ -3689,7 +3689,7 @@ __declspec(naked) void YUY2ToUV422Row_AVX2(const uint8_t* src_yuy2,
     mov        edx, [esp + 4 + 8]  // dst_u
     mov        edi, [esp + 4 + 12]  // dst_v
     mov        ecx, [esp + 4 + 16]  // width
-    vpcmpeqb   ymm5, ymm5, ymm5  // generate mask 0x00ff00ff
+    vpcmpeqb   ymm5, ymm5, ymm5  // generate maskTexture 0x00ff00ff
     vpsrlw     ymm5, ymm5, 8
     sub        edi, edx
 
@@ -3757,7 +3757,7 @@ __declspec(naked) void UYVYToUVRow_AVX2(const uint8_t* src_uyvy,
     mov        edx, [esp + 8 + 12]  // dst_u
     mov        edi, [esp + 8 + 16]  // dst_v
     mov        ecx, [esp + 8 + 20]  // width
-    vpcmpeqb   ymm5, ymm5, ymm5  // generate mask 0x00ff00ff
+    vpcmpeqb   ymm5, ymm5, ymm5  // generate maskTexture 0x00ff00ff
     vpsrlw     ymm5, ymm5, 8
     sub        edi, edx
 
@@ -3800,7 +3800,7 @@ __declspec(naked) void UYVYToUV422Row_AVX2(const uint8_t* src_uyvy,
     mov        edx, [esp + 4 + 8]  // dst_u
     mov        edi, [esp + 4 + 12]  // dst_v
     mov        ecx, [esp + 4 + 16]  // width
-    vpcmpeqb   ymm5, ymm5, ymm5  // generate mask 0x00ff00ff
+    vpcmpeqb   ymm5, ymm5, ymm5  // generate maskTexture 0x00ff00ff
     vpsrlw     ymm5, ymm5, 8
     sub        edi, edx
 
@@ -3839,7 +3839,7 @@ __declspec(naked) void YUY2ToYRow_SSE2(const uint8_t* src_yuy2,
     mov        eax, [esp + 4]  // src_yuy2
     mov        edx, [esp + 8]  // dst_y
     mov        ecx, [esp + 12]  // width
-    pcmpeqb    xmm5, xmm5  // generate mask 0x00ff00ff
+    pcmpeqb    xmm5, xmm5  // generate maskTexture 0x00ff00ff
     psrlw      xmm5, 8
 
   convertloop:
@@ -3870,7 +3870,7 @@ __declspec(naked) void YUY2ToUVRow_SSE2(const uint8_t* src_yuy2,
     mov        edx, [esp + 8 + 12]  // dst_u
     mov        edi, [esp + 8 + 16]  // dst_v
     mov        ecx, [esp + 8 + 20]  // width
-    pcmpeqb    xmm5, xmm5  // generate mask 0x00ff00ff
+    pcmpeqb    xmm5, xmm5  // generate maskTexture 0x00ff00ff
     psrlw      xmm5, 8
     sub        edi, edx
 
@@ -3912,7 +3912,7 @@ __declspec(naked) void YUY2ToUV422Row_SSE2(const uint8_t* src_yuy2,
     mov        edx, [esp + 4 + 8]  // dst_u
     mov        edi, [esp + 4 + 12]  // dst_v
     mov        ecx, [esp + 4 + 16]  // width
-    pcmpeqb    xmm5, xmm5  // generate mask 0x00ff00ff
+    pcmpeqb    xmm5, xmm5  // generate maskTexture 0x00ff00ff
     psrlw      xmm5, 8
     sub        edi, edx
 
@@ -3975,7 +3975,7 @@ __declspec(naked) void UYVYToUVRow_SSE2(const uint8_t* src_uyvy,
     mov        edx, [esp + 8 + 12]  // dst_u
     mov        edi, [esp + 8 + 16]  // dst_v
     mov        ecx, [esp + 8 + 20]  // width
-    pcmpeqb    xmm5, xmm5  // generate mask 0x00ff00ff
+    pcmpeqb    xmm5, xmm5  // generate maskTexture 0x00ff00ff
     psrlw      xmm5, 8
     sub        edi, edx
 
@@ -4017,7 +4017,7 @@ __declspec(naked) void UYVYToUV422Row_SSE2(const uint8_t* src_uyvy,
     mov        edx, [esp + 4 + 8]  // dst_u
     mov        edi, [esp + 4 + 12]  // dst_v
     mov        ecx, [esp + 4 + 16]  // width
-    pcmpeqb    xmm5, xmm5  // generate mask 0x00ff00ff
+    pcmpeqb    xmm5, xmm5  // generate maskTexture 0x00ff00ff
     psrlw      xmm5, 8
     sub        edi, edx
 
@@ -4059,7 +4059,7 @@ __declspec(naked) void BlendPlaneRow_SSSE3(const uint8_t* src0,
   __asm {
     push       esi
     push       edi
-    pcmpeqb    xmm5, xmm5  // generate mask 0xff00ff00
+    pcmpeqb    xmm5, xmm5  // generate maskTexture 0xff00ff00
     psllw      xmm5, 8
     mov        eax, 0x80808080  // 128 for biasing image to signed.
     movd       xmm6, eax
@@ -4116,7 +4116,7 @@ __declspec(naked) void BlendPlaneRow_AVX2(const uint8_t* src0,
   __asm {
     push        esi
     push        edi
-    vpcmpeqb    ymm5, ymm5, ymm5  // generate mask 0xff00ff00
+    vpcmpeqb    ymm5, ymm5, ymm5  // generate maskTexture 0xff00ff00
     vpsllw      ymm5, ymm5, 8
     mov         eax, 0x80808080  // 128 for biasing image to signed.
     vmovd       xmm6, eax
@@ -4184,11 +4184,11 @@ __declspec(naked) void ARGBBlendRow_SSSE3(const uint8_t* src_argb0,
     mov        ecx, [esp + 4 + 16]  // width
     pcmpeqb    xmm7, xmm7  // generate constant 0x0001
     psrlw      xmm7, 15
-    pcmpeqb    xmm6, xmm6  // generate mask 0x00ff00ff
+    pcmpeqb    xmm6, xmm6  // generate maskTexture 0x00ff00ff
     psrlw      xmm6, 8
-    pcmpeqb    xmm5, xmm5  // generate mask 0xff00ff00
+    pcmpeqb    xmm5, xmm5  // generate maskTexture 0xff00ff00
     psllw      xmm5, 8
-    pcmpeqb    xmm4, xmm4  // generate mask 0xff000000
+    pcmpeqb    xmm4, xmm4  // generate maskTexture 0xff000000
     pslld      xmm4, 24
     sub        ecx, 4
     jl         convertloop4b  // less than 4 pixels?
@@ -4270,7 +4270,7 @@ __declspec(naked) void ARGBAttenuateRow_SSSE3(const uint8_t* src_argb,
     mov        eax, [esp + 4]  // src_argb0
     mov        edx, [esp + 8]  // dst_argb
     mov        ecx, [esp + 12]  // width
-    pcmpeqb    xmm3, xmm3  // generate mask 0xff000000
+    pcmpeqb    xmm3, xmm3  // generate maskTexture 0xff000000
     pslld      xmm3, 24
     movdqa     xmm4, xmmword ptr kShuffleAlpha0
     movdqa     xmm5, xmmword ptr kShuffleAlpha1
@@ -4286,7 +4286,7 @@ __declspec(naked) void ARGBAttenuateRow_SSSE3(const uint8_t* src_argb,
     movdqu     xmm2, [eax]  // read 4 pixels
     punpckhbw  xmm2, xmm2  // next 2 pixel rgbs
     pmulhuw    xmm1, xmm2  // rgb * a
-    movdqu     xmm2, [eax]  // mask original alpha
+    movdqu     xmm2, [eax]  // maskTexture original alpha
     lea        eax, [eax + 16]
     pand       xmm2, xmm3
     psrlw      xmm0, 8
@@ -4317,7 +4317,7 @@ __declspec(naked) void ARGBAttenuateRow_AVX2(const uint8_t* src_argb,
     mov        ecx, [esp + 12]  // width
     sub        edx, eax
     vbroadcastf128 ymm4, xmmword ptr kShuffleAlpha_AVX2
-    vpcmpeqb   ymm5, ymm5, ymm5  // generate mask 0xff000000
+    vpcmpeqb   ymm5, ymm5, ymm5  // generate maskTexture 0xff000000
     vpslld     ymm5, ymm5, 24
 
  convertloop:
@@ -4414,7 +4414,7 @@ __declspec(naked) void ARGBUnattenuateRow_AVX2(const uint8_t* src_argb,
 
  convertloop:
     vmovdqu    ymm6, [eax]  // read 8 pixels.
-    vpcmpeqb   ymm5, ymm5, ymm5  // generate mask 0xffffffff for gather.
+    vpcmpeqb   ymm5, ymm5, ymm5  // generate maskTexture 0xffffffff for gather.
     vpsrld     ymm2, ymm6, 24  // alpha in low 8 bits.
     vpunpcklbw ymm0, ymm6, ymm6  // low 4 pixels. mutated.
     vpunpckhbw ymm1, ymm6, ymm6  // high 4 pixels. mutated.
@@ -4698,7 +4698,7 @@ __declspec(naked) void ARGBQuantizeRow_SSE2(uint8_t* dst_argb,
     pshuflw    xmm4, xmm4, 040h
     pshufd     xmm4, xmm4, 044h
     pxor       xmm5, xmm5  // constant 0
-    pcmpeqb    xmm6, xmm6  // generate mask 0xff000000
+    pcmpeqb    xmm6, xmm6  // generate maskTexture 0xff000000
     pslld      xmm6, 24
 
  convertloop:
@@ -4711,7 +4711,7 @@ __declspec(naked) void ARGBQuantizeRow_SSE2(uint8_t* dst_argb,
     pmullw     xmm0, xmm3  // * interval_size
     movdqu     xmm7, [eax]  // read 4 pixels
     pmullw     xmm1, xmm3
-    pand       xmm7, xmm6  // mask alpha
+    pand       xmm7, xmm6  // maskTexture alpha
     paddw      xmm0, xmm4  // + interval_size / 2
     paddw      xmm1, xmm4
     packuswb   xmm0, xmm1
@@ -6141,7 +6141,7 @@ __declspec(naked) void ARGBLumaColorTableRow_SSSE3(const uint8_t* src_argb,
     movd       xmm3, dword ptr [esp + 8 + 20]  // lumacoeff
     pshufd     xmm2, xmm2, 0
     pshufd     xmm3, xmm3, 0
-    pcmpeqb    xmm4, xmm4  // generate mask 0xff00ff00
+    pcmpeqb    xmm4, xmm4  // generate maskTexture 0xff00ff00
     psllw      xmm4, 8
     pxor       xmm5, xmm5
 
@@ -6150,7 +6150,7 @@ __declspec(naked) void ARGBLumaColorTableRow_SSSE3(const uint8_t* src_argb,
     movdqu     xmm0, xmmword ptr [eax]  // generate luma ptr
     pmaddubsw  xmm0, xmm3
     phaddw     xmm0, xmm0
-    pand       xmm0, xmm4  // mask out low bits
+    pand       xmm0, xmm4  // maskTexture out low bits
     punpcklwd  xmm0, xmm5
     paddd      xmm0, xmm2  // add table base
     movd       esi, xmm0

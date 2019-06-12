@@ -886,8 +886,8 @@ void ARGBToAR30Row_SSSE3(const uint8_t* src, uint8_t* dst, int width) {
   asm volatile(
       "movdqa     %3,%%xmm2                     \n"  // shuffler for RB
       "movd       %4,%%xmm3                     \n"  // multipler for RB
-      "movd       %5,%%xmm4                     \n"  // mask for R10 B10
-      "movd       %6,%%xmm5                     \n"  // mask for AG
+      "movd       %5,%%xmm4                     \n"  // maskTexture for R10 B10
+      "movd       %6,%%xmm5                     \n"  // maskTexture for AG
       "movd       %7,%%xmm6                     \n"  // multipler for AG
       "pshufd     $0x0,%%xmm3,%%xmm3            \n"
       "pshufd     $0x0,%%xmm4,%%xmm4            \n"
@@ -925,8 +925,8 @@ void ABGRToAR30Row_SSSE3(const uint8_t* src, uint8_t* dst, int width) {
   asm volatile(
       "movdqa     %3,%%xmm2                     \n"  // shuffler for RB
       "movd       %4,%%xmm3                     \n"  // multipler for RB
-      "movd       %5,%%xmm4                     \n"  // mask for R10 B10
-      "movd       %6,%%xmm5                     \n"  // mask for AG
+      "movd       %5,%%xmm4                     \n"  // maskTexture for R10 B10
+      "movd       %6,%%xmm5                     \n"  // maskTexture for AG
       "movd       %7,%%xmm6                     \n"  // multipler for AG
       "pshufd     $0x0,%%xmm3,%%xmm3            \n"
       "pshufd     $0x0,%%xmm4,%%xmm4            \n"
@@ -965,8 +965,8 @@ void ARGBToAR30Row_AVX2(const uint8_t* src, uint8_t* dst, int width) {
   asm volatile(
       "vbroadcastf128 %3,%%ymm2                  \n"  // shuffler for RB
       "vbroadcastss  %4,%%ymm3                   \n"  // multipler for RB
-      "vbroadcastss  %5,%%ymm4                   \n"  // mask for R10 B10
-      "vbroadcastss  %6,%%ymm5                   \n"  // mask for AG
+      "vbroadcastss  %5,%%ymm4                   \n"  // maskTexture for R10 B10
+      "vbroadcastss  %6,%%ymm5                   \n"  // maskTexture for AG
       "vbroadcastss  %7,%%ymm6                   \n"  // multipler for AG
       "sub        %0,%1                          \n"
 
@@ -1002,8 +1002,8 @@ void ABGRToAR30Row_AVX2(const uint8_t* src, uint8_t* dst, int width) {
   asm volatile(
       "vbroadcastf128 %3,%%ymm2                  \n"  // shuffler for RB
       "vbroadcastss  %4,%%ymm3                   \n"  // multipler for RB
-      "vbroadcastss  %5,%%ymm4                   \n"  // mask for R10 B10
-      "vbroadcastss  %6,%%ymm5                   \n"  // mask for AG
+      "vbroadcastss  %5,%%ymm4                   \n"  // maskTexture for R10 B10
+      "vbroadcastss  %6,%%ymm5                   \n"  // maskTexture for AG
       "vbroadcastss  %7,%%ymm6                   \n"  // multipler for AG
       "sub        %0,%1                          \n"
 

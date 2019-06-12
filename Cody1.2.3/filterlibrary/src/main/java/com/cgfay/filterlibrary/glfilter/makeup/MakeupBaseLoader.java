@@ -31,7 +31,7 @@ public abstract class MakeupBaseLoader {
     // 美妆强度
     protected float mStrength;
     // 美妆处理类型，跟 fragment_makeup.glsl中的保持一致
-    // 0表示绘制原图，1表示直接绘制美妆素材，2表示利用遮罩裁剪(美瞳)，3表示唇彩
+    // 0表示绘制原图，1表示直接绘制美妆素材，2表示利用遮罩裁剪(eyebeauty)，3表示唇彩
     protected int mMakeupType;
     // 彩妆数据
     protected MakeupBaseData mMakeupData;
@@ -81,13 +81,13 @@ public abstract class MakeupBaseLoader {
                 // 这几个没有遮罩的
                 case SHADOW:    // 阴影
                 case BLUSH:     // 腮红
-                case EYEBROW:   // 眉毛
+                case EYEBROW:   // eyebrow
                     mMakeupType = 1;
                     mMaskTexture = OpenGLUtils.GL_NOT_TEXTURE;
                     break;
 
                 // 使用眼睛的遮罩
-                case PUPIL: // 美瞳，美瞳部分需要做裁剪
+                case PUPIL: // eyebeauty，美瞳部分需要做裁剪
                     mMakeupType = 2;
                     if (mMaskTexture == OpenGLUtils.GL_NOT_TEXTURE) {
                         mMaskTexture = OpenGLUtils.createTextureFromAssets(context, "texture/makeup_eye_mask.png");
@@ -95,8 +95,8 @@ public abstract class MakeupBaseLoader {
                     break;
 
                 // 使用眼睛的遮罩
-                case EYESHADOW: // 眼影
-                case EYELINER:  // 眼线
+                case EYESHADOW: // eyeshadow
+                case EYELINER:  // eye
                 case EYELASH:   // 睫毛
                 case EYELID:    // 眼皮
                     mMakeupType = 1;

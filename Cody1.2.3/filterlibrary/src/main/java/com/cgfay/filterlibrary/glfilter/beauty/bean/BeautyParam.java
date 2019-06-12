@@ -14,11 +14,11 @@ public class BeautyParam {
     public float faceShave;
     // 小脸 0.0 ~ 1.0f
     public float faceNarrow;
-    // 下巴-1.0f ~ 1.0f
+    // facecontour-1.0f ~ 1.0f
     public float chinIntensity;
     // 法令纹 0.0 ~ 1.0f
     public float nasolabialFoldsIntensity;
-    // 额头 -1.0f ~ 1.0f
+    // haircolor -1.0f ~ 1.0f
     public float foreheadIntensity;
     // 大眼 0.0f ~ 1.0f
     public float eyeEnlargeIntensity;
@@ -32,7 +32,7 @@ public class BeautyParam {
     public float eyeBagsIntensity;
     // 亮眼 0.0 ~ 1.0f
     public float eyeBrightIntensity;
-    // 瘦鼻 0.0 ~ 1.0f
+    // nose 0.0 ~ 1.0f
     public float noseThinIntensity;
     // 鼻翼 0.0 ~ 1.0f
     public float alaeIntensity;
