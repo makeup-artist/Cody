@@ -3,9 +3,10 @@ package com.example.cody;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
-<<<<<<< HEAD
 import android.widget.Toast;
 
 import com.example.cody.entity.MsgBean;
@@ -24,24 +25,20 @@ import org.greenrobot.eventbus.EventBus;
 
 import java.util.HashMap;
 import java.util.Map;
-=======
->>>>>>> 4125569ac7b82eef2d4a2da0fb29ac8569248a19
+
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-<<<<<<< HEAD
 import static com.example.cody.utils.Constants.URL_LOGIN;
 
-=======
->>>>>>> 4125569ac7b82eef2d4a2da0fb29ac8569248a19
+
 public class LoginActivity extends AppCompatActivity {
     @BindView(R.id.ignore_psd)
     TextView mignorePsd;
     @BindView(R.id.register)
     TextView register;
-<<<<<<< HEAD
     @BindView(R.id.login)
     TextView login;
     @BindView(R.id.username)
@@ -51,8 +48,7 @@ public class LoginActivity extends AppCompatActivity {
     String username;
     String password;
     private SharedPreferencesUtil sp;
-=======
->>>>>>> 4125569ac7b82eef2d4a2da0fb29ac8569248a19
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,20 +59,18 @@ public class LoginActivity extends AppCompatActivity {
         sp = SharedPreferencesUtil.getInstance(getApplicationContext());
     }
 
-    @OnClick({R.id.ignore_psd, R.id.register})
+    @OnClick({R.id.ignore_psd, R.id.register,R.id.login})
     public void onViewClicked(View view) {
-<<<<<<< HEAD
+
         password = mpassword.getText().toString();
         username = musername.getText().toString();
         HashMap params = new HashMap();
-=======
->>>>>>> 4125569ac7b82eef2d4a2da0fb29ac8569248a19
+
         switch (view.getId()) {
             case R.id.ignore_psd:
                 startActivity(new Intent(this, LoginphoneActivity.class));
                 break;
             case R.id.register:
-<<<<<<< HEAD
                 startActivity(new Intent(this, RegisterActivity.class));
                 break;
             case R.id.login:
@@ -106,9 +100,7 @@ public class LoginActivity extends AppCompatActivity {
                                 Toast.makeText(MyApplication.getContext(), "网络请求错误了QAQ", Toast.LENGTH_SHORT).show();
                             }
                         })));
-=======
         startActivity(new Intent(this, RegisterActivity.class));
->>>>>>> 4125569ac7b82eef2d4a2da0fb29ac8569248a19
                 break;
         }
     }

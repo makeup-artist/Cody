@@ -111,7 +111,7 @@ public class ChangedNumberActivity extends AppCompatActivity {
                     params.put("code",SMScode);
                     harams.put("Authorization",token);
                     CommonOkHttpClient
-                            .sendRequest(CommonRequest.createPutRequest(URL_ALTERMOBILE, new RequestParams(params),new HeaderParams(harams)), new CommonJsonCallback(new DisposeDataHandle(UsermainBean.class, new DisposeDataListener() {
+                            .sendRequest(CommonRequest.createPutRequest(URL_ALTERMOBILE, params,new HeaderParams(harams)), new CommonJsonCallback(new DisposeDataHandle(UsermainBean.class, new DisposeDataListener() {
                                 @Override
                                 public void onSuccess(Object responseObj) {
                                     UsermainBean testBean = (UsermainBean) responseObj;

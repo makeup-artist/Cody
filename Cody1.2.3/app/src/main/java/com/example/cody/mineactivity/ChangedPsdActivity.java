@@ -70,7 +70,7 @@ public class ChangedPsdActivity extends AppCompatActivity {
             params.put("oldPassword",oldpsd);
             params.put("username",username);
             CommonOkHttpClient
-                    .sendRequest(CommonRequest.createPutRequest(URL_ALTERPSD, new RequestParams(params)), new CommonJsonCallback(new DisposeDataHandle(UsermainBean.class, new DisposeDataListener() {
+                    .sendRequest(CommonRequest.createPutRequest(URL_ALTERPSD,  params), new CommonJsonCallback(new DisposeDataHandle(UsermainBean.class, new DisposeDataListener() {
                         @Override
                         public void onSuccess(Object responseObj) {
                             UsermainBean testBean = (UsermainBean) responseObj;

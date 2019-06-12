@@ -2,7 +2,6 @@ package com.example.cody;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-<<<<<<< HEAD
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -17,7 +16,6 @@ import com.example.cody.net.request.CommonRequest;
 import com.example.cody.net.request.RequestParams;
 import com.example.cody.net.response.CommonJsonCallback;
 import com.example.cody.utils.RegularVerification;
-import com.google.gson.JsonObject;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -27,46 +25,59 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnFocusChange;
 
-import static com.example.cody.net.CommonOkHttpClient.sendRequest;
 import static com.example.cody.utils.Constants.URL_CHECKNAME;
 import static com.example.cody.utils.Constants.URL_CHECKNUMBER;
 import static com.example.cody.utils.Constants.URL_REGISTER;
 import static com.example.cody.utils.Constants.URL_SENDSMS;
-=======
->>>>>>> 4125569ac7b82eef2d4a2da0fb29ac8569248a19
 
 /**
  * Created By cyz on 2019/5/22 17:54
  * e-mail：462065470@qq.com
  */
 public class RegisterActivity extends AppCompatActivity {
+    @BindView(R.id.mobile)
+    EditText mnumber;
+    @BindView(R.id.username)
+    EditText musername;
+    String username;
+    String number;
+    String password;
+    String SMScode;
+
+    @BindView(R.id.password)
+    EditText mpassword;
+    @BindView(R.id.SMScode)
+    EditText mSMScode;
+    @BindView(R.id.SendSMS)
+    TextView mSendSMS;
+
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_register);
-<<<<<<< HEAD
         ButterKnife.bind(this);
     }
 
-     private boolean checkUserNumber(){
-         boolean isPass = true;
-         number = mnumber.getText().toString();
+    private boolean checkUserNumber() {
+        boolean isPass = true;
+        number = mnumber.getText().toString();
 
-         if (number.isEmpty() ||!RegularVerification.isMobile(number)) {
-             mnumber.setError("请输入正确的手机号码");
-             isPass = false;
-         }
+        if (number.isEmpty() || !RegularVerification.isMobile(number)) {
+            mnumber.setError("请输入正确的手机号码");
+            isPass = false;
+        }
 
-         return isPass;
-     }
+        return isPass;
+    }
 
-    private boolean checkUserInfo(){
+    private boolean checkUserInfo() {
         boolean isPass = true;
         username = musername.getText().toString();
         number = mnumber.getText().toString();
         password = mpassword.getText().toString();
         SMScode = mSMScode.getText().toString();
-        if (number.isEmpty() ||!RegularVerification.isMobile(number)) {
+        if (number.isEmpty() || !RegularVerification.isMobile(number)) {
             mnumber.setError("请输入正确的手机号码");
             isPass = false;
         }
@@ -81,22 +92,22 @@ public class RegisterActivity extends AppCompatActivity {
         return isPass;
     }
 
-    @OnFocusChange({R.id.username,R.id.number})
-    public  void onFocusChange(View view, boolean hasFocus) {
+    @OnFocusChange({R.id.username, R.id.mobile})
+    public void onFocusChange(View view, boolean hasFocus) {
         username = musername.getText().toString();
         number = mnumber.getText().toString();
         Map params = new HashMap();
-        if (!hasFocus){
+        if (!hasFocus) {
             switch (view.getId()) {
                 case R.id.number:
-                    params.put("mobile",number);
+                    params.put("mobile", number);
                     CommonOkHttpClient
                             .sendRequest(CommonRequest.createGetRequest(URL_CHECKNUMBER, new RequestParams(params)), new CommonJsonCallback(new DisposeDataHandle(MsgBean.class, new DisposeDataListener() {
                                 @Override
                                 public void onSuccess(Object responseObj) {
                                     MsgBean testBean = (MsgBean) responseObj;
                                     Log.i("RegitserActivity", "onSuccess: " + testBean.getMsg());
-                                    if(!testBean.getMsg().equals("手机号可用")){
+                                    if (!testBean.getMsg().equals("手机号可用")) {
                                         mnumber.setError("手机号不可用");
                                     }
 
@@ -108,9 +119,9 @@ public class RegisterActivity extends AppCompatActivity {
                                     Toast.makeText(MyApplication.getContext(), "网络请求错误了QAQ", Toast.LENGTH_SHORT).show();
                                 }
                             })));
-break;
-                case R.id.username :
-                    params.put("username",username );
+                    break;
+                case R.id.username:
+                    params.put("username", username);
                     CommonOkHttpClient
                             .sendRequest(CommonRequest.createGetRequest(URL_CHECKNAME, new RequestParams(params)), new CommonJsonCallback(new DisposeDataHandle(MsgBean.class, new DisposeDataListener() {
                                 @Override
@@ -118,7 +129,7 @@ break;
                                     MsgBean testBean = (MsgBean) responseObj;
 
                                     Log.i("RegitserActivity", "onSuccess: " + testBean.getMsg());
-                                    if(!testBean.getMsg().equals("用户名可用")){
+                                    if (!testBean.getMsg().equals("用户名可用")) {
                                         musername.setError("用户名不可用或已注册");
                                     }
 
@@ -138,7 +149,7 @@ break;
     }
 
 
-    @OnClick({R.id.SendSMS,R.id.register})
+    @OnClick({R.id.SendSMS, R.id.register})
     public void onViewClicked(View view) {
         username = musername.getText().toString();
         number = mnumber.getText().toString();
@@ -148,16 +159,16 @@ break;
         switch (view.getId()) {
             case R.id.SendSMS:
                 if (checkUserNumber()) {
-params.put("mobile",number);
+                    params.put("mobile", number);
                     CommonOkHttpClient
                             .sendRequest(CommonRequest.createGetRequest(URL_SENDSMS, new RequestParams(params)), new CommonJsonCallback(new DisposeDataHandle(MsgBean.class, new DisposeDataListener() {
                                 @Override
                                 public void onSuccess(Object responseObj) {
                                     MsgBean testBean = (MsgBean) responseObj;
-                                    Log.i("RegitserActivity", "onSuccess: "+testBean.getCode());
-                                    if(testBean.getCode()==200){
+                                    Log.i("RegitserActivity", "onSuccess: " + testBean.getCode());
+                                    if (testBean.getCode() == 200) {
                                         Toast.makeText(MyApplication.getContext(), "验证码已成功发送", Toast.LENGTH_SHORT).show();
-                                    }else{
+                                    } else {
                                         Toast.makeText(MyApplication.getContext(), "发送失败", Toast.LENGTH_SHORT).show();
                                     }
                                 }
@@ -170,24 +181,25 @@ params.put("mobile",number);
                                 }
                             })));
                 }
-break;
+                break;
             case R.id.register:
                 if (checkUserInfo()) {
-                    params.put("mobile",number);
-                    params.put("password",password);
-                    params.put("code",SMScode);
-                    params.put("username",username);
+                    params.put("mobile", number);
+                    params.put("password", password);
+                    params.put("code", SMScode);
+                    params.put("username", username);
                     CommonOkHttpClient
-                            .sendRequest(CommonRequest.createPostRequest(URL_REGISTER, params), new CommonJsonCallback(new DisposeDataHandle( new DisposeDataListener() {
+                            .sendRequest(CommonRequest.createPostRequest(URL_REGISTER, params), new CommonJsonCallback(new DisposeDataHandle(new DisposeDataListener() {
                                 @Override
                                 public void onSuccess(Object responseObj) {
                                     MsgBean testBean = (MsgBean) responseObj;
-                                    Log.i("RegitserActivity", "onSuccess: "+testBean.getCode()+ testBean.getMsg());
-                                    if(testBean.getCode()==200){
+                                    Log.i("RegitserActivity", "onSuccess: " + testBean.getCode() + testBean.getMsg());
+                                    if (testBean.getCode() == 200) {
                                         Toast.makeText(MyApplication.getContext(), "注册成功", Toast.LENGTH_SHORT).show();
                                         finish();
                                     }
                                 }
+
                                 @Override
                                 public void onFailure(Object reasonObj) {
                                     Log.i("RegitserActivity", "onSuccess: " + reasonObj.toString());
@@ -197,7 +209,6 @@ break;
                 }
                 break;
         }
-=======
->>>>>>> 4125569ac7b82eef2d4a2da0fb29ac8569248a19
+
     }
 }

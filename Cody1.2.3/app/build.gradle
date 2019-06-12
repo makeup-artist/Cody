@@ -48,7 +48,6 @@ dependencies {
     implementation 'com.github.hackware1993:MagicIndicator:1.5.0'
     implementation 'com.github.bumptech.glide:glide:4.7.1'
     implementation 'com.android.support:recyclerview-v7:28.0.0'
-<<<<<<< HEAD
     implementation 'com.android.support:design:28.0.0'//flaotingbutton
     implementation 'com.github.chinalwb:are:0.1.5'//富文本
     implementation 'com.android.support:recyclerview-v7:28.0.0' //recyclerview
@@ -58,7 +57,6 @@ dependencies {
     implementation 'com.hyman:flowlayout-lib:1.1.2'//流式布局的tag
     implementation 'com.github.goweii:ActionBarEx:2.2.9'//actionbar
     implementation group: 'com.google.guava', name: 'guava', version: '23.5-android'
-=======
     implementation 'com.android.support:design:28.0.0'
     //flaotingbutton
     implementation 'com.github.chinalwb:are:0.1.5'
@@ -67,7 +65,6 @@ dependencies {
     //recyclerview
     implementation 'de.hdodenhof:circleimageview:3.0.0'
     // 圆图片
->>>>>>> 4125569ac7b82eef2d4a2da0fb29ac8569248a19
     implementation files('src/libs/lib-facepp_api.jar')
     implementation project(':facedetectlibrary')
     implementation project(':filterlibrary')
@@ -80,14 +77,12 @@ dependencies {
     implementation project(':videolibrary')
     implementation project(':cameralibrary')
     implementation project(':mainlibrary')
-    implementation files('src/libs/gson-2.8.5.jar')
+//    implementation files('src/libs/gson-2.8.5.jar')
 }
 
 repositories {
     flatDir { dirs 'libs' }
-<<<<<<< HEAD
     mavenCentral()
 }
-=======
-}
->>>>>>> 4125569ac7b82eef2d4a2da0fb29ac8569248a19
+
+

@@ -10,12 +10,8 @@
     <color name="black">#000000</color>
     <color name="login_gray">#19000000</color>
     <color name="gray">#ffb6b6b6</color>
-<<<<<<< HEAD
     <color name="translucent_half_white">#ccffffff</color>
     <color name="colorBlack">#000000</color>
-=======
-
     <color name="black_overlay">#66000000</color>
->>>>>>> 4125569ac7b82eef2d4a2da0fb29ac8569248a19
 </resources>
 

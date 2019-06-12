@@ -35,9 +35,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".makeUpActivity"
-<<<<<<< HEAD
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"></activity>
+            android:name=".makeUpActivity"></activity>
         <activity android:name=".RegisterActivity"></activity>
         <activity android:name=".StartActivity"></activity>
         <activity android:name=".TextViewActivity"></activity>
@@ -57,26 +55,11 @@
         <activity android:name=".mineactivity.ChangedNumberActivity"></activity>
         <activity android:name=".SearchActivity"></activity>
         <activity android:name=".RichEditorActivity"></activity>
-=======
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
-        <activity android:name=".StartActivity" />
+        <activity android:name=".textureActivity" />
         <activity
             android:name=".FaceInfoActivity"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
-        <activity android:name=".TextViewActivity" />
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".textureActivity" />
-        <activity android:name=".mineactivity.SettingActivity" />
-        <activity android:name=".mineactivity.ProfileActivity" />
-        <activity android:name=".mineactivity.ViewActivity" />
-        <activity android:name=".mineactivity.NotificationActivity" />
-        <activity android:name=".mineactivity.HeartActivity" />
-        <activity android:name=".mineactivity.LikedActivity" />
-        <activity android:name=".mineactivity.FeedbackActivity" />
-        <activity android:name=".mineactivity.CollectionActivity" />
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".SearchActivity" />
->>>>>>> 4125569ac7b82eef2d4a2da0fb29ac8569248a19
+             />
+
     </application>
 
 </manifest>
