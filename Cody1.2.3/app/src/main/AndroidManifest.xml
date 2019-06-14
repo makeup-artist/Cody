@@ -35,7 +35,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".makeUpActivity"></activity>
+            android:name=".makeUpActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"></activity>
         <activity android:name=".RegisterActivity"></activity>
         <activity android:name=".StartActivity"></activity>
         <activity android:name=".TextViewActivity"></activity>
@@ -56,9 +57,8 @@
         <activity android:name=".SearchActivity"></activity>
         <activity android:name=".RichEditorActivity"></activity>
         <activity android:name=".textureActivity" />
-        <activity
-            android:name=".FaceInfoActivity"
-             />
+        <activity android:name=".FaceInfoActivity"
+                   android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
 
     </application>
 
