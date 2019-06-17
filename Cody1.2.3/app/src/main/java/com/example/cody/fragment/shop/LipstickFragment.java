@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.FrameLayout;
 
 import com.example.cody.R;
@@ -17,7 +18,7 @@ import butterknife.Unbinder;
 
 public class LipstickFragment extends BaseShopFragment {
 
-    private String url = "https://m.jd.com/";
+    private String url = "https://so.m.jd.com/ware/search.action?keyword=口红";
     Unbinder unbinder;
     @BindView(R.id.webview_layout)
     WebView webviewLayout;
@@ -28,6 +29,8 @@ public class LipstickFragment extends BaseShopFragment {
         View rootview = layoutInflater.inflate(R.layout.fragment_shop_lipstick, container, false);
         unbinder = ButterKnife.bind(this, rootview);
         WebSettings webSetting = webviewLayout.getSettings();
+        webSetting.setJavaScriptEnabled(true);
+        webviewLayout.setWebViewClient(new WebViewClient());
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             webSetting.setMixedContentMode(WebSettings.MIXED_CONTENT_COMPATIBILITY_MODE);
         }

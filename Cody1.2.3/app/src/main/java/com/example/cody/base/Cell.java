@@ -1,4 +1,4 @@
-package com.rdc.bms.easy_rv_adapter.base;
+package com.example.cody.base;
 
 import android.view.ViewGroup;
 

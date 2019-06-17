@@ -1,4 +1,4 @@
-package com.rdc.bms.easy_rv_adapter.base;
+package com.example.cody.base;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -47,7 +47,7 @@ public class BaseRvViewHolder extends RecyclerView.ViewHolder {
         return retrieveView(resId);
     }
 
-    public void setText(int resId,CharSequence text){
+    public void setText(int resId, CharSequence text){
         getTextView(resId).setText(text);
     }
 

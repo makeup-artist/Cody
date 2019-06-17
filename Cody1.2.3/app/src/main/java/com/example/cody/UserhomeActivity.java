@@ -10,7 +10,6 @@ import android.support.v7.app.AppCompatActivity;
 public class UserhomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().hide();
         setContentView(R.layout.activity_userhome);
     }
 

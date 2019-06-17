@@ -54,7 +54,9 @@
         <activity android:name=".mineactivity.ChangedNumberActivity" android:launchMode="singleTop"></activity>
         <activity android:name=".SearchActivity"></activity>
         <activity android:name=".RichEditorActivity"></activity>
-        <activity android:name=""></activity>
+        <activity  android:theme="@style/AppThemeLight" android:name=".mineactivity.EditProfileActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name=".mineactivity.FollowerActivity"></activity>
+        <activity android:name=".mineactivity.FolloweeActivity"></activity>
         <activity android:name=".textureActivity" />
         <activity android:name=".ShowImageActivity"
             android:theme="@style/transparent" />

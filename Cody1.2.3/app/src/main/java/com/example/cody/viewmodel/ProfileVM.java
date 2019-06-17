@@ -4,12 +4,18 @@ import android.content.Context;
 import android.content.Intent;
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
+import android.databinding.BindingAdapter;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.cody.BR;
 import com.example.cody.LoginActivity;
 import com.example.cody.R;
+import com.example.cody.ShowImageActivity;
 import com.example.cody.entity.UserLoginBean.User;
 import com.example.cody.mineactivity.CollectionActivity;
 import com.example.cody.mineactivity.FeedbackActivity;
@@ -19,7 +25,10 @@ import com.example.cody.mineactivity.NotificationActivity;
 import com.example.cody.mineactivity.ProfileActivity;
 import com.example.cody.mineactivity.SettingActivity;
 import com.example.cody.mineactivity.ViewActivity;
+import com.example.cody.utils.EventMessage;
 import com.example.cody.utils.SharedPreferencesUtil;
+
+import org.greenrobot.eventbus.EventBus;
 
 public class ProfileVM extends BaseObservable {
 
@@ -41,10 +50,24 @@ public  ProfileVM(){
 
 }
 
+
     public ProfileVM(User user, Context context) {
         this.user = user;
         sp = SharedPreferencesUtil.getInstance(context);
     }
+
+    @BindingAdapter({"imageUrl"})
+    public static void loadimage(ImageView View, String url){
+        Log.e("TAG",url+"   -走到这里了");
+        if(url!=null){
+            RequestOptions requestOptions = new RequestOptions();
+            requestOptions.placeholder(R.drawable.g_default_avatar);
+            Glide.with(View.getContext()).load("https://"+url).apply(requestOptions).into(View);
+        }else{
+            Glide.with(View.getContext()).load(R.drawable.g_default_avatar).into(View);
+        }
+    }
+
 
     public void toGo(View view) {
 

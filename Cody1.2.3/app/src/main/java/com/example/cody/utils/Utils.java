@@ -1,4 +1,4 @@
-package com.rdc.bms.easy_rv_adapter;
+package com.example.cody.utils;
 
 import android.content.Context;
 

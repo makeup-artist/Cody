@@ -1,12 +1,44 @@
 <resources>
+    <attr name="themeContentBackgroundColor" format="reference|color">
+    </attr>
+    <attr name="themeTextColor1" format="reference|color">
+    </attr>
+    <attr name="themeTextColor2" format="reference|color">
+    </attr>
+    <attr name="themeTextColor3" format="reference|color">
+    </attr>
+    <attr name="themeToolbarTextColor" format="reference|color">
+    </attr>
+    <attr name="themeWhiteBackgroundColor" format="reference|color">
+    </attr>
+    <attr name="themeDividerColor" format="reference|color">
+    </attr>
+    <attr name="themeLinkColor" format="reference|color">
+    </attr>
+    <attr name="themeMidWhiteBackgroundColor" format="reference|color">
+    </attr>
 
-    <!-- Declare custom theme attributes that allow changing which styles are
-         used for button bars depending on the API level.
-         ?android:attr/buttonBarStyle is new as of API 11 so this is
-         necessary to support previous API levels. -->
-    <declare-styleable name="ButtonBarContainerTheme">
-        <attr name="metaButtonBarStyle" format="reference" />
-        <attr name="metaButtonBarButtonStyle" format="reference" />
-    </declare-styleable>
+    <attr name="md_btn_negative_selector" format="reference">
+    </attr>
+    <attr name="md_btn_neutral_selector" format="reference">
+    </attr>
+    <attr name="md_btn_positive_selector" format="reference">
+    </attr>
+    <attr name="md_btn_stacked_selector" format="reference">
+    </attr>
+    <attr name="md_divider" format="color">
+    </attr>
+    <attr name="md_list_selector" format="reference">
+    </attr>
+    <attr name="themeCardBackgroundColor" format="reference|color">
+    </attr>
+    <attr name="themeContentTextColor" format="reference|color">
+    </attr>
+    <attr name="themeWhiteToolbarBackgroundColor" format="reference|color">
+    </attr>
+    <attr name="themeWhiteToolbarTextColor" format="reference|color">
+    </attr>
+    <attr name="themeWindowBackgroundColor" format="reference|color">
+    </attr>
 
 </resources>

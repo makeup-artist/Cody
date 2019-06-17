@@ -1,8 +1,7 @@
-package com.rdc.bms.easy_rv_adapter.base;
+package com.example.cody.base;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
@@ -146,7 +145,7 @@ public abstract class BaseRvAdapter<C extends BaseRvCell> extends RecyclerView.A
         notifyItemRangeChanged(mData.size()-cells.size(),mData.size());
     }
 
-    public void addAll(int index,List<C> cells){
+    public void addAll(int index, List<C> cells){
         if(cells == null || cells.size() == 0){
             return;
         }

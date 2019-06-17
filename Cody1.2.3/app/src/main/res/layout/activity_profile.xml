@@ -1,6 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:andtintModeroid="http://schemas.android.com/tools">
+    <android.support.design.widget.AppBarLayout android:id="@+id/appbar" android:background="?attr/themeContentBackgroundColor" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <android.support.design.widget.CollapsingToolbarLayout android:id="@+id/collapsing" android:layout_width="match_parent" android:layout_height="wrap_content" app:title="个人主页" app:layout_scrollFlags="scroll|exitUntilCollapsed" app:expandedTitleMarginStart="48dp" app:expandedTitleMarginEnd="64dp" app:scrimAnimationDuration="400" app:titleEnabled="false">
+            <FrameLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+                <ImageView android:layout_width="match_parent" android:layout_height="150dp" android:foreground="#45000000" android:src="@drawable/user_profile_header" andtintModeroid:scaleType="centerCrop"/>
+                <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="150dp">
+                    <RelativeLayout android:gravity="center_vertical" android:id="@+id/layout_user_info" android:background="?attr/themeContentBackgroundColor" android:paddingLeft="20dp" android:paddingTop="15dp" android:paddingRight="20dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="36dp">
+                        <TextView android:textSize="12sp" android:textColor="@color/main_color" android:gravity="center" android:id="@+id/tv_edit" android:background="@drawable/tag_blue_select_drawable" android:paddingLeft="12dp" android:paddingTop="8dp" android:paddingRight="12dp" android:paddingBottom="8dp" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="62dp" android:text="编辑" android:drawablePadding="5dp" android:layout_alignParentRight="true" android:layout_centerHorizontal="true"/>
+                        <!--<im.juejin.android.user.view.FocusButtonLayout android:id="@+id/fbl_focus" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" app:fbl_button_text_selector="@color/tag_text_selector" app:fbl_button_drawable_left_normal="@drawable/icon_add_tag" app:fbl_button_drawable_left_selected="@drawable/add_icon_tag_followed" app:fbl_button_background="@drawable/tag_select_drawable"/>-->
+                        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@+id/ll_user_name_company" android:paddingRight="100dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_centerHorizontal="true">
+                            <TextView android:textSize="20sp" android:textStyle="bold" android:textColor="?attr/themeTextColor1" android:ellipsize="end" android:gravity="center_vertical" android:id="@+id/tv_username" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="2"/>
+                            <TextView android:textSize="14sp" android:textColor="?attr/themeTextColor1" android:ellipsize="end" android:gravity="center_vertical" android:id="@+id/tv_company" android:visibility="visible" android:layout_width="220dp" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:maxLines="1"/>
+                        </LinearLayout>
+                        <TextView android:textSize="14sp" android:textColor="#909090" android:ellipsize="end" android:gravity="center_vertical" android:id="@+id/tv_description" android:visibility="visible" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:maxLines="3" android:layout_below="@id/ll_user_name_company"/>
+                    </RelativeLayout>
+                    <RelativeLayout android:background="?attr/themeContentBackgroundColor" android:paddingBottom="8dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginLeft="20dp" android:layout_marginTop="4dp" android:layout_marginRight="20dp">
+                        <LinearLayout android:orientation="vertical" android:id="@+id/ll_followee" android:background="@drawable/btn_circle_background" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                            <TextView android:textSize="16sp" android:textStyle="bold" android:textColor="?attr/themeTextColor1" android:id="@+id/tv_followee_count" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2dp" android:text="0" android:lines="1"/>
+                            <TextView android:textSize="12sp" android:textColor="?attr/themeTextColor3" android:id="@+id/tv_collection_count" android:paddingLeft="1dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="关注" android:lines="1"/>
+                        </LinearLayout>
+                        <LinearLayout android:orientation="vertical" android:id="@+id/ll_follower" android:background="@drawable/btn_circle_background" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="30dp" android:layout_toRightOf="@id/ll_followee">
+                            <TextView android:textSize="16sp" android:textStyle="bold" android:textColor="?attr/themeTextColor1" android:id="@+id/tv_follower_count" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2dp" android:text="0" android:singleLine="true"/>
+                            <TextView android:textSize="12sp" android:textColor="?attr/themeTextColor3" android:paddingLeft="1dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="关注者" android:singleLine="true"/>
+                        </LinearLayout>
 
-</android.support.constraint.ConstraintLayout>
+                    </RelativeLayout>
+                    <include android:id="@+id/divider" android:layout_width="match_parent" android:layout_height="6dp" layout="@layout/layout_divide_item"/>
+                </LinearLayout>
+                <de.hdodenhof.circleimageview.CircleImageView android:id="@+id/iv_avatar" android:background="@drawable/avatar_circle_background" android:layout_width="80dp" android:layout_height="80dp" android:layout_marginLeft="16dp" android:layout_marginTop="110dp" app:civ_border_width="2.5dp" app:civ_border_color="#f1f1f1" app:civ_border_overlay="false"/>
+            </FrameLayout>
+            <android.support.v7.widget.Toolbar android:id="@+id/toolbar" android:background="@android:color/transparent" android:fitsSystemWindows="true" android:layout_width="match_parent" android:layout_height="@dimen/dp60" app:layout_collapseMode="pin"/>
+        </android.support.design.widget.CollapsingToolbarLayout>
+    </android.support.design.widget.AppBarLayout>
+    <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content" app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        <android.support.design.widget.TabLayout android:id="@+id/tabs" android:background="@color/white" android:layout_width="match_parent" android:layout_height="40dp" app:tabMode="fixed" app:tabGravity="fill"/>
+        <android.support.v4.view.ViewPager android:id="@+id/pager" android:layout_width="match_parent" android:layout_height="match_parent"/>
+    </LinearLayout>
+</android.support.design.widget.CoordinatorLayout>
+
+

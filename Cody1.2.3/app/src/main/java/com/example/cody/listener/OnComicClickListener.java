@@ -1,4 +1,4 @@
-package com.rdc.bms.q_comic.listener;
+package com.example.cody.listener;
 
 public interface OnComicClickListener {
     void onClick(String comicId);

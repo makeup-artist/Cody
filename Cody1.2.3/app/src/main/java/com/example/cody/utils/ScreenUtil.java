@@ -1,4 +1,4 @@
-package com.rdc.bms.q_comic.util;
+package com.example.cody.utils;
 
 import android.content.Context;
 import android.util.DisplayMetrics;

@@ -1,14 +1,15 @@
-package com.rdc.bms.easy_rv_adapter.cell;
+package com.example.cody.cell;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 
-import com.rdc.bms.easy_rv_adapter.R;
-import com.rdc.bms.easy_rv_adapter.Utils;
-import com.rdc.bms.easy_rv_adapter.base.BaseRvStateCell;
-import com.rdc.bms.easy_rv_adapter.base.BaseRvViewHolder;
-import com.rdc.bms.easy_rv_adapter.config.ItemType;
+import com.example.cody.R;
+import com.example.cody.base.BaseRvStateCell;
+import com.example.cody.base.BaseRvViewHolder;
+import com.example.cody.base.ItemType;
+import com.example.cody.utils.Utils;
+
 
 public class LoadMoreCell extends BaseRvStateCell {
     public static final int mDefaultHeight = 80;//dp

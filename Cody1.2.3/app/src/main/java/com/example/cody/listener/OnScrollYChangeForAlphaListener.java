@@ -1,4 +1,4 @@
-package com.rdc.bms.q_comic.listener;
+package com.example.cody.listener;
 
 public interface OnScrollYChangeForAlphaListener {
     void changeTopLayoutTransport(int alpha);

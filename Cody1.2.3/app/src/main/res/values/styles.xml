@@ -54,4 +54,44 @@
     <style name="FullscreenActionBarStyle" parent="android:Widget.Holo.ActionBar">
         <item name="android:background">@color/black_overlay</item>
     </style>
+
+    <style name="transparent" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
+
+
+    <style name="AppThemeLight"  parent="Base.Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:textColorPrimary">@color/text_dark1</item>
+        <item name="android:textColorSecondary">@color/text_dark2</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="md_btn_negative_selector">@drawable/md_btn_selector</item>
+        <item name="md_btn_neutral_selector">@drawable/md_btn_selector</item>
+        <item name="md_btn_positive_selector">@drawable/md_btn_selector</item>
+        <item name="md_btn_stacked_selector">@drawable/md_selector</item>
+        <item name="md_divider">@color/md_divider_black</item>
+        <item name="md_list_selector">@drawable/md_selector</item>
+        <item name="themeCardBackgroundColor">@drawable/card_light_background</item>
+        <item name="themeContentBackgroundColor">@drawable/layout_selector</item>
+        <item name="themeContentTextColor">@color/text_dark1</item>
+        <item name="themeDividerColor">@color/divider_light</item>
+        <item name="themeLinkColor">@color/link_light</item>
+        <item name="themeMidWhiteBackgroundColor">#ecffffff</item>
+        <item name="themeTextColor1">@color/text_dark1</item>
+        <item name="themeTextColor2">@color/text_dark2</item>
+        <item name="themeTextColor3">@color/text_dark3</item>
+        <item name="themeToolbarTextColor">@color/white</item>
+        <item name="themeWhiteBackgroundColor">@color/white</item>
+        <item name="themeWhiteToolbarBackgroundColor">@color/white</item>
+        <item name="themeWhiteToolbarTextColor">@color/text_dark1</item>
+        <item name="themeWindowBackgroundColor">@color/window_background_light</item>
+        <item name="colorPrimary">@color/blue_primary</item>
+        <item name="colorPrimaryDark">@color/blue_primary_dark</item>
+        <item name="colorAccent">@color/blue_primary</item>
+        <item name="colorControlActivated">@color/blue_primary</item>
+    </style>
+
 </resources>

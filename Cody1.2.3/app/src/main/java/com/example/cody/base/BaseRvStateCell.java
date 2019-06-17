@@ -1,4 +1,4 @@
-package com.rdc.bms.easy_rv_adapter.base;
+package com.example.cody.base;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
-import com.rdc.bms.easy_rv_adapter.R;
+import com.example.cody.R;
 
 /**
  * 用于存放特殊的ItemCell，

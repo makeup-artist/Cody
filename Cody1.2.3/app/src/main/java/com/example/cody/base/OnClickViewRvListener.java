@@ -1,8 +1,6 @@
-package com.rdc.bms.easy_rv_adapter;
+package com.example.cody.base;
 
 import android.view.View;
-
-import com.rdc.bms.easy_rv_adapter.base.BaseRvViewHolder;
 
 public interface OnClickViewRvListener {
     /**
@@ -10,8 +8,8 @@ public interface OnClickViewRvListener {
      * @param view
      * @param view
      */
-    void onClick(View view,int position);
+    void onClick(View view, int position);
 
-     <C> void onClickItem(C data,int position);
+     <C> void onClickItem(C data, int position);
 
 }

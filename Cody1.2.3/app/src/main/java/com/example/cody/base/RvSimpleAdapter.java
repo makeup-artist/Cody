@@ -1,4 +1,4 @@
-package com.rdc.bms.easy_rv_adapter.base;
+package com.example.cody.base;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.GridLayoutManager;
@@ -7,16 +7,18 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.rdc.bms.easy_rv_adapter.Utils;
-import com.rdc.bms.easy_rv_adapter.cell.EmptyCell;
-import com.rdc.bms.easy_rv_adapter.cell.ErrorCell;
-import com.rdc.bms.easy_rv_adapter.cell.LoadMoreCell;
-import com.rdc.bms.easy_rv_adapter.cell.LoadingCell;
+import com.example.cody.cell.EmptyCell;
+import com.example.cody.cell.ErrorCell;
+import com.example.cody.cell.LoadMoreCell;
+import com.example.cody.cell.LoadingCell;
+import com.example.cody.utils.Utils;
 
-import static com.rdc.bms.easy_rv_adapter.config.ItemType.EMPTY_TYPE;
-import static com.rdc.bms.easy_rv_adapter.config.ItemType.ERROR_TYPE;
-import static com.rdc.bms.easy_rv_adapter.config.ItemType.LOADING_TYPE;
-import static com.rdc.bms.easy_rv_adapter.config.ItemType.LOAD_MORE_TYPE;
+
+import static com.example.cody.base.ItemType.EMPTY_TYPE;
+import static com.example.cody.base.ItemType.ERROR_TYPE;
+import static com.example.cody.base.ItemType.LOADING_TYPE;
+import static com.example.cody.base.ItemType.LOAD_MORE_TYPE;
+
 
 /**
  * 对BaseRvAdapter进行基本的封装，子类可以直接继承此类进行修改
@@ -124,7 +126,7 @@ public class RvSimpleAdapter extends BaseRvAdapter<BaseRvCell> {
      * @param loadingView
      * @param viewHeight
      */
-    public void showLoading(View loadingView,int viewHeight){
+    public void showLoading(View loadingView, int viewHeight){
         if(loadingView == null){
             showLoading();
             return;
@@ -159,7 +161,7 @@ public class RvSimpleAdapter extends BaseRvAdapter<BaseRvCell> {
      * @param height View显示的高度
      * @param loadingView 显示的View
      */
-    public void showLoadingKeepCount(int keepCount,int height,View loadingView){
+    public void showLoadingKeepCount(int keepCount, int height, View loadingView){
         if(keepCount < 0 || keepCount>mData.size()){
             return;
         }
@@ -219,7 +221,7 @@ public class RvSimpleAdapter extends BaseRvAdapter<BaseRvCell> {
      * @param height view显示的高
      * @param errorView 指定显示的View，null 则显示默认View
      */
-    public void showErrorKeepCount(int keepCount,int height,View errorView){
+    public void showErrorKeepCount(int keepCount, int height, View errorView){
         if(keepCount < 0 || keepCount>mData.size()){
             return;
         }
@@ -247,7 +249,7 @@ public class RvSimpleAdapter extends BaseRvAdapter<BaseRvCell> {
      * @param errorView
      * @param viewHeight
      */
-    public void showError(View errorView,int viewHeight){
+    public void showError(View errorView, int viewHeight){
         if(errorView == null){
             showError();
             return;
@@ -297,7 +299,7 @@ public class RvSimpleAdapter extends BaseRvAdapter<BaseRvCell> {
      * @param loadMoreView
      * @param height
      */
-    public void showLoadMore(View loadMoreView,int height){
+    public void showLoadMore(View loadMoreView, int height){
         if(loadMoreView == null){
             return;
         }
@@ -359,7 +361,7 @@ public class RvSimpleAdapter extends BaseRvAdapter<BaseRvCell> {
      * @param height 显示的View的高
      * @param view 显示的View，null 则显示默认View
      */
-    public void showEmptyKeepCount(int keepCount,int height,View view){
+    public void showEmptyKeepCount(int keepCount, int height, View view){
         if(keepCount < 0 || keepCount>mData.size()){
             return;
         }
@@ -388,7 +390,7 @@ public class RvSimpleAdapter extends BaseRvAdapter<BaseRvCell> {
      * @param emptyView  页面为空状态显示的View
      * @param viewHeight view显示的高
      */
-    public void showEmpty(View emptyView,int viewHeight){
+    public void showEmpty(View emptyView, int viewHeight){
         if(emptyView == null){
             showEmpty();
             return;

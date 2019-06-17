@@ -1,6 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:orientation="vertical" android:fitsSystemWindows="true" android:layout_width="match_parent" android:layout_height="match_parent">
+    <FrameLayout android:layout_width="match_parent" android:layout_height="match_parent">
+        <ScrollView android:layout_width="match_parent" android:layout_height="match_parent">
+            <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
+                <FrameLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+                    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@+id/avatar_wrapper" android:background="?attr/themeContentBackgroundColor" android:paddingLeft="20dp" android:paddingTop="6dp" android:paddingRight="20dp" android:paddingBottom="6dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="?android:attr/listPreferredItemHeight">
+                        <TextView android:textSize="16sp" android:textColor="?attr/themeTextColor1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="头像" android:layout_weight="1"/>
+                        <de.hdodenhof.circleimageview.CircleImageView android:id="@+id/avatar" android:layout_width="40dp" android:layout_height="40dp" android:layout_marginLeft="15dp" />
+                    </LinearLayout>
+                    <ImageView android:layout_width="match_parent" android:layout_height="wrap_content" android:src="@drawable/shadow_line_webview_top"/>
+                </FrameLayout>
+                <include layout="@layout/line_horizontal"/>
+                <RelativeLayout android:gravity="center_vertical" android:id="@+id/user_name_wrapper" android:background="?attr/themeContentBackgroundColor" android:paddingLeft="20dp" android:paddingTop="10dp" android:paddingRight="20dp" android:paddingBottom="10dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="?android:attr/listPreferredItemHeight">
+                    <TextView android:textSize="16sp" android:textColor="?attr/themeTextColor1" android:id="@+id/tag_name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15dp" android:text="用户名"/>
+                    <TextView android:textSize="16sp" android:textColor="?attr/themeTextColor2" android:ellipsize="end" android:gravity="right" android:id="@+id/user_name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_toRightOf="@+id/tag_name" android:layout_alignParentRight="true"/>
+                </RelativeLayout>
+                <include layout="@layout/line_horizontal"/>
+                <RelativeLayout android:gravity="center_vertical" android:id="@+id/position_wrapper" android:background="?attr/themeContentBackgroundColor" android:paddingLeft="20dp" android:paddingTop="10dp" android:paddingRight="20dp" android:paddingBottom="10dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="?android:attr/listPreferredItemHeight">
+                    <TextView android:textSize="16sp" android:textColor="?attr/themeTextColor1" android:id="@+id/tag_nick" android:paddingRight="12dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5dp" android:text="职位"/>
+                    <TextView android:textSize="16sp" android:textColor="?attr/themeTextColor2" android:textColorHint="#d4d4d4" android:ellipsize="end" android:gravity="right" android:id="@+id/nick_name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="200dp" android:hint="例如: 全栈工程师" android:singleLine="true" android:layout_toRightOf="@+id/tag_nick" android:layout_alignParentRight="true"/>
+                </RelativeLayout>
+                <include layout="@layout/line_horizontal"/>
+                <RelativeLayout android:gravity="center_vertical" android:id="@+id/company_wrapper" android:background="?attr/themeContentBackgroundColor" android:paddingLeft="20dp" android:paddingTop="10dp" android:paddingRight="20dp" android:paddingBottom="10dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="?android:attr/listPreferredItemHeight">
+                    <TextView android:textSize="16sp" android:textColor="?attr/themeTextColor1" android:id="@+id/tag_company" android:paddingRight="12dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10dp" android:text="公司"/>
+                    <TextView android:textSize="16sp" android:textColor="?attr/themeTextColor2" android:textColorHint="#d4d4d4" android:ellipsize="end" android:gravity="right" android:id="@+id/company_name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="200dp" android:hint="例如: 稀土掘金" android:singleLine="true" android:layout_toRightOf="@+id/tag_company" android:layout_alignParentRight="true"/>
+                </RelativeLayout>
+                <include layout="@layout/line_horizontal"/>
+                <RelativeLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@+id/personal_about_wrapper" android:background="?attr/themeContentBackgroundColor" android:paddingLeft="20dp" android:paddingTop="10dp" android:paddingRight="20dp" android:paddingBottom="10dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="?android:attr/listPreferredItemHeight">
+                    <TextView android:textSize="16sp" android:textColor="?attr/themeTextColor1" android:id="@+id/tag_des" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15dp" android:text="简介"/>
+                    <TextView android:textSize="16sp" android:textColor="?attr/themeTextColor2" android:textColorHint="#d4d4d4" android:ellipsize="end" android:gravity="right" android:id="@+id/personal_about" android:layout_width="wrap_content" android:layout_height="wrap_content" android:hint="个人介绍" android:maxEms="13" android:singleLine="true" android:layout_toRightOf="@+id/tag_des" android:layout_alignParentRight="true"/>
+                </RelativeLayout>
 
-</android.support.constraint.ConstraintLayout>
+                <FrameLayout android:layout_width="match_parent" android:layout_height="16dp">
+                    <ImageView android:layout_width="match_parent" android:layout_height="5px" android:src="@drawable/shadow_line"/>
+                </FrameLayout>
+            </LinearLayout>
+        </ScrollView>
+        <ImageView android:layout_width="match_parent" android:layout_height="5px" android:src="@drawable/shadow_line"/>
+    </FrameLayout>
+</LinearLayout>

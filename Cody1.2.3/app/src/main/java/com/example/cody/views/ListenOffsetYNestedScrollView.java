@@ -1,13 +1,11 @@
-package com.rdc.bms.q_comic.widget;
+package com.example.cody.views;
 
 import android.content.Context;
 import android.support.v4.widget.NestedScrollView;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
-import android.widget.ScrollView;
 
-import com.rdc.bms.q_comic.listener.OnScrollYChangeForAlphaListener;
+import com.example.cody.listener.OnScrollYChangeForAlphaListener;
 
 /**
  * 可以监听滑动距离并且可以嵌套水平RecyclerView的ScrollView

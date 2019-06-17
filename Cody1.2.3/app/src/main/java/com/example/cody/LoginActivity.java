@@ -61,11 +61,9 @@ public class LoginActivity extends AppCompatActivity {
 
     @OnClick({R.id.ignore_psd, R.id.register,R.id.login})
     public void onViewClicked(View view) {
-
         password = mpassword.getText().toString();
         username = musername.getText().toString();
         HashMap params = new HashMap();
-
         switch (view.getId()) {
             case R.id.ignore_psd:
                 startActivity(new Intent(this, LoginphoneActivity.class));
@@ -83,7 +81,7 @@ public class LoginActivity extends AppCompatActivity {
                              UsermainBean testBean = (UsermainBean) responseObj;
                                 Log.d("QAQ","123"+testBean.getMsg());
                                if(testBean.getCode()==200){
-                                   sp.putUser(testBean.getData().getUser());
+                                     sp.putUser(testBean.getData().getUser());
                                     Toast.makeText(MyApplication.getContext(), "已成功登陆", Toast.LENGTH_SHORT).show();
                           sp.setLogin(true);
                           sp.putToken(testBean.getData().getToken());
@@ -100,7 +98,6 @@ public class LoginActivity extends AppCompatActivity {
                                 Toast.makeText(MyApplication.getContext(), "网络请求错误了QAQ", Toast.LENGTH_SHORT).show();
                             }
                         })));
-        startActivity(new Intent(this, RegisterActivity.class));
                 break;
         }
     }

@@ -1,4 +1,4 @@
-package com.rdc.bms.q_comic.bean.rv_cell;
+package com.example.cody.base;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,19 +8,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.rdc.bms.easy_rv_adapter.base.BaseRvCell;
-import com.rdc.bms.easy_rv_adapter.base.BaseRvViewHolder;
-import com.rdc.bms.q_comic.R;
-import com.rdc.bms.q_comic.bean.BookBean;
-import com.rdc.bms.q_comic.config.ItemType;
-import com.rdc.bms.q_comic.util.ScreenUtil;
+import com.example.cody.R;
+import com.example.cody.entity.LipstickBean;
+import com.example.cody.utils.ScreenUtil;
 
-public class BookCell extends BaseRvCell<BookBean> {
+
+public class BookCell extends BaseRvCell<LipstickBean> {
 
     private boolean isGrid = false;
 
-    public BookCell(BookBean bookBean) {
-        super(bookBean);
+    public BookCell(LipstickBean lipstickBean) {
+        super(lipstickBean);
     }
 
     @Override
@@ -39,7 +37,7 @@ public class BookCell extends BaseRvCell<BookBean> {
 
     @Override
     public BaseRvViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        final View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cell_book_home,parent,false);
+        final View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cell_lipstick_home,parent,false);
         if (isGrid){
             RecyclerView.LayoutParams layoutParams = (RecyclerView.LayoutParams) view.getLayoutParams();
             layoutParams.width = ViewGroup.LayoutParams.MATCH_PARENT;
@@ -58,14 +56,9 @@ public class BookCell extends BaseRvCell<BookBean> {
         ImageView ivCover = holder.getImageView(R.id.iv_cover_cell_book_home);
 
         tvName.setText(mData.getName());
-        tvScore.setText(mData.getScore());
-        int index = mData.getRecentChapter().indexOf("话");
-        String chapter = "";
-        if (index != -1){
-            chapter = mData.getRecentChapter().substring(0,index+1);
-        }
-        tvRecentWords.setText(chapter);
-        tvSummary.setText(mData.getSummary());
+        tvScore.setText(mData.getSenario());
+        tvRecentWords.setText(mData.getPrice());
+        tvSummary.setText(mData.getColor());
         Glide.with(holder.getContext()).load(mData.getCoverUrl()).into(ivCover);
 
         if (mListener != null){

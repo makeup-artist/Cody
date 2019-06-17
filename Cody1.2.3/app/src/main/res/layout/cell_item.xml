@@ -2,7 +2,7 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/colorWhite"
+    android:background="@color/white"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="10dp">
@@ -38,7 +38,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         android:singleLine="true"
-        android:textColor="@color/colorGrey"
+        android:textColor="@color/black"
         android:textSize="@dimen/text_size_small"
         app:layout_constraintBottom_toBottomOf="@id/tv_title_cell_item"
         app:layout_constraintEnd_toStartOf="@id/tv_more_cell_item"
@@ -61,7 +61,7 @@
         android:clickable="true"
         android:focusable="true"
         android:visibility="invisible"
-        android:text="@string/more"
+        android:text="更多"
         android:textSize="@dimen/text_size_small"
         app:layout_constraintBottom_toBottomOf="@id/iv_icon_cell_item"
         app:layout_constraintEnd_toEndOf="parent" />

@@ -1,4 +1,4 @@
-package fj.mtsortbutton.test.adapter;
+package com.example.cody.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,10 +8,12 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.cody.R;
+import com.example.cody.model.ButtonModel;
+
 import java.util.List;
 
-import fj.mtsortbutton.test.R;
-import fj.mtsortbutton.test.model.ButtonModel;
+
 
 public class SortButtonAdapter extends BaseAdapter {
     private Context mContext;

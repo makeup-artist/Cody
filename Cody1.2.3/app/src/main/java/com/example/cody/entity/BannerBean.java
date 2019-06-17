@@ -1,4 +1,4 @@
-package com.rdc.bms.q_comic.bean;
+package com.example.cody.entity;
 
 /**
  * 首页轮播图实体
@@ -6,22 +6,13 @@ package com.rdc.bms.q_comic.bean;
 public class BannerBean {
 
     private String title;
-    private String imageUrl;
-    private String bookId;
+    private int imageUrl;
 
-    @Override
-    public String toString() {
-        return "BannerBean{" +
-                "title='" + title + '\'' +
-                ", imageUrl='" + imageUrl + '\'' +
-                ", bookId=" + bookId +
-                '}';
-    }
 
-    public BannerBean(String title, String imageUrl, String bookId) {
+
+    public BannerBean(String title, int imageUrl) {
         this.title = title;
         this.imageUrl = imageUrl;
-        this.bookId = bookId;
     }
 
     public BannerBean(){
@@ -36,19 +27,12 @@ public class BannerBean {
         this.title = title == null ? "" : title;
     }
 
-    public String getImageUrl() {
-        return imageUrl == null ? "" : imageUrl;
+    public int getImageUrl() {
+        return imageUrl ;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl == null ? "" : imageUrl;
+    public void setImageUrl(int imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
-    public String getBookId() {
-        return bookId;
-    }
-
-    public void setBookId(String bookId) {
-        this.bookId = bookId;
-    }
 }

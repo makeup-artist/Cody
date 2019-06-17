@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <import type="com.example.cody.R"/>
         <variable name="profileVM" type="com.example.cody.viewmodel.ProfileVM"/>
@@ -46,9 +46,10 @@
                         android:layout_width="50.0dip"
                         android:layout_height="50.0dip"
                         android:layout_marginLeft="0dip"
-                        android:src="@drawable/g_default_avatar"
+                        app:imageUrl="@{profileVM.user.picture}"
                         android:scaleType="centerCrop"
-                        android:layout_centerVertical="true" />
+                        android:layout_centerVertical="true"
+                        android:id="@+id/avt" />
 
                     <LinearLayout
                         android:layout_width="match_parent"

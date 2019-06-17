@@ -1,12 +1,10 @@
-package com.rdc.bms.easy_rv_adapter.base;
+package com.example.cody.base;
 
 
-import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
-import com.rdc.bms.easy_rv_adapter.OnClickViewRvListener;
 
 public abstract class BaseRvCell<T> implements Cell {
 
@@ -14,7 +12,7 @@ public abstract class BaseRvCell<T> implements Cell {
 
     public OnClickViewRvListener mListener;
 
-    public final BaseRvViewHolder createSimpleHolder(ViewGroup parent,int layoutResId){
+    public final BaseRvViewHolder createSimpleHolder(ViewGroup parent, int layoutResId){
         return new BaseRvViewHolder(LayoutInflater.from(parent.getContext())
                 .inflate(layoutResId,parent,false));
     }

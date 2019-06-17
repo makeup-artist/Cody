@@ -5,4 +5,10 @@ package com.example.cody.utils;
  * e-mail：462065470@qq.com
  */
 public class EventMessage {
+    public String msg;
+
+    public EventMessage(String name) {
+        this.msg = name;
+    }
+
 }

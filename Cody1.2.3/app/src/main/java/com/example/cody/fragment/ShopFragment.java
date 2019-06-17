@@ -41,7 +41,6 @@ public class ShopFragment extends BaseFragment {
 
     @Override
     protected View getSubView(LayoutInflater inflater, ViewGroup container) {
-
         View rootView = inflater.inflate(R.layout.fragment_shop, container, false);
         unbinder = ButterKnife.bind(this, rootView);
         initView();

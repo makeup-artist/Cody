@@ -28,12 +28,7 @@
                     android:id="@+id/iv_cover_cell_book_home"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:scaleType="centerCrop"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:src="@mipmap/ic_logo" />
+                    android:scaleType="centerCrop" />
 
                 <TextView
                     android:id="@+id/tv_score_cell_book_home"
@@ -42,7 +37,7 @@
                     android:background="@color/black_transparent_55"
                     android:paddingStart="5dp"
                     android:paddingEnd="5dp"
-                    android:textColor="@color/colorWhite"
+                    android:textColor="@color/white"
                     android:textSize="@dimen/text_size_smaller"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -55,7 +50,7 @@
                     android:background="@color/black_transparent_55"
                     android:gravity="end"
                     android:paddingEnd="5dp"
-                    android:textColor="@color/colorWhite"
+                    android:textColor="@color/white"
                     android:textSize="@dimen/text_size_smaller"
                     app:layout_constraintBottom_toBottomOf="@id/iv_cover_cell_book_home"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -88,7 +83,7 @@
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:singleLine="true"
-        android:textColor="@color/colorGrey"
+        android:textColor="@color/grey"
         android:textSize="@dimen/text_size_smaller"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

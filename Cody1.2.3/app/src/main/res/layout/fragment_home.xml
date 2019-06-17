@@ -1,25 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.scwang.smartrefresh.layout.SmartRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical">
-    <RelativeLayout  android:background="@color/main_color" android:padding="8.0dip" android:layout_width="fill_parent" android:layout_height="48.0dip" android:drawableRight="@drawable/verify">
-        <TextView android:id="@+id/tv_search" android:textSize="15.0sp" android:textColor="#88ffffff" android:gravity="center_vertical"  android:background="@drawable/search_text_selector"  android:paddingLeft="10.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="搜索帖子、用户、教程"  android:drawableLeft="@drawable/tab_home_find_search" android:drawablePadding="10.0dip" />
-    </RelativeLayout>
-    <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/srl_refresh"
+    app:srlAccentColor="@color/main_color"
+    android:id="@+id/refreshLayout_fragment_home"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
-        <android.support.v7.widget.RecyclerView
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="@dimen/topLayoutHeight"
+            android:elevation="5dp"
+            android:id="@+id/cl_top_fragment_home"
             android:background="@color/white"
-            android:id="@+id/recycler_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+            <RelativeLayout  android:background="@color/main_color" android:padding="8.0dip" android:layout_width="fill_parent" android:layout_height="48.0dip" android:drawableRight="@drawable/verify"
+                tools:ignore="MissingConstraints">
+                <TextView android:id="@+id/tv_search" android:textSize="15.0sp" android:textColor="#88ffffff" android:gravity="center_vertical"  android:background="@drawable/search_text_selector"  android:paddingLeft="10.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="搜索帖子、用户、教程"  android:drawableLeft="@drawable/tab_home_find_search" android:drawablePadding="10.0dip" />
+            </RelativeLayout>
+
+        </android.support.constraint.ConstraintLayout>
+        <com.example.cody.views.ListenOffsetYNestedScrollView
+            android:layout_marginTop="49.0dip"
+            android:id="@+id/scrollView_fragment_home"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+        <LinearLayout
+            android:id="@+id/ll_scroll_inner_fragment_home"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <com.youth.banner.Banner
+                android:id="@+id/banner_fragment_home"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                app:delay_time="3000"
+                app:indicator_drawable_selected="@mipmap/point_0"
+                app:indicator_drawable_unselected="@mipmap/point_1"
+                app:indicator_height="8dp"
+                app:indicator_width="8dp"
+                app:title_height="30dp"
+                app:title_textsize="@dimen/text_size_small">
+            </com.youth.banner.Banner>
+            <fj.mtsortbutton.lib.SoreButton
+                android:id="@+id/soreButton"
+                android:background="#ffffff"
+                app:SoreRadioSelect="@drawable/radio1"
+                app:SoreRadioUnselected="@drawable/radio2"
+                app:SoreDistance="20"
+                android:layout_width="match_parent"
+                android:layout_height="140dp"/>
+        </LinearLayout>
+        </com.example.cody.views.ListenOffsetYNestedScrollView>
+    </android.support.constraint.ConstraintLayout>
 
-        </android.support.v7.widget.RecyclerView>
-
-    </android.support.v4.widget.SwipeRefreshLayout>
-</LinearLayout>
+</com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
