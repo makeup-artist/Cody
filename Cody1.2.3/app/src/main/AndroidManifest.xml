@@ -36,29 +36,33 @@
         </activity>
         <activity
             android:name=".makeUpActivity"></activity>
-        <activity android:name=".RegisterActivity"></activity>
+        <activity android:name=".RegisterActivity" android:launchMode="singleTop" ></activity>
         <activity android:name=".StartActivity"></activity>
         <activity android:name=".TextViewActivity"></activity>
-        <activity android:name=".LoginActivity"></activity>
+        <activity android:name=".LoginActivity" android:launchMode="singleTop"></activity>
         <activity android:name=".mineactivity.SettingActivity"></activity>
-        <activity android:name=".mineactivity.ProfileActivity"></activity>
         <activity android:name=".mineactivity.ViewActivity"></activity>
         <activity android:name=".mineactivity.NotificationActivity"></activity>
+        <activity android:theme="@style/AppThemeLight" android:launchMode="singleTop" android:name=".mineactivity.ProfileActivity" android:screenOrientation="portrait" />
         <activity android:name=".mineactivity.HeartActivity"></activity>
         <activity android:name=".mineactivity.LikedActivity"></activity>
         <activity android:name=".mineactivity.FeedbackActivity"></activity>
         <activity android:name=".mineactivity.CollectionActivity"></activity>
-        <activity android:name=".LoginphoneActivity"></activity>
-        <activity android:name=".UserhomeActivity"></activity>
-        <activity android:name=".mineactivity.ChangedPsdActivity"></activity>
-        <activity android:name=".mineactivity.AboutActivity"></activity>
-        <activity android:name=".mineactivity.ChangedNumberActivity"></activity>
+        <activity android:name=".LoginphoneActivity" android:launchMode="singleTop"></activity>
+        <activity android:name=".mineactivity.ChangedPsdActivity" android:launchMode="singleTop"></activity>
+        <activity android:name=".mineactivity.AboutActivity" android:launchMode="singleTop"></activity>
+        <activity android:name=".mineactivity.ChangedNumberActivity" android:launchMode="singleTop"></activity>
         <activity android:name=".SearchActivity"></activity>
         <activity android:name=".RichEditorActivity"></activity>
+        <activity android:name=""></activity>
         <activity android:name=".textureActivity" />
+        <activity android:name=".ShowImageActivity"
+            android:theme="@style/transparent" />
         <activity
             android:name=".FaceInfoActivity"
              />
+
+
 
     </application>
 
