@@ -7,6 +7,8 @@
     <color name="host_tab_text_color_unpress">#6F6F6F</color>
     <color name="main_color">#CB1E1E</color>
     <color name="white">#FFFFFF</color>
+    <color name="duration_background_color">#aa000000</color>
+    <color name="duration_text_color">#EEFFFFFF</color>
     <color name="login_gray">#19000000</color>
     <color name="gray">#ffb6b6b6</color>
     <color name="translucent_half_white">#ccffffff</color>

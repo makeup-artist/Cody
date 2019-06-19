@@ -14,6 +14,7 @@
     </string-array>
     <string name="search_history">搜索历史</string>
     <string name="hot_search">热门搜索</string>
+    <string name="list_thumbnail_view_description">Video preview thumbnail</string>
 
     <string name="title_activity_texture">TextureActivity</string>
     <string name="dummy_button">Dummy Button</string>

@@ -15,6 +15,8 @@ public class SharedPreferencesUtil {
     private static final String KEY_USER="KEY_USER";
     private static final String KEY_TOKEN="KEY_TOKEN";
     private static final String KEY_PSD="KEY_PSD";
+    private static final String KEY_FIRST="KEY_FIRST";
+
 
     private static SharedPreferences mPreferences;
     private static SharedPreferences.Editor mEditor;
@@ -39,6 +41,20 @@ public class SharedPreferencesUtil {
             return mSharedPreferencesUtil;
         }
 
+    /**
+     * @desc 判断是否第一次
+     * @author cyz
+     * @time 2019/5/22 11:01
+     */
+        public boolean isFirst(){return  getBoolean(KEY_FIRST,true);}
+    /**
+     * @desc 更改第一次
+     * @author cyz
+     * @time 2019/5/22 11:19
+     */
+    public void setFirst(boolean value){
+        putBoolean(KEY_FIRST,value);
+    }
         /**
          * @desc 判断是否登陆
          * @author cyz

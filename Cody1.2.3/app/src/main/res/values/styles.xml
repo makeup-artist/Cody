@@ -8,6 +8,11 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="RedButton" parent="Widget.AppCompat.Button.Colored">
+        <item name="colorButtonNormal">@color/main_color</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="colorControlHighlight">@color/grey</item>
+    </style>
 
     <style name="Mainviewtab">
         <item name="android:paddingTop">10dp</item>

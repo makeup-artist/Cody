@@ -40,5 +40,6 @@
     </attr>
     <attr name="themeWindowBackgroundColor" format="reference|color">
     </attr>
-
+    <attr name="toolbar_shadow_drawable" format="reference"/>
+    <attr name="contrast_background_color" format="color"/>
 </resources>

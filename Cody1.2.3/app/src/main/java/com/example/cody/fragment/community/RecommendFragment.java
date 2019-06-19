@@ -21,10 +21,13 @@ public class RecommendFragment extends BaseCommunityFragment {
     FloatingActionButton fab;
     Unbinder unbinder;
 
+
+
     @Override
     protected View onSubViewLoaded(LayoutInflater layoutInflater, ViewGroup container) {
         View rootview = layoutInflater.inflate(R.layout.fragment_community_recommend, container, false);
         unbinder = ButterKnife.bind(this, rootview);
+
         return rootview;
     }
 

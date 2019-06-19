@@ -8,7 +8,9 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.RectF;
 
+import com.example.cody.R;
 import com.megvii.facepp.api.bean.Face;
 
 import java.math.BigInteger;
@@ -106,15 +108,16 @@ public class FaceMakeUpUtils{
         };
     }
     //人脸关键部位上色：眉型效果
-    public Bitmap eyebrowRendering(Bitmap bm){
+    public Bitmap eyebrowRendering(Bitmap bm,int leyebrow,int reyebrow){
         Bitmap bmp = bm.copy(Bitmap.Config.ARGB_8888, true);
         if(face==null)
             return bm;
         Canvas canvas = new Canvas(bmp);
         Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        paint.setARGB(a,r,g,b);
-//        Bitmap eyeBmL = BitmapFactory.decodeResource(mResources,R.drawable.leyebrow);
-//        Bitmap eyeBmR = BitmapFactory.decodeResource(mResources,R.drawable.reyebrow);
+        paint.setAlpha(90);
+
+        Bitmap eyeBmL = BitmapFactory.decodeResource(mContext.getResources(), leyebrow);
+        Bitmap eyeBmR = BitmapFactory.decodeResource(mContext.getResources(), reyebrow);
         //左眉毛点集
         float lpoints[] = {
                 face.getLandmark().getLeft_eyebrow_left_corner().getX(),face.getLandmark().getLeft_eyebrow_left_corner().getY(),
@@ -147,22 +150,26 @@ public class FaceMakeUpUtils{
             rpoints[i+1] = (rpoints[i+1])*bm.getHeight()/HeightScale;
         }
         //眉型缩放
-        for(int i=2;i<7;i=i+2){
-            lpoints[17-i+2] = lpoints[17-i+2] + (lpoints[i+1]-lpoints[17-i+2])/3;
-            rpoints[17-i+2] = rpoints[17-i+2] + (rpoints[i+1]-rpoints[17-i+2])/3;
-        }
-        Path rpath = new Path();
-        rpath.moveTo(rpoints[0],rpoints[1]);
-        for (int i=2;i<17;i=i+2){
-            rpath.lineTo(rpoints[i],rpoints[i+1]);
-        }
-        Path lpath = new Path();
-        lpath.moveTo(lpoints[0],lpoints[1]);
-        for (int i=2;i<17;i=i+2){
-            lpath.lineTo(lpoints[i],lpoints[i+1]);
-        }
-        canvas.drawPath(rpath,paint);
-        canvas.drawPath(lpath,paint);
+//        for(int i=2;i<7;i=i+2){
+//            lpoints[17-i+2] = lpoints[17-i+2] + (lpoints[i+1]-lpoints[17-i+2])/3;
+//            rpoints[17-i+2] = rpoints[17-i+2] + (rpoints[i+1]-rpoints[17-i+2])/3;
+//        }
+//        Path rpath = new Path();
+//        rpath.moveTo(rpoints[0],rpoints[1]);
+//        for (int i=2;i<17;i=i+2){
+//            rpath.lineTo(rpoints[i],rpoints[i+1]);
+//        }
+//        Path lpath = new Path();
+//        lpath.moveTo(lpoints[0],lpoints[1]);
+//        for (int i=2;i<17;i=i+2){
+//            lpath.lineTo(lpoints[i],lpoints[i+1]);
+//        }
+//        canvas.drawPath(rpath,paint);
+//        canvas.drawPath(lpath,paint);
+        canvas.drawBitmap(eyeBmL,null,new RectF(lpoints[0]-(lpoints[8]-lpoints[0])/3,lpoints[9]-25,
+                lpoints[8],lpoints[1]+15),paint);
+        canvas.drawBitmap(eyeBmR,null,new RectF(rpoints[8],rpoints[9]-25,
+                rpoints[0]+(rpoints[0]-rpoints[8])/3, rpoints[1]+15),paint);
         return bmp;
     }
     //人脸关键部位勾勒：eyebrow
@@ -223,11 +230,27 @@ public class FaceMakeUpUtils{
         canvas.drawLine(rpoints[0],rpoints[1],rpoints[16],rpoints[17],paint);
         return bmp;
     }
-    //人脸关键部位上色：眼影效果
-    public Bitmap eyeRendering(Bitmap bm){
+    //人脸关键部位上色：美瞳效果
+    public Bitmap eyebeautyRendering(Bitmap bm,int eyebeauty){
         Bitmap bmp = bm.copy(Bitmap.Config.ARGB_8888, true);
         Canvas canvas = new Canvas(bmp);
-        //coding......
+        Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        paint.setAlpha(70);
+        Bitmap eyebitmap = BitmapFactory.decodeResource(mContext.getResources(),eyebeauty);
+        float lleft = face.getLandmark().getLeft_eye_upper_left_quarter().getX();
+        float ltop = face.getLandmark().getLeft_eye_top().getY();
+        float lright = face.getLandmark().getLeft_eye_lower_right_quarter().getX();
+        float lbottom = face.getLandmark().getLeft_eye_bottom().getY();
+        RectF leye = new RectF(lleft,ltop,lright,lbottom);
+
+        float rleft = face.getLandmark().getRight_eye_upper_left_quarter().getX();
+        float rtop = face.getLandmark().getRight_eye_top().getY();
+        float rright = face.getLandmark().getRight_eye_lower_right_quarter().getX();
+        float rbottom = face.getLandmark().getRight_eye_bottom().getY();
+        RectF reye = new RectF(rleft,rtop,rright,rbottom);
+
+        canvas.drawBitmap(eyebitmap,null,leye,paint);
+        canvas.drawBitmap(eyebitmap,null,reye,paint);
         return bmp;
     }
     //人脸关键部位勾勒：眼睛
