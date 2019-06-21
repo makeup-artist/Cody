@@ -39,11 +39,11 @@ public class CommonRequest {
 //        FormBody formBody = builder.build();
         //构造请求头
         Request.Builder requestbuilder = new Request.Builder();
-//        if(headerParams != null){
-//            for (Map.Entry<String, String> entry : headerParams.urlParams.entrySet()) {
-//                requestbuilder.addHeader(entry.getKey(), entry.getValue());
-//            }
-//        }
+        if(headerParams != null){
+            for (Map.Entry<String, String> entry : headerParams.urlParams.entrySet()) {
+                requestbuilder.addHeader(entry.getKey(), entry.getValue());
+            }
+        }
         Request request = requestbuilder.addHeader("content-type", "application/json;charset:utf-8").post(requestBody).url(url).build();
         // 返回封装的Request请求
         return request;
@@ -71,11 +71,11 @@ public class CommonRequest {
 //        FormBody formBody = builder.build();
         //构造请求头
         Request.Builder requestbuilder = new Request.Builder();
-//        if(headerParams != null){
-//            for (Map.Entry<String, String> entry : headerParams.urlParams.entrySet()) {
-//                requestbuilder.addHeader(entry.getKey(), entry.getValue());
-//            }
-//        }
+        if(headerParams != null){
+            for (Map.Entry<String, String> entry : headerParams.urlParams.entrySet()) {
+                requestbuilder.addHeader(entry.getKey(), entry.getValue());
+            }
+        }
         Request request = requestbuilder.addHeader("content-type", "application/json;charset:utf-8").put(requestBody).url(url).build();
         // 返回封装的Request请求
         return request;

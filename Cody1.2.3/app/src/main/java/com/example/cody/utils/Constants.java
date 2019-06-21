@@ -29,4 +29,6 @@ public class Constants {
     public static final String URL_USERINFOBYID = URL + "/api/user/userInfo/id";
     public static final String URL_USERINFOBYUSERNAME = URL + "/api/user/userInfo/username";
     public static final String URL_POST_POST = URL + "/api/post/add";
+    public static final String URL_POST_IMG = URL + "/api/upload/image";
+    public static final String URL_POST_VIDEO = URL + "/api/upload/video";
 }

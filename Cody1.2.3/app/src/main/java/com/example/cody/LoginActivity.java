@@ -84,6 +84,7 @@ public class LoginActivity extends AppCompatActivity {
                                      sp.putUser(testBean.getData().getUser());
                                     Toast.makeText(MyApplication.getContext(), "已成功登陆", Toast.LENGTH_SHORT).show();
                           sp.setLogin(true);
+                                   Log.d("QAQ","123"+testBean.getData().getToken());
                           sp.putToken(testBean.getData().getToken());
                                    EventBus.getDefault().post(testBean.getData().getUser());
                                     finish();

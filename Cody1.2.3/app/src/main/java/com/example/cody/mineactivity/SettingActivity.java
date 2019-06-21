@@ -79,6 +79,7 @@ public class SettingActivity extends AppCompatActivity {
                                 Log.d("Setting", "onClick: ");
                                 sp.setLogin(false);
                                 sp.putUser(null);
+                                sp.putToken("");
                                 EventBus.getDefault().post(new User());
                                 finish();
                             }

@@ -25,6 +25,7 @@ import com.example.cody.entity.MsgBean;
 import com.example.cody.entity.UserLoginBean.UsermainBean;
 import com.example.cody.entity.UserPost.PostBean;
 import com.example.cody.net.CommonOkHttpClient;
+import com.example.cody.net.OkHttp3Util;
 import com.example.cody.net.exception.OkHttpException;
 import com.example.cody.net.listener.DisposeDataHandle;
 import com.example.cody.net.listener.DisposeDataListener;
@@ -39,6 +40,7 @@ import org.greenrobot.eventbus.EventBus;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.Map;
@@ -46,9 +48,16 @@ import java.util.Map;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 import static com.example.cody.TextViewActivity.HTML_TEXT;
 import static com.example.cody.utils.Constants.URL_LOGIN;
+import static com.example.cody.utils.Constants.URL_POST_IMG;
 import static com.example.cody.utils.Constants.URL_POST_POST;
 import static android.os.AsyncTask.THREAD_POOL_EXECUTOR;
 public class RichEditorActivity extends AppCompatActivity implements ImageStrategy {
@@ -67,7 +76,7 @@ public class RichEditorActivity extends AppCompatActivity implements ImageStrate
     private SharedPreferencesUtil sp;
     private String token;
     private String title;
-
+    private static final MediaType FROM_DATA = MediaType.parse("multipart/form-data");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -132,6 +141,7 @@ public class RichEditorActivity extends AppCompatActivity implements ImageStrate
                 Map params = new HashMap();
                 Map harams = new HashMap();
                 title = mtitle.getText().toString();
+                token = sp.getToken();
                 params.put("title",title);
                 params.put("content", this.arEditor.getHtml());
                 harams.put("Authorization",token);
@@ -198,20 +208,36 @@ public class RichEditorActivity extends AppCompatActivity implements ImageStrate
 
         @Override
         protected String doInBackground(Uri... uris) {
+            Log.d("QAQ", "doInBackground: ");
+            String string = null;
             if (uris != null && uris.length > 0) {
-                try {
-                    // do upload here ~
-                    String imageType = "multipart/form-data";
-                    File file = new File(String.valueOf(uris));
-                    Thread.sleep(3000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+
+                File file = new File(String.valueOf(uris));
+                HashMap<String, String> map = new HashMap<>();
+                map.put("uid", "4123");
+
+                OkHttp3Util.uploadFile(URL_POST_IMG, file, "dash.jpg", map, new Callback() {
+                    @Override
+                    public void onFailure(Call call, IOException e) {
+                        Log.e("+++", "onFailure: " + e.getMessage());
+                        e.printStackTrace();
+                    }
+
+                    @Override
+                    public void onResponse(Call call, final Response response) throws IOException {
+                        Log.e("---", "onResponse: " + response.body().string());
+                        if (response.isSuccessful()) {
+                                    Toast.makeText(MyApplication.getContext(), "此时上传成功!!", Toast.LENGTH_SHORT).
+                                            show(); }
+                            //此时上传成功  获取用户信息
+                    }
+                });
+
 
                 // Returns the image url on server here
                 return "https://avatars0.githubusercontent.com/u/1758864?s=460&v=4";
             }
-            return null;
+            return "www.baidu.com";
         }
 
         @Override
@@ -231,6 +257,7 @@ public class RichEditorActivity extends AppCompatActivity implements ImageStrate
         }
     }
 
+
     private Bitmap decodeUriAsBitmap(Uri uri){
         Bitmap bitmap = null;
         try {
@@ -242,4 +269,3 @@ public class RichEditorActivity extends AppCompatActivity implements ImageStrate
         return bitmap;
     }
 }
-

@@ -3,12 +3,14 @@ package com.example.cody.mineactivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.cody.MyApplication;
 import com.example.cody.R;
+import com.example.cody.entity.MsgBean;
 import com.example.cody.entity.UserLoginBean.UsermainBean;
 import com.example.cody.net.CommonOkHttpClient;
 import com.example.cody.net.exception.OkHttpException;
@@ -69,11 +71,12 @@ public class ChangedPsdActivity extends AppCompatActivity {
             params.put("newPassword",newpsd);
             params.put("oldPassword",oldpsd);
             params.put("username",username);
+            Log.d("QAQ", "onViewClicked: "+newpsd+oldpsd+username);
             CommonOkHttpClient
-                    .sendRequest(CommonRequest.createPutRequest(URL_ALTERPSD,  params), new CommonJsonCallback(new DisposeDataHandle(UsermainBean.class, new DisposeDataListener() {
+                    .sendRequest(CommonRequest.createPutRequest(URL_ALTERPSD, params), new CommonJsonCallback(new DisposeDataHandle(UsermainBean.class, new DisposeDataListener() {
                         @Override
                         public void onSuccess(Object responseObj) {
-                            UsermainBean testBean = (UsermainBean) responseObj;
+                            MsgBean testBean = (MsgBean) responseObj;
                             if(testBean.getCode()==200){
                                 Toast.makeText(MyApplication.getContext(), "密码修改成功", Toast.LENGTH_SHORT).show();
                                 finish();
