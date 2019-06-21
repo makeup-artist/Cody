@@ -82,36 +82,40 @@ public class HomeFragment extends BaseFragment implements ViewControl {
     }
 
     private void showdata() {
+        /**
+         * 首页banner图
+         */
         List<BannerBean> bannerList = new ArrayList<BannerBean>();
-        BannerBean banner1 = new BannerBean("持久唇妆点亮你",R.drawable.banner_1);
-        BannerBean banner2 = new BannerBean("高亮彩妆美无禁忌",R.drawable.banner_2);
-        BannerBean banner3 = new BannerBean("轻吻经典快乐玩色",R.drawable.banner_3);
-        BannerBean banner4 = new BannerBean("高定美妆美无禁忌",R.drawable.banner_4);
-        BannerBean banner5 = new BannerBean("一抹上色唇色持久",R.drawable.banner_5);
-        bannerList.add(banner1);
-        bannerList.add(banner2);
-        bannerList.add(banner3);
-        bannerList.add(banner4);
-        bannerList.add(banner5);
+        bannerList.add(new BannerBean("持久唇妆点亮你",R.drawable.banner_1));
+        bannerList.add(new BannerBean("高亮彩妆美无禁忌",R.drawable.banner_2));
+        bannerList.add(new BannerBean("轻吻经典快乐玩色",R.drawable.banner_3));
+        bannerList.add(new BannerBean("高定美妆美无禁忌",R.drawable.banner_4));
+        bannerList.add(new BannerBean("一抹上色唇色持久",R.drawable.banner_5));
         if (mLLScrollContainer.getChildCount() > 2){
             mLLScrollContainer.removeViews(2,mLLScrollContainer.getChildCount()-2);
         }
         initBanner(bannerList);
+        /**
+         * 首页口红推荐栏目
+         */
         List<ItemBean> itemBeanList = new ArrayList<ItemBean>();
         List<LipstickBean> lipsticklist = new ArrayList<LipstickBean>();
-        LipstickBean listick1 = new LipstickBean("DIOR迪奥变色唇膏","https://www.dior.cn/zh_cn/products/beauty-Y0027010-dior%E8%BF%AA%E5%A5%A5%E5%8F%98%E8%89%B2%E5%94%87%E8%86%8F-%E7%84%95%E7%8E%B0%E8%87%AA%E7%84%B6%E5%94%87%E8%89%B2","001 Pink","￥295.00","外出");
-        LipstickBean listick2 = new LipstickBean("DIOR迪奥变色唇膏","https://www.dior.cn/zh_cn/products/beauty-Y0027010-dior%E8%BF%AA%E5%A5%A5%E5%8F%98%E8%89%B2%E5%94%87%E8%86%8F-%E7%84%95%E7%8E%B0%E8%87%AA%E7%84%B6%E5%94%87%E8%89%B2","007 Raspberry","￥295.00","舞会");
-        LipstickBean listick3 = new LipstickBean("DIOR迪奥魅惑磨砂美唇膏","https://www.dior.cn/zh_cn/products/beauty-Y0028880-dior%E8%BF%AA%E5%A5%A5%E9%AD%85%E6%83%91%E7%A3%A8%E7%A0%82%E7%BE%8E%E5%94%87%E8%86%8F-%E8%BD%BB%E8%BD%BB%E4%B8%80%E6%8A%BF%EF%BC%8C%E6%9F%94%E5%94%87%E7%84%95%E7%8E%B0","001 Pink","￥295.00","学生");
-        LipstickBean listick4 = new LipstickBean("DIOR迪奥魅惑釉唇膏","https://www.dior.cn/zh_cn/products/beauty-Y0028808-dior%E8%BF%AA%E5%A5%A5%E9%AD%85%E6%83%91%E9%87%89%E5%94%87%E8%86%8F-%E6%B5%93%E9%83%81%E6%BC%86%E5%85%89%EF%BC%8C%E8%BD%BB%E7%9B%88%E6%8C%81%E5%A6%86","877 给我Dior","￥315.00","魅惑");
-        LipstickBean listick5 = new LipstickBean("DIOR迪奥魅惑釉唇膏","https://www.dior.cn/zh_cn/products/beauty-Y0028808-dior%E8%BF%AA%E5%A5%A5%E9%AD%85%E6%83%91%E9%87%89%E5%94%87%E8%86%8F-%E6%B5%93%E9%83%81%E6%BC%86%E5%85%89%EF%BC%8C%E8%BD%BB%E7%9B%88%E6%8C%81%E5%A6%86","648 人生赢家","￥315.00","活动");
-        LipstickBean listick6 = new LipstickBean("烈艳蓝金唇膏限量版","https://www.dior.cn/zh_cn/products/beauty-Y0088003-%E7%83%88%E8%89%B3%E8%93%9D%E9%87%91%E5%94%87%E8%86%8F-%E9%99%90%E9%87%8F%E7%89%88-%E9%AB%98%E8%AE%A2%E8%89%B2%E6%B3%BD%EF%BC%8C%E8%88%92%E6%82%A6%E6%8C%81%E8%89%B2-%E9%99%90%E9%87%8F%E7%89%88","551 Joyeuse","￥315.00","日常");
-        lipsticklist.add(listick1);
-        lipsticklist.add(listick2);
-        lipsticklist.add(listick3);
-        lipsticklist.add(listick4);
-        lipsticklist.add(listick5);
-        lipsticklist.add(listick6);
-        itemBeanList.add(new ItemBean("推荐口红","独家精品私人定制","https://www.dior.cn/zh_cn/products/beauty-Y0027010-dior%E8%BF%AA%E5%A5%A5%E5%8F%98%E8%89%B2%E5%94%87%E8%86%8F-%E7%84%95%E7%8E%B0%E8%87%AA%E7%84%B6%E5%94%87%E8%89%B2",lipsticklist,R.drawable.g_like));
+        lipsticklist.add(new LipstickBean("DIOR迪奥变色唇膏","https://image1607.oss-cn-qingdao.aliyuncs.com/adver_1.PNG","001 Pink","￥295.00","外出"));
+        lipsticklist.add(new LipstickBean("DIOR迪奥变色唇膏","https://image1607.oss-cn-qingdao.aliyuncs.com/adver_2.PNG","007 Raspberry","￥295.00","舞会"));
+        lipsticklist.add(new LipstickBean("DIOR迪奥魅惑磨砂美唇膏","https://image1607.oss-cn-qingdao.aliyuncs.com/adver_3.PNG","001 Pink","￥295.00","学生"));
+        lipsticklist.add(new LipstickBean("DIOR迪奥魅惑釉唇膏","https://image1607.oss-cn-qingdao.aliyuncs.com/adver_4.PNG","877 给我Dior","￥315.00","魅惑"));
+        lipsticklist.add(new LipstickBean("DIOR迪奥魅惑釉唇膏","https://image1607.oss-cn-qingdao.aliyuncs.com/adver_5.PNG","648 人生赢家","￥315.00","活动"));
+        lipsticklist.add(new LipstickBean("烈艳蓝金唇膏限量版","https://image1607.oss-cn-qingdao.aliyuncs.com/adver_6.PNG","551 Joyeuse","￥315.00","日常"));
+        itemBeanList.add(new ItemBean("推荐口红","独家精品私人定制","https://www.dior.cn/zh_cn/products/beauty-Y0027010-dior%E8%BF%AA%E5%A5%A5%E5%8F%98%E8%89%B2%E5%94%87%E8%86%8F-%E7%84%95%E7%8E%B0%E8%87%AA%E7%84%B6%E5%94%87%E8%89%B2",lipsticklist,R.drawable.kouhong_icon));
+        /**
+         * 首页眉笔推荐栏目
+         */
+        List<LipstickBean> eyebrowlist = new ArrayList<LipstickBean>();
+        eyebrowlist.add(new LipstickBean("后台彩妆眉彩盘","https://image1607.oss-cn-qingdao.aliyuncs.com/adver_7.PNG","001 light","￥370.00","日常"));
+        eyebrowlist.add(new LipstickBean("后台彩妆眉彩盘","https://image1607.oss-cn-qingdao.aliyuncs.com/adver_8.PNG","002 Dark","￥370.00","日常"));
+        eyebrowlist.add(new LipstickBean("后台彩妆眼部彩盘","https://image1607.oss-cn-qingdao.aliyuncs.com/adver_9.PNG","001 Warm neutrals","￥450.00","日常"));
+        eyebrowlist.add(new LipstickBean("后台彩妆眼部彩盘","https://image1607.oss-cn-qingdao.aliyuncs.com/adver_10.PNG","002 Cool neutrals","￥450.00","日常"));
+        itemBeanList.add(new ItemBean("推荐眉笔","独家精品私人定制","https://www.dior.cn/zh_cn/products/beauty-Y0027010-dior%E8%BF%AA%E5%A5%A5%E5%8F%98%E8%89%B2%E5%94%87%E8%86%8F-%E7%84%95%E7%8E%B0%E8%87%AA%E7%84%B6%E5%94%87%E8%89%B2",eyebrowlist,R.drawable.meibi_icon));
         addAllComicItem(itemBeanList);
         mRefreshLayout.finishRefresh();
     }
